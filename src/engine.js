@@ -233,9 +233,10 @@
     m.appendChild(h(`<div><h2>Grammar</h2><p class="lead">The rules behind the dialogues. Try each interactive box. Every Arabic word you build is read aloud.</p></div>`));
     L.grammar.forEach(g => {
       const c = h(`<div class="card gblock" style="margin-bottom:16px"><h3>${esc(g.title)}</h3>${g.body.map(p => `<p>${arabize(p)}</p>`).join("")}</div>`);
-      if (g.table) c.appendChild(h(`<table class="g"><tr>${g.table.head.map(x => `<th>${x}</th>`).join("")}</tr>${g.table.rows.map(r => `<tr><td>${r[0]}</td><td>${ar(r[1])} ${playBtn(r[1])}</td><td class="tr">${r[2]}</td><td>${r[3]}</td></tr>`).join("")}</table>`));
+      if (g.table) c.appendChild(h(`<table class="g"><tr>${g.table.head.map(x => `<th>${x}</th>`).join("")}</tr>${g.table.rows.map(r => `<tr><td>${r[0]}</td><td>${ar(r[1])} ${playBtn(r[1])}</td><td class="tr">${r[2]}</td><td>${arabize(r[3])}</td></tr>`).join("")}</table>`));
       if (g.widget && g.widget.type === "suffix") c.appendChild(suffixWidget(g.widget));
       if (g.widget && g.widget.type === "nisba") c.appendChild(nisbaWidget(g.widget));
+      if (g.widget && g.widget.type === "combo") c.appendChild(comboWidget(g.widget));
       m.appendChild(c);
     });
   };
@@ -256,6 +257,21 @@
       if (sayIt) speak(word);
     }
     el.onclick = e => { const a = e.target.closest("[data-n]"), b = e.target.closest("[data-k]"); if (a) n = +a.dataset.n; if (b) k = b.dataset.k; if (a || b) draw(true); };
+    draw(false); return el;
+  }
+  // generic two-axis builder: pick a row, pick a column, see/hear the result
+  function comboWidget(w) {
+    let r = w.rows[0].k, c = w.cols[0].k;
+    const el = h(`<div class="widget"><div class="label">${esc(w.label)}</div><div class="row rows"></div><div class="row cols" style="margin-top:8px"></div><div class="result" style="font-size:38px"></div><div class="cap" style="text-align:center"></div></div>`);
+    function draw(sayIt) {
+      $(".rows", el).innerHTML = w.rows.map(x => `<button class="chip ${x.k === r ? "on" : ""}" data-r="${x.k}">${arabize(esc(x.label))}</button>`).join("");
+      $(".cols", el).innerHTML = w.cols.map(x => `<button class="chip ${x.k === c ? "on" : ""}" data-c="${x.k}">${arabize(esc(x.label))}</button>`).join("");
+      const o = w.out[r + "|" + c]; if (!o) return;
+      $(".result", el).innerHTML = `${ar(o[0])} ${playBtn(o[0])}`;
+      $(".cap", el).innerHTML = `<span class="tr">${esc(o[1])}</span> = <b>${esc(o[2])}</b>${o[3] ? `<div class="muted" style="font-size:13px;margin-top:4px">${arabize(esc(o[3]))}</div>` : ""}`;
+      if (sayIt) speak(o[0]);
+    }
+    el.onclick = e => { const a = e.target.closest("[data-r]"), b = e.target.closest("[data-c]"); if (a) r = a.dataset.r; if (b) c = b.dataset.c; if (a || b) draw(true); };
     draw(false); return el;
   }
   function nisbaWidget(w) {
@@ -411,15 +427,17 @@
     const pick = h(`<div class="row" style="margin-bottom:14px"><button class="chip on" data-l="words">🔤 Words (10)</button><button class="chip" data-l="lines">💬 Dialogue lines (8)</button><button class="chip" data-l="who">🧑‍🤝‍🧑 Male or female? (8)</button></div>`);
     const box = h(`<div></div>`); m.append(pick, box);
     const allLines = L.dialogues.flatMap(d => d.lines.map(l => ({ l, d })));
+    const whoLines = () => shuffle(allLines.filter(x => L.gender ? new RegExp(L.gender.any).test(x.l[1].replace(HARAKAT, "") + " ") : /ُكَ|ُكِ|أَنْتَ|أَنْتِ|يَّةٌ|يٌّ/.test(x.l[1])));
+    if (whoLines().length < 3) pick.querySelector('[data-l="who"]').remove();
     const sets = {
       words: () => vocabMCQ(10, "listen"),
-      lines: () => shuffle(allLines.filter(x => !/السَّلام/.test(x.l[1]))).slice(0, 8).map(({ l }) => {
-        const others = shuffle([...new Set(allLines.map(x => x.l[3]).filter(t => t !== l[3]))]).slice(0, 3);
+      lines: () => shuffle([...new Map(allLines.filter(x => !/السَّلام/.test(x.l[1])).map(x => [x.l[1], x])).values()]).slice(0, 8).map(({ l }) => {
+        const others = shuffle([...new Set(allLines.filter(x => x.l[1] !== l[1]).map(x => x.l[3]).filter(t => t !== l[3]))]).slice(0, 3);
         const opts = shuffle([l[3], ...others]); return { type: "listen", say: l[1], options: opts, answer: opts.indexOf(l[3]) };
       }),
-      who: () => shuffle(allLines.filter(x => /ُكَ|ُكِ|أَنْتَ|أَنْتِ|يَّةٌ|يٌّ/.test(x.l[1]))).slice(0, 8).map(({ l }) => {
-        const fem = /ُكِ|أَنْتِ|يَّةٌ/.test(l[1]);
-        return { type: "listen", q: "Is this sentence spoken TO or ABOUT a male or a female?", say: l[1], options: ["Male ♂", "Female ♀"], answer: fem ? 1 : 0, explain: `${l[1]} — ${l[3]}` };
+      who: () => whoLines().slice(0, 8).map(({ l }) => {
+        const fem = L.gender ? new RegExp(L.gender.fem).test(l[1].replace(HARAKAT, "") + " ") : /ُكِ|أَنْتِ|يَّةٌ/.test(l[1]);
+        return { type: "listen", q: (L.gender && L.gender.q) || "Is this sentence spoken TO or ABOUT a male or a female?", say: l[1], options: ["Male ♂", "Female ♀"], answer: fem ? 1 : 0, explain: `${l[1]} — ${l[3]}` };
       })
     };
     const go = k => { box.innerHTML = ""; runQuiz(box, sets[k](), "listen-" + k); };

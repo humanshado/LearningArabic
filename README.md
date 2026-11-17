@@ -42,5 +42,6 @@ docs/                  built site served by GitHub Pages
 ## Progress
 
 - [x] Book 1 · Video 1: Greetings, names and nationalities (book pp. 2–5)
-- [ ] Book 1 · Videos 2–40
+- [x] Book 1 · Video 2: Introducing people, pronouns, question words, numbers 1–10 (book pp. 6–7)
+- [ ] Book 1 · Videos 3–40 (Chapters 1–8 are in Book 1 Part 1; Chapters 9–16 are in Book 1 Part 2)
 - [ ] Books 2–4
