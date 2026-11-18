@@ -1,0 +1,996 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Where Are the Children? Big, Small &amp; Plurals · Arabic Book 1</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;600;700&display=swap" rel="stylesheet"><style>:root{
+  --bg:#fbf6ee; --panel:#ffffff; --ink:#2b2118; --muted:#7a6a58; --line:#ecdfcc;
+  --accent:#e0801a; --accent-2:#b35f07; --accent-soft:#fde9cf;
+  --good:#2f8a4f; --good-soft:#dff3e5; --bad:#c2402a; --bad-soft:#fbe3de;
+  --m:#2f6db5; --m-soft:#e2eefb; --f:#a3407e; --f-soft:#f8e3f0;
+  --radius:14px; --shadow:0 1px 2px rgba(60,40,10,.06),0 4px 14px rgba(60,40,10,.06);
+  --ar:"Noto Naskh Arabic","Amiri","Traditional Arabic",serif;
+  --ui:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#1a1611; --panel:#241e17; --ink:#f3e9dc; --muted:#b4a28c; --line:#3a3027;
+  --accent:#f0952f; --accent-2:#ffb35c; --accent-soft:#3b2a16;
+  --good:#5cc27f; --good-soft:#1d3324; --bad:#ef7a64; --bad-soft:#3d221d;
+  --m:#7fb0ef; --m-soft:#1e2b3b; --f:#e38bc0; --f-soft:#3a2032;
+  --shadow:none;
+}}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--ui);line-height:1.5}
+button{font:inherit;color:inherit;cursor:pointer}
+a{color:var(--accent-2)}
+.ar{font-family:var(--ar);direction:rtl;unicode-bidi:isolate;line-height:1.9}
+.tr{color:var(--muted);font-style:italic}
+.en{color:var(--muted)}
+body.no-tr .tr{display:none} body.no-en .en{display:none}
+
+/* header */
+header.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top-inner{max-width:1040px;margin:0 auto;padding:10px 16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.brand{display:flex;flex-direction:column;min-width:0;flex:1}
+.brand small{color:var(--muted);font-size:12px}
+.brand b{font-size:17px}
+.toggles{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.chip{border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:5px 11px;font-size:13px;display:inline-flex;gap:6px;align-items:center}
+.chip.on{background:var(--accent-soft);border-color:var(--accent);color:var(--accent-2);font-weight:600}
+.progress{height:4px;background:var(--line)} .progress>div{height:100%;background:var(--accent);transition:width .4s}
+
+nav.tabs{max-width:1040px;margin:0 auto;padding:8px 12px 0;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+nav.tabs::-webkit-scrollbar{display:none}
+nav.tabs a{flex:none;text-decoration:none;color:var(--muted);padding:8px 12px;border-radius:10px 10px 0 0;font-size:14px;border-bottom:3px solid transparent;white-space:nowrap}
+nav.tabs a.active{color:var(--ink);font-weight:600;border-bottom-color:var(--accent)}
+nav.tabs a .tick{color:var(--good);margin-inline-start:4px}
+
+main{max-width:1040px;margin:0 auto;padding:18px 16px 80px}
+h2{margin:6px 0 4px;font-size:24px} h3{margin:18px 0 8px;font-size:18px}
+.lead{color:var(--muted);margin:0 0 16px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)}
+.stack>*+*{margin-top:14px}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(210px,1fr))}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.btn{border:1px solid var(--line);background:var(--panel);padding:8px 14px;border-radius:10px;font-weight:500}
+.btn:hover{border-color:var(--accent)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn.primary:hover{background:var(--accent-2)}
+.btn.small{padding:4px 10px;font-size:13px}
+.play{border:none;background:var(--accent-soft);color:var(--accent-2);width:34px;height:34px;border-radius:50%;flex:none;display:inline-grid;place-items:center;font-size:14px}
+.play:hover{background:var(--accent);color:#fff}
+.play.speaking{background:var(--accent);color:#fff;animation:pulse 1s infinite}
+@keyframes pulse{50%{transform:scale(1.1)}}
+.banner{background:var(--accent-soft);border:1px solid var(--accent);border-radius:12px;padding:10px 14px;font-size:14px;margin-bottom:14px}
+.done-btn{margin-top:22px}
+
+/* overview */
+.hero{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center}
+.hero .ar.big{font-size:38px;line-height:1.6}
+.goals li{margin:4px 0}
+.path{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.path a{text-decoration:none;color:var(--ink)}
+.path .step{padding:12px;border-radius:12px;border:1px solid var(--line);background:var(--panel);display:flex;gap:10px;align-items:center}
+.path .step.done{border-color:var(--good);background:var(--good-soft)}
+.path .num{width:28px;height:28px;border-radius:50%;background:var(--accent-soft);color:var(--accent-2);display:grid;place-items:center;font-weight:700;font-size:13px;flex:none}
+.path .done .num{background:var(--good);color:#fff}
+
+/* dialogue */
+.dlg-head{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+.dlg-head .ar{font-size:20px}
+.scene{display:flex;justify-content:center;gap:40px;margin:6px 0 4px}
+.scene figure{margin:0;text-align:center;font-size:13px}
+.scene figure .ar{font-size:18px}
+.bubbles{display:flex;flex-direction:column;gap:10px;margin-top:10px}
+.bub{display:flex;gap:10px;align-items:flex-start;max-width:88%}
+.bub.right{align-self:flex-end;flex-direction:row-reverse}
+.bub .av{flex:none}
+.bub .body{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:8px 12px;cursor:pointer;transition:background .2s}
+.bub.right .body{text-align:right}
+.bub .who{font-size:12px;color:var(--muted)}
+.bub .ar.line{font-size:22px;display:block}
+.bub.active .body{background:var(--accent-soft);border-color:var(--accent)}
+.bub.m .who{color:var(--m)} .bub.f .who{color:var(--f)}
+.hidetext .bub .ar.line{filter:blur(7px)} .hidetext .bub.revealed .ar.line{filter:none}
+.shadow-cue{font-size:13px;color:var(--accent-2);font-weight:600;min-height:20px}
+
+/* family tree */
+.ftree{margin:12px 0;padding:12px;border-radius:12px;background:var(--bg);border:1px dashed var(--accent);text-align:center}
+.ftree .label{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--accent-2);font-weight:700;margin-bottom:8px}
+.flevel{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;direction:rtl}
+.fline{width:2px;height:16px;background:var(--accent);margin:4px auto}
+.fnode{border:2px solid var(--line);background:var(--panel);border-radius:12px;padding:4px 12px;display:flex;flex-direction:column;align-items:center;line-height:1.3}
+.fnode .ar{font-size:20px}
+.fnode small{color:var(--muted);font-size:11px;direction:ltr}
+.fnode.m{border-color:var(--m)} .fnode.f{border-color:var(--f)}
+.fnode.me{background:var(--accent-soft);border-color:var(--accent);font-weight:700}
+
+/* vocab */
+.filters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.vcard{display:flex;flex-direction:column;gap:2px;position:relative}
+.vcard .pic{font-size:30px;line-height:1.2}
+.vcard .ar{font-size:26px}
+.vcard .play{position:absolute;top:12px;left:12px}
+.vcard .box{position:absolute;top:14px;right:14px;font-size:11px;color:var(--muted)}
+.tag{display:inline-block;font-size:11px;background:var(--accent-soft);color:var(--accent-2);border-radius:6px;padding:1px 6px;margin-top:4px;width:max-content}
+
+.flash-wrap{max-width:440px;margin:0 auto;text-align:center}
+.flash{perspective:1000px;height:260px;cursor:pointer;margin:10px 0}
+.flash-inner{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
+.flash.flipped .flash-inner{transform:rotateY(180deg)}
+.flash .face{position:absolute;inset:0;backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;border-radius:18px;border:1px solid var(--line);background:var(--panel);box-shadow:var(--shadow);padding:16px}
+.flash .back{transform:rotateY(180deg);background:var(--accent-soft)}
+.flash .ar{font-size:40px}
+.flash .pic{font-size:48px}
+
+/* grammar */
+.gblock h3{margin-top:0}
+.gblock p{margin:8px 0}
+.gblock .ar, .gblock b .ar{font-size:1.15em}
+table.g{border-collapse:collapse;width:100%;margin-top:10px}
+table.g td,table.g th{border-bottom:1px solid var(--line);padding:8px;text-align:left}
+table.g td.ar{font-size:24px;text-align:right}
+.widget{margin-top:14px;padding:14px;border-radius:12px;background:var(--bg);border:1px dashed var(--accent)}
+.widget .label{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--accent-2);font-weight:700;margin-bottom:8px}
+.result{font-size:46px;text-align:center;margin:8px 0;min-height:80px}
+.sfx{color:var(--accent-2)}
+.sfx.m{color:var(--m)} .sfx.f{color:var(--f)}
+.ncard{border:1px solid var(--line);background:var(--panel);border-radius:12px;padding:10px;text-align:center;cursor:pointer;user-select:none}
+.ncard .flag{font-size:30px}
+.ncard .ar{font-size:26px;display:block}
+.ncard .stage{font-size:11px;color:var(--muted)}
+
+/* sounds */
+.letter{display:flex;gap:14px}
+.letter .glyph{font-family:var(--ar);font-size:64px;line-height:1;width:80px;height:80px;display:grid;place-items:center;border-radius:16px;background:var(--accent-soft);color:var(--accent-2);flex:none;cursor:pointer}
+.ex{display:inline-flex;gap:6px;align-items:center;border:1px solid var(--line);border-radius:999px;padding:2px 4px 2px 12px;margin:3px;cursor:pointer;background:var(--panel)}
+.ex .ar{font-size:20px}
+.pair{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center}
+.pair .side{text-align:center;padding:10px;border:1px solid var(--line);border-radius:12px;cursor:pointer;background:var(--panel)}
+.pair .side .ar{font-size:30px;display:block}
+.vs{color:var(--muted);font-size:12px;text-align:center}
+
+/* quiz */
+.quiz{max-width:640px;margin:0 auto}
+.qhead{display:flex;justify-content:space-between;color:var(--muted);font-size:13px;margin-bottom:8px}
+.qbar{height:6px;border-radius:6px;background:var(--line);overflow:hidden;margin-bottom:14px}.qbar>div{height:100%;background:var(--accent);transition:width .3s}
+.qtext{font-size:18px;font-weight:600;margin-bottom:10px}
+.qsentence{font-size:30px;text-align:center;margin:10px 0}
+.qsentence .blank{display:inline-block;min-width:70px;border-bottom:3px solid var(--accent);color:var(--accent-2)}
+.opts{display:grid;gap:8px}
+.opt{text-align:start;border:2px solid var(--line);background:var(--panel);border-radius:12px;padding:10px 14px;font-size:16px}
+.opt .ar{font-size:24px}
+.opt:hover:not(:disabled){border-color:var(--accent)}
+.opt.correct{border-color:var(--good);background:var(--good-soft)}
+.opt.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.feedback{margin-top:12px;padding:10px 14px;border-radius:12px;font-size:15px}
+.feedback.good{background:var(--good-soft);color:var(--good)} .feedback.bad{background:var(--bad-soft);color:var(--bad)}
+.feedback .ex-text{color:var(--ink);display:block;margin-top:4px}
+.tiles{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;direction:rtl;min-height:56px;padding:8px;border-radius:12px}
+.tiles.answer{border:2px dashed var(--line);margin-bottom:8px}
+.tile{font-family:var(--ar);font-size:24px;border:1px solid var(--line);background:var(--panel);border-radius:10px;padding:2px 14px}
+.big-play{width:72px;height:72px;font-size:28px;margin:6px auto 14px;display:grid}
+.score{font-size:48px;font-weight:800;text-align:center;color:var(--accent-2)}
+.match{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.match .mi{border:2px solid var(--line);background:var(--panel);border-radius:10px;padding:8px;text-align:center;min-height:52px}
+.match .mi .ar{font-size:22px}
+.match .mi.sel{border-color:var(--accent);background:var(--accent-soft)}
+.match .mi.ok{border-color:var(--good);background:var(--good-soft);opacity:.55}
+.match .mi.no{border-color:var(--bad);background:var(--bad-soft)}
+
+/* speak */
+.rp{display:flex;flex-direction:column;gap:10px}
+.rec{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.rec .dot{width:10px;height:10px;border-radius:50%;background:var(--bad);animation:pulse 1s infinite}
+.tipcard{display:flex;gap:12px}
+.tipcard .ic{font-size:28px;flex:none}
+.tipcard .ar{font-size:1.15em}
+.muted{color:var(--muted)}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:30px 16px}
+
+/* index */
+.book{margin-top:22px}
+.lesson-link{display:flex;gap:14px;align-items:center;text-decoration:none;color:var(--ink)}
+.lesson-link .n{font-size:22px;font-weight:800;color:var(--accent-2);width:44px;text-align:center}
+.lesson-link .ar{font-size:20px}
+.soon{opacity:.5}
+@media (max-width:600px){
+  .hero{grid-template-columns:1fr}
+  .bub{max-width:100%}
+  .bub .ar.line{font-size:20px}
+  .flash{height:230px}
+}
+</style></head>
+<body><script>window.LESSONS=[];window.COURSE_HOME="index.html";</script><script>// Book 1 · Video 4 — Unit 2 (الأسرة), Dialogue 3 (book pp. 32–33) + teacher's family summary and singular/plural table
+// Source: Al-ʿArabiyyah Bayna Yadayk Book 1 + Al-Lisan video commentary (lesson 4 transcript)
+(function () {
+  const REL = [
+    ["ibn", "اِبْنٌ", "ibn", "son", "m"], ["bint", "بِنْتٌ", "bint", "daughter", "f"],
+    ["akh", "أَخٌ", "akh", "brother", "m"], ["ukht", "أُخْتٌ", "ukht", "sister", "f"],
+    ["amm", "عَمٌّ", "ʿamm", "uncle (father's side)", "m"], ["amma", "عَمَّةٌ", "ʿamma", "aunt (father's side)", "f"],
+    ["khal", "خالٌ", "khāl", "uncle (mother's side)", "m"], ["khala", "خالَةٌ", "khāla", "aunt (mother's side)", "f"]
+  ];
+  const sizeOut = {};
+  REL.forEach(([k, a, t, e, g]) => {
+    sizeOut[k + "|big"] = [`${a} ${g === "f" ? "كَبِيرَةٌ" : "كَبِيرٌ"}`, `${t} ${g === "f" ? "kabīra" : "kabīr"}`, `an older ${e}`, g === "f" ? "Feminine noun → feminine adjective with ة" : "Masculine noun → masculine adjective"];
+    sizeOut[k + "|small"] = [`${a} ${g === "f" ? "صَغِيرَةٌ" : "صَغِيرٌ"}`, `${t} ${g === "f" ? "ṣaghīra" : "ṣaghīr"}`, `a younger ${e}`, g === "f" ? "Feminine noun → feminine adjective with ة" : "Masculine noun → masculine adjective"];
+  });
+
+  const WHO = [["saad", "سَعْدٌ", "Saʿd", "Saʿdun"], ["saida", "سَعِيدَةُ", "Saʿīda", "Saʿīdatu"], ["ab", "الأَبُ", "The father", "al-abu"], ["umm", "الأُمُّ", "The mother", "al-ummu"]];
+  const WHERE = [["hammam", "الحَمّامِ", "l-ḥammām", "the bathroom"], ["ghurfa", "الغُرْفَةِ", "l-ghurfa", "the room"], ["musalla", "المُصَلَّى", "l-muṣallā", "the prayer room"], ["masjid", "المَسْجِدِ", "l-masjid", "the mosque"]];
+  const whereOut = {};
+  WHO.forEach(([k, a, e, t]) => WHERE.forEach(([pk, pa, pt, pe]) => {
+    whereOut[k + "|" + pk] = [`${a} فِي ${pa}.`, `${t} fi ${pt}`, `${e} is in ${pe}.`, "No word for “is”: just person + فِي + place."];
+  }));
+
+  LESSONS.push({
+    id: "b1-04",
+    book: 1,
+    num: 4,
+    unit: "الوَحْدَةُ الثّانِيَةُ · الأُسْرَةُ",
+    unitEn: "Unit 2 · The Family",
+    title: "Where Are the Children? Big, Small & Plurals",
+    titleAr: "أَيْنَ الأَوْلادُ؟",
+    covers: "Book pages 32–33 · Dialogue 3 + the teacher's family summary and singular/plural table",
+    video: "https://www.youtube.com/playlist?list=PLDS9YrkKMtPR4-S3ih8wad7oXMyrdEdXY",
+    goals: [
+      "Say where someone is: سَعْدٌ فِي الحَمّامِ",
+      "Recognise your first verbs: يَتَوَضَّأُ، يَقْرَأُ، تُصَلِّي",
+      "Name places at home and for prayer: حَمّام، غُرْفَة، مُصَلًّى، مَسْجِد",
+      "Complete the family: خال and خالَة (the mother's side)",
+      "Describe size and age with كَبِير / صَغِير, matching the gender",
+      "Learn singular → plural pairs, including the ة → ات rule"
+    ],
+    gender: { any: "يتوضأ|يقرأ|تصلي|هذا هو|هذه هي|سعيدة", fem: "تصلي|هذه هي|سعيدة", q: "Is this about a male (or masculine thing) or a female (or feminine thing)?" },
+
+    dialogues: [
+      {
+        id: "u2d3", title: "Dialogue 3", titleAr: "الحِوارُ الثّالِثُ",
+        note: "Dawn. The adhān is calling, and the father asks where the children are before going to the mosque.",
+        people: { "الأُمّ": "f1", "الأَب": "m4", "سَعْد": "m1", "سَعِيد": "m2", "سَعْد وَسَعِيد": "m3" },
+        lines: [
+          ["الأُمّ", "هَذا أَذانُ الفَجْرِ.", "hādhā adhānu l-fajr.", "This is the call to the dawn prayer."],
+          ["الأَب", "اللهُ أَكْبَرُ، اللهُ أَكْبَرُ. أَيْنَ الأَوْلادُ؟", "allāhu akbar, allāhu akbar. ayna l-awlād?", "God is the greatest, God is the greatest. Where are the children?"],
+          ["الأُمّ", "سَعْدٌ فِي الحَمّامِ يَتَوَضَّأُ.", "Saʿdun fi l-ḥammām yatawaḍḍaʾ.", "Saʿd is in the bathroom doing wuḍūʾ."],
+          ["الأَب", "وَأَيْنَ سَعِيدٌ؟", "wa ayna Saʿīd?", "And where is Saʿīd?"],
+          ["الأُمّ", "سَعِيدٌ فِي الغُرْفَةِ يَقْرَأُ القُرْآنَ.", "Saʿīdun fi l-ghurfa yaqraʾu l-qurʾān.", "Saʿīd is in the room reading the Qurʾān."],
+          ["الأَب", "وَأَيْنَ سَعِيدَةُ؟", "wa ayna Saʿīda?", "And where is Saʿīda?"],
+          ["الأُمّ", "سَعِيدَةُ فِي المُصَلَّى تُصَلِّي.", "Saʿīdatu fi l-muṣallā tuṣallī.", "Saʿīda is in the prayer room praying."],
+          ["الأَب", "أَيْنَ المِعْطَفُ؟", "ayna l-miʿṭaf?", "Where is the coat?"],
+          ["سَعْد", "هَذا هُوَ المِعْطَفُ يا والِدِي.", "hādhā huwa l-miʿṭaf yā wālidī.", "Here is the coat, father."],
+          ["الأَب", "وَأَيْنَ النَّظّارَةُ؟", "wa ayna n-naẓẓāra?", "And where are the glasses?"],
+          ["سَعِيد", "هَذِهِ هِيَ النَّظّارَةُ يا والِدِي.", "hādhihi hiya n-naẓẓāra yā wālidī.", "Here are the glasses, father."],
+          ["الأَب", "هَيّا بِنا إِلَى المَسْجِدِ.", "hayyā binā ila l-masjid.", "Let's go to the mosque."],
+          ["سَعْد وَسَعِيد", "هَيّا بِنا.", "hayyā binā.", "Let's go."]
+        ]
+      }
+    ],
+
+    vocab: [
+      { ar: "أَذانٌ", tr: "adhān", en: "call to prayer", pic: "📢", cat: "Prayer" },
+      { ar: "الفَجْرُ", tr: "al-fajr", en: "dawn (the dawn prayer)", pic: "🌅", cat: "Prayer" },
+      { ar: "اللهُ أَكْبَرُ", tr: "allāhu akbar", en: "God is the greatest", pic: "🤲", cat: "Prayer" },
+      { ar: "القُرْآنُ", tr: "al-qurʾān", en: "the Qurʾān", pic: "📖", cat: "Prayer" },
+      { ar: "مَسْجِدٌ", tr: "masjid", en: "mosque", pic: "🕌", cat: "Places" },
+      { ar: "مُصَلًّى", tr: "muṣallā", en: "prayer room (not a full mosque)", pic: "🧎", cat: "Places" },
+      { ar: "حَمّامٌ", tr: "ḥammām", en: "bathroom", pic: "🚿", cat: "Places" },
+      { ar: "غُرْفَةٌ", tr: "ghurfa", en: "room", pic: "🚪", cat: "Places" },
+      { ar: "يَتَوَضَّأُ", tr: "yatawaḍḍaʾu", en: "he does wuḍūʾ (ablution)", pic: "💧", cat: "Verbs" },
+      { ar: "يَقْرَأُ", tr: "yaqraʾu", en: "he reads", pic: "📖", cat: "Verbs" },
+      { ar: "تُصَلِّي", tr: "tuṣallī", en: "she prays", pic: "🧎‍♀️", cat: "Verbs" },
+      { ar: "مِعْطَفٌ", tr: "miʿṭaf", en: "coat", pic: "🧥", cat: "Things" },
+      { ar: "نَظّارَةٌ", tr: "naẓẓāra", en: "glasses", pic: "👓", cat: "Things" },
+      { ar: "وَلَدٌ", tr: "walad", en: "boy, child", pic: "👦", cat: "Family" },
+      { ar: "أَوْلادٌ", tr: "awlād", en: "children, boys (plural of وَلَد)", pic: "👦👦", cat: "Family" },
+      { ar: "بِنْتٌ", tr: "bint", en: "girl, daughter", pic: "👧", cat: "Family" },
+      { ar: "بَناتٌ", tr: "banāt", en: "girls, daughters (plural of بِنْت)", pic: "👧👧", cat: "Family" },
+      { ar: "خالٌ", tr: "khāl", en: "uncle (mother's brother)", pic: "🧔", cat: "Family" },
+      { ar: "خالَةٌ", tr: "khāla", en: "aunt (mother's sister)", pic: "🧕", cat: "Family" },
+      { ar: "كَبِيرٌ", tr: "kabīr", en: "big; old (older)", pic: "🐘", cat: "Describing" },
+      { ar: "صَغِيرٌ", tr: "ṣaghīr", en: "small; young (younger)", pic: "🐭", cat: "Describing" },
+      { ar: "فِي", tr: "fī", en: "in", pic: "📥", cat: "Little words" },
+      { ar: "إِلَى", tr: "ilā", en: "to", pic: "➡️", cat: "Little words" },
+      { ar: "يا", tr: "yā", en: "O… (used when calling someone)", pic: "📣", cat: "Little words" },
+      { ar: "هَيّا بِنا", tr: "hayyā binā", en: "let's go", pic: "🏃", cat: "Little words" }
+    ],
+
+    grammar: [
+      {
+        id: "g-fi",
+        title: "Where is…? Person + فِي + place",
+        body: [
+          "To say where someone is, put the person, then <b>فِي</b> (in), then the place. As before, there's no word for <i>is</i>: سَعْدٌ فِي الحَمّامِ <i>Saʿd [is] in the bathroom</i>.",
+          "After فِي, the place word ends in an <b>i</b> sound: الحَمّامِ، الغُرْفَةِ، المَسْجِدِ. (Grammar for later: فِي puts the noun in the genitive case.)",
+          "The mother then adds what each child is doing, using the book's first verbs: يَتَوَضَّأُ (he does wuḍūʾ), يَقْرَأُ (he reads), تُصَلِّي (she prays). Notice that the verb for Saʿīda starts with ت, not ي. That's the topic of Lesson 5!"
+        ],
+        widget: {
+          type: "combo", label: "Where is everyone? · pick a person, then a place",
+          rows: WHO.map(([k, a, e]) => ({ k, label: `${a} · ${e}` })),
+          cols: WHERE.map(([k, a, t, e]) => ({ k, label: `${a.replace(/ِ$/, "")} · ${e.replace("the ", "")}` })),
+          out: whereOut
+        }
+      },
+      {
+        id: "g-places",
+        title: "مُصَلًّى vs مَسْجِد",
+        body: [
+          "The teacher explains the difference. <b>مَسْجِد</b> (masjid) is a mosque: a dedicated building where the five daily prayers are held, with the adhān and usually a fixed imam.",
+          "<b>مُصَلًّى</b> (muṣallā) comes from صَلاة (prayer). It's simply a <b>place to pray</b>: a prayer room in a house, an airport, a company or a school."
+        ]
+      },
+      {
+        id: "g-words",
+        title: "يا · هَيّا بِنا · إِلَى · اللهُ أَكْبَرُ",
+        body: [
+          "<b>يا</b> is used before you call someone: يا والِدِي <i>(O) my father!</i>, يا أَحْمَدُ, يا أُمِّي. It's optional but very common.",
+          "<b>هَيّا بِنا</b> = <i>let's (go / do it)</i>. With <b>إِلَى</b> (to): هَيّا بِنا إِلَى المَسْجِدِ <i>Let's go to the mosque</i>.",
+          "<b>أَكْبَرُ</b> comes from <b>كَبِير</b> (big, great), so اللهُ أَكْبَرُ = <i>God is the greatest</i>. The father repeats it after the adhān, which the teacher notes is highly recommended."
+        ]
+      },
+      {
+        id: "g-gender",
+        title: "Coat is masculine, glasses are feminine",
+        body: [
+          "The father asks about المِعْطَف, and Saʿd answers <b>هَذا هُوَ</b> المِعْطَفُ. For النَّظّارَة the answer is <b>هَذِهِ هِيَ</b> النَّظّارَةُ.",
+          "As the teacher jokes, glasses aren't only for girls! The <b>word</b> نَظّارَة is feminine because of its ة. Grammatical gender belongs to the word, not the object.",
+          "<b>هَذا هُوَ …</b> / <b>هَذِهِ هِيَ …</b> means <i>Here is the…</i> when you hand something over."
+        ]
+      },
+      {
+        id: "g-tree",
+        title: "The whole family, including the mother's side",
+        body: [
+          "From the teacher's summary page. On your <b>father's</b> side the uncle and aunt are <b>عَمّ / عَمَّة</b>. On your <b>mother's</b> side they're <b>خال / خالَة</b>.",
+          "For children: <b>وَلَد</b> = boy or child (plural <b>أَوْلاد</b>, children). <b>بِنْت</b> = girl or daughter (plural <b>بَنات</b>). اِبْن / اِبْنَة from Lesson 3 also mean son / daughter."
+        ],
+        tree: { label: "Your family · tap to hear", levels: [
+          [{ ar: "جَدٌّ", en: "grandfather", g: "m" }, { ar: "جَدَّةٌ", en: "grandmother", g: "f" }],
+          [{ ar: "عَمٌّ", en: "father's brother", g: "m" }, { ar: "عَمَّةٌ", en: "father's sister", g: "f" }, { ar: "أَبٌ / والِدٌ", en: "father", g: "m" }, { ar: "أُمٌّ / والِدَةٌ", en: "mother", g: "f" }, { ar: "خالٌ", en: "mother's brother", g: "m" }, { ar: "خالَةٌ", en: "mother's sister", g: "f" }],
+          [{ ar: "أَخٌ", en: "brother", g: "m" }, { ar: "أَنا", en: "me", me: true }, { ar: "أُخْتٌ", en: "sister", g: "f" }],
+          [{ ar: "اِبْنٌ / وَلَدٌ", en: "son / boy", g: "m" }, { ar: "اِبْنَةٌ / بِنْتٌ", en: "daughter / girl", g: "f" }]
+        ]}
+      },
+      {
+        id: "g-size",
+        title: "كَبِير and صَغِير: big/small AND old/young",
+        body: [
+          "<b>كَبِير</b> = big and <b>صَغِير</b> = small. The teacher points out that they also describe <b>age</b>: اِبْنٌ كَبِيرٌ is an <i>older son</i> and بِنْتٌ صَغِيرَةٌ is a <i>young daughter</i>.",
+          "The adjective comes <b>after</b> the noun and must <b>match its gender</b>. For a feminine noun, add ة: عَمَّةٌ كَبِيرَةٌ (an older aunt) and عَمٌّ صَغِيرٌ (a young uncle)."
+        ],
+        widget: {
+          type: "combo", label: "Describe them · pick a relative, then older or younger",
+          rows: REL.map(([k, a, t, e]) => ({ k, label: `${a} · ${e.replace(/ \(.*\)/, "")}` })),
+          cols: [{ k: "big", label: "🐘 كَبِير big / older" }, { k: "small", label: "🐭 صَغِير small / younger" }],
+          out: sizeOut
+        }
+      },
+      {
+        id: "g-plural",
+        title: "Singular and plural: المُفْرَدُ وَالجَمْعُ",
+        body: [
+          "The teacher's \"bad news\": Arabic plurals are not as simple as adding -s. There are many patterns, and most aren't predictable yet, so <b>memorise each singular together with its plural</b>.",
+          "Once you've memorised enough of them you'll start to feel the patterns. Here is the teacher's table of the nouns so far (singular ← plural, read right to left):"
+        ],
+        table: { head: ["", "Singular ← Plural", "Say it", "Meaning"], rows: [
+          ["🏷️", "اِسْمٌ ← أَسْماءٌ", "ism → asmāʾ", "name → names"],
+          ["👦", "أَخٌ ← إِخْوَةٌ", "akh → ikhwa", "brother → brothers"],
+          ["👧", "أُخْتٌ ← أَخَواتٌ", "ukht → akhawāt", "sister → sisters"],
+          ["👨", "أَبٌ ← آباءٌ", "ab → ābāʾ", "father → fathers"],
+          ["👩", "أُمٌّ ← أُمَّهاتٌ", "umm → ummahāt", "mother → mothers"],
+          ["👦", "اِبْنٌ ← أَبْناءٌ", "ibn → abnāʾ", "son → sons"],
+          ["👧", "بِنْتٌ ← بَناتٌ", "bint → banāt", "girl → girls"],
+          ["🧒", "وَلَدٌ ← أَوْلادٌ", "walad → awlād", "boy → children"],
+          ["👴", "جَدٌّ ← أَجْدادٌ", "jadd → ajdād", "grandfather → grandfathers"],
+          ["🧔", "عَمٌّ ← أَعْمامٌ", "ʿamm → aʿmām", "uncle (f. side) → uncles"],
+          ["🧔", "خالٌ ← أَخْوالٌ", "khāl → akhwāl", "uncle (m. side) → uncles"],
+          ["👨‍⚕️", "طَبِيبٌ ← أَطِبّاءُ", "ṭabīb → aṭibbāʾ", "doctor → doctors"],
+          ["👨‍🏫", "مُدَرِّسٌ ← مُدَرِّسُونَ", "mudarris → mudarrisūn", "teacher → teachers"],
+          ["👷", "مُهَنْدِسٌ ← مُهَنْدِسُونَ", "muhandis → muhandisūn", "engineer → engineers"],
+          ["👨‍🎓", "طالِبٌ ← طُلّابٌ", "ṭālib → ṭullāb", "student → students"],
+          ["✉️", "رَسُولٌ ← رُسُلٌ", "rasūl → rusul", "messenger → messengers"],
+          ["🖼️", "صُورَةٌ ← صُوَرٌ", "ṣūra → ṣuwar", "picture → pictures"],
+          ["🕌", "مَسْجِدٌ ← مَساجِدُ", "masjid → masājid", "mosque → mosques"],
+          ["🚪", "غُرْفَةٌ ← غُرَفٌ", "ghurfa → ghuraf", "room → rooms"],
+          ["👓", "نَظّارَةٌ ← نَظّاراتٌ", "naẓẓāra → naẓẓārāt", "glasses → pairs of glasses"],
+          ["🧥", "مِعْطَفٌ ← مَعاطِفُ", "miʿṭaf → maʿāṭif", "coat → coats"]
+        ]}
+      },
+      {
+        id: "g-at",
+        title: "The good news: ة → ات",
+        body: [
+          "For feminine words that end in <b>ة</b>, most plurals follow one easy rule: remove the ة and add <b>ات</b> (-āt).",
+          "مُعَلِّمَة → <b>مُعَلِّمات</b> · طَبِيبَة → <b>طَبِيبات</b> · عَمَّة → <b>عَمّات</b> · خالَة → <b>خالات</b> · جَدَّة → <b>جَدّات</b>",
+          "Watch for exceptions you've already met: صُورَة → صُوَر and غُرْفَة → غُرَف."
+        ],
+        widget: {
+          type: "combo", label: "Make it plural · pick a word",
+          rows: [["muallima", "مُعَلِّمَة · teacher"], ["tabiba", "طَبِيبَة · doctor"], ["amma", "عَمَّة · aunt"], ["khala", "خالَة · aunt"], ["jadda", "جَدَّة · grandmother"], ["talibah", "طالِبَة · student"]].map(([k, l]) => ({ k, label: l })),
+          cols: [{ k: "s", label: "one (مُفْرَد)" }, { k: "p", label: "many (جَمْع) +ات" }],
+          out: {
+            "muallima|s": ["مُعَلِّمَةٌ", "muʿallima", "a teacher (f)"], "muallima|p": ["مُعَلِّماتٌ", "muʿallimāt", "teachers (f)", "ة → ات"],
+            "tabiba|s": ["طَبِيبَةٌ", "ṭabība", "a doctor (f)"], "tabiba|p": ["طَبِيباتٌ", "ṭabībāt", "doctors (f)", "ة → ات"],
+            "amma|s": ["عَمَّةٌ", "ʿamma", "an aunt"], "amma|p": ["عَمّاتٌ", "ʿammāt", "aunts", "ة → ات"],
+            "khala|s": ["خالَةٌ", "khāla", "an aunt"], "khala|p": ["خالاتٌ", "khālāt", "aunts", "ة → ات"],
+            "jadda|s": ["جَدَّةٌ", "jadda", "a grandmother"], "jadda|p": ["جَدّاتٌ", "jaddāt", "grandmothers", "ة → ات"],
+            "talibah|s": ["طالِبَةٌ", "ṭāliba", "a student (f)"], "talibah|p": ["طالِباتٌ", "ṭālibāt", "students (f)", "ة → ات"]
+          }
+        }
+      }
+    ],
+
+    sounds: {
+      intro: "This dialogue has lots of throat and heavy sounds. Practise them slowly, then try the whole dialogue in Shadow mode.",
+      letters: [
+        { l: "ض", name: "ḍād", tip: "The heavy d, famous as the sound “only Arabic has” (Arabic is called لُغَةُ الضّاد). Say d with the tongue pressed wide and the mouth full.", ex: ["يَتَوَضَّأُ"] },
+        { l: "ظ", name: "ẓāʾ", tip: "The heavy version of ذ (the “th” in “this”). It appears in نَظّارَة.", ex: ["نَظّارَةٌ"] },
+        { l: "غ", name: "ghayn", tip: "A gargled g, like the French r in “Paris”. It's the voiced partner of خ.", ex: ["غُرْفَةٌ", "صَغِيرٌ"] },
+        { l: "ح", name: "ḥāʾ", tip: "The breathy throat h from Lesson 1. Hold it in حَمّام.", ex: ["حَمّامٌ"] },
+        { l: "ء", name: "hamza", tip: "A tiny catch in the throat, like the break in “uh-oh”. Don't swallow it at the end of يَقْرَأُ or يَتَوَضَّأُ.", ex: ["يَقْرَأُ", "أَذانٌ", "القُرْآنُ"] }
+      ],
+      pairs: [
+        { a: ["كَبِيرٌ", "kabīr", "big"], b: ["صَغِيرٌ", "ṣaghīr", "small"], note: "opposites" },
+        { a: ["خالٌ", "khāl", "mother's brother"], b: ["حالٌ", "ḥāl", "condition"], note: "خ vs ح" },
+        { a: ["عَمٌّ", "ʿamm", "father's brother"], b: ["خالٌ", "khāl", "mother's brother"], note: "the two uncles" },
+        { a: ["وَلَدٌ", "walad", "boy"], b: ["أَوْلادٌ", "awlād", "children"], note: "singular vs plural" },
+        { a: ["يَقْرَأُ", "yaqraʾu", "he reads"], b: ["تُصَلِّي", "tuṣallī", "she prays"], note: "ي (he) vs ت (she)" }
+      ]
+    },
+
+    tips: [
+      { icon: "📢", t: "Repeat after the adhān", d: "The father replies اللهُ أَكْبَرُ، اللهُ أَكْبَرُ when he hears the adhān. The teacher notes that repeating after the adhān is highly recommended." },
+      { icon: "🕌", t: "مَسْجِد ≠ مُصَلًّى", d: "A مَسْجِد is a dedicated mosque with the adhān and the five prayers. A مُصَلًّى is any prayer room: at home, at an airport or at school." },
+      { icon: "👓", t: "Grammatical gender belongs to the word", d: "النَّظّارَة (glasses) is feminine because of its ة, not because glasses are for girls. So: هَذِهِ هِيَ النَّظّارَةُ. Meanwhile المِعْطَف is masculine: هَذا هُوَ المِعْطَفُ." },
+      { icon: "📣", t: "يا is optional", d: "يا والِدِي = O my father. You can drop يا, but Arabs use it all the time when calling someone." },
+      { icon: "🐘", t: "كَبِير / صَغِير also mean older / younger", d: "اِبْنٌ كَبِيرٌ = an older son, عَمٌّ صَغِيرٌ = a young uncle. Add ة for feminine nouns: بِنْتٌ صَغِيرَةٌ." },
+      { icon: "🧠", t: "Memorise plurals in pairs", d: "Plurals are mostly unpredictable at this stage. Learn وَلَد ← أَوْلاد as one unit, never the singular alone. The patterns will come later." },
+      { icon: "✅", t: "Easy plural: ة → ات", d: "Most feminine words in ة make their plural with ات: مُعَلِّمَة → مُعَلِّمات. Exceptions so far: صُوَر, غُرَف." },
+      { icon: "✏️", t: "Typo alert", d: "The teacher notes that وَأَيْنَ سَعِيدَةُ should have no tanween. If your copy prints سَعِيدَةٌ, read it as سَعِيدَةُ." }
+    ],
+
+    practice: [
+      { type: "mcq", q: "أَيْنَ الأَوْلادُ؟ means…", options: ["Where are the children?", "Where is the coat?", "Who are the children?"], answer: 0 },
+      { type: "mcq", q: "Where is Saʿd, and what is he doing?", options: ["In the room, reading the Qurʾān", "In the bathroom, doing wuḍūʾ", "In the prayer room, praying"], answer: 1 },
+      { type: "mcq", q: "Where is Saʿīda?", options: ["فِي المُصَلَّى", "فِي الحَمّامِ", "فِي المَسْجِدِ"], answer: 0 },
+      { type: "mcq", q: "Why is it هَذِهِ هِيَ النَّظّارَةُ (feminine)?", options: ["Because Saʿīda wears them", "Because the word نَظّارَة ends in ة", "Because هِيَ means glasses"], answer: 1 },
+      { type: "mcq", q: "Your MOTHER's brother is your…", options: ["عَمّ", "خال", "جَدّ"], answer: 1 },
+      { type: "mcq", q: "Your MOTHER's sister is your…", options: ["خالَة", "عَمَّة", "أُخْت"], answer: 0 },
+      { type: "mcq", q: "How do you say “a young daughter”?", options: ["بِنْتٌ صَغِيرٌ", "بِنْتٌ صَغِيرَةٌ", "صَغِيرَةٌ بِنْتٌ"], answer: 1, explain: "The adjective comes after the noun and takes ة to match a feminine noun." },
+      { type: "mcq", q: "What is the plural of وَلَد?", options: ["وَلَدات", "أَوْلاد", "وُلُود"], answer: 1 },
+      { type: "mcq", q: "What is the plural of مُعَلِّمَة?", options: ["مُعَلِّمات", "مُعَلِّمُون", "مَعالِم"], answer: 0, explain: "ة → ات" },
+      { type: "mcq", q: "What is the plural of طالِب?", options: ["طالِبات", "طُلّاب", "طالِبُون"], answer: 1 },
+      { type: "mcq", q: "What is the plural of أُمّ?", options: ["أُمّات", "أُمَّهات", "أَمْام"], answer: 1 },
+      { type: "mcq", q: "مَسْجِد ← ? (plural)", options: ["مَساجِد", "مَسْجِدات", "مُسُوج"], answer: 0 },
+      { type: "mcq", q: "What does هَيّا بِنا mean?", options: ["Here you are", "Let's go", "Goodbye"], answer: 1 },
+      { type: "fill", sentence: "سَعِيدٌ ___ الغُرْفَةِ يَقْرَأُ القُرْآنَ.", en: "Saʿīd is in the room reading the Qurʾān.", options: ["إِلَى", "فِي", "مِنْ"], answer: 1 },
+      { type: "fill", sentence: "هَذا ___ المِعْطَفُ يا والِدِي.", en: "Here is the coat, father.", options: ["هِيَ", "هُوَ", "هَذِهِ"], answer: 1 },
+      { type: "fill", sentence: "هَيّا بِنا ___ المَسْجِدِ.", en: "Let's go to the mosque.", options: ["فِي", "إِلَى", "يا"], answer: 1 },
+      { type: "fill", sentence: "عَمَّةٌ ___", en: "an older aunt", options: ["كَبِيرٌ", "كَبِيرَةٌ", "صَغِيرٌ"], answer: 1 },
+      { type: "order", words: ["أَيْنَ", "الأَوْلادُ؟"], en: "Where are the children?" },
+      { type: "order", words: ["سَعْدٌ", "فِي", "الحَمّامِ."], en: "Saʿd is in the bathroom." },
+      { type: "order", words: ["هَيّا", "بِنا", "إِلَى", "المَسْجِدِ."], en: "Let's go to the mosque." },
+      { type: "reply", prompt: "وَأَيْنَ سَعِيدَةُ؟", en: "Choose a logical reply", options: ["سَعِيدَةُ فِي المُصَلَّى تُصَلِّي.", "هَذا هُوَ المِعْطَفُ.", "اللهُ أَكْبَرُ."], answer: 0 },
+      { type: "reply", prompt: "هَيّا بِنا إِلَى المَسْجِدِ.", en: "Choose a logical reply", options: ["هَيّا بِنا.", "أَيْنَ النَّظّارَةُ؟", "ما شاءَ اللهُ."], answer: 0 },
+      { type: "match", pairs: [["وَلَدٌ", "أَوْلادٌ"], ["بِنْتٌ", "بَناتٌ"], ["طالِبٌ", "طُلّابٌ"], ["أُمٌّ", "أُمَّهاتٌ"], ["مَسْجِدٌ", "مَساجِدُ"], ["غُرْفَةٌ", "غُرَفٌ"]], q: "Match each singular with its plural" }
+    ],
+
+    roleplay: [
+      { them: "أَيْنَ الأَوْلادُ؟", you: "سَعْدٌ فِي الحَمّامِ يَتَوَضَّأُ.", hint: "Say Saʿd is in the bathroom doing wuḍūʾ" },
+      { them: "وَأَيْنَ سَعِيدٌ؟", you: "سَعِيدٌ فِي الغُرْفَةِ يَقْرَأُ القُرْآنَ.", hint: "Saʿīd is in the room reading the Qurʾān" },
+      { them: "وَأَيْنَ سَعِيدَةُ؟", you: "سَعِيدَةُ فِي المُصَلَّى تُصَلِّي.", hint: "Saʿīda is in the prayer room praying" },
+      { them: "أَيْنَ المِعْطَفُ؟", you: "هَذا هُوَ المِعْطَفُ يا والِدِي.", hint: "Hand him the coat" },
+      { them: "وَأَيْنَ النَّظّارَةُ؟", you: "هَذِهِ هِيَ النَّظّارَةُ يا والِدِي.", hint: "Hand him the glasses (feminine!)" },
+      { them: "هَلْ عِنْدَكَ أَخٌ كَبِيرٌ؟", you: "نَعَمْ، … / لا، …", hint: "“Do you have an older brother?” (عِنْدَكَ = you have). Answer about your own family" },
+      { them: "هَيّا بِنا إِلَى المَسْجِدِ.", you: "هَيّا بِنا.", hint: "Agree: let's go" }
+    ]
+  });
+})();
+</script><script>/* Arabic lesson engine — renders any lesson object in window.LESSONS.
+   Shared by every lesson page in the course (Books 1–4). */
+(function () {
+  "use strict";
+  const L = window.LESSONS[window.LESSONS.length - 1];
+  const $ = (s, el = document) => el.querySelector(s);
+  const h = (html) => { const t = document.createElement("template"); t.innerHTML = html.trim(); return t.content.firstElementChild; };
+  const shuffle = (a) => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+  const esc = (s) => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const HARAKAT = /[ً-ْٰ]/g;
+
+  /* ---------- storage (best-effort) ---------- */
+  const KEY = "arabic-course-v1";
+  let S = { lessons: {}, words: {}, prefs: { harakat: true, tr: true, en: true, rate: 0.8 } };
+  try { const raw = localStorage.getItem(KEY); if (raw) S = Object.assign(S, JSON.parse(raw)); } catch (e) {}
+  S.prefs = Object.assign({ harakat: true, tr: true, en: true, rate: 0.8 }, S.prefs);
+  const LS = S.lessons[L.id] = S.lessons[L.id] || { done: {}, best: {} };
+  const save = () => { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} };
+
+  /* ---------- Arabic text helper (respects harakat toggle) ---------- */
+  const ar = (txt, cls = "") => `<span class="ar ${cls}" data-ar="${esc(txt)}">${esc(S.prefs.harakat ? txt : txt.replace(HARAKAT, ""))}</span>`;
+  function refreshHarakat() {
+    document.querySelectorAll("[data-ar]").forEach(el => { const t = el.dataset.ar; el.textContent = S.prefs.harakat ? t : t.replace(HARAKAT, ""); });
+  }
+
+  /* ---------- speech ---------- */
+  let voice = null; const synth = window.speechSynthesis;
+  function pickVoice() {
+    if (!synth) return;
+    const vs = synth.getVoices().filter(v => /^ar/i.test(v.lang));
+    voice = vs.find(v => /Google|Microsoft|Maged|Laila|Majed|Hamed|Zariyah|Naayf/i.test(v.name)) || vs[0] || null;
+    const b = $("#voice-banner"); if (b) b.style.display = voice ? "none" : "block";
+  }
+  if (synth) { pickVoice(); synth.onvoiceschanged = pickVoice; }
+  function cleanForTTS(t) { return t.replace(/\(.*?\)/g, "").replace(/…/g, " ").replace(/[\/←→]/g, "، ").replace(/ﷺ/g, "صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ").trim(); }
+  function speak(text, btn, rate) {
+    return new Promise(res => {
+      if (!synth) { res(); return; }
+      synth.cancel();
+      const u = new SpeechSynthesisUtterance(cleanForTTS(text));
+      u.lang = voice ? voice.lang : "ar-SA"; if (voice) u.voice = voice;
+      u.rate = rate || S.prefs.rate;
+      document.querySelectorAll(".speaking").forEach(e => e.classList.remove("speaking"));
+      if (btn) btn.classList.add("speaking");
+      const end = () => { if (btn) btn.classList.remove("speaking"); res(); };
+      u.onend = end; u.onerror = end;
+      synth.speak(u);
+      setTimeout(end, 15000);
+    });
+  }
+  const playBtn = (txt, extra = "") => `<button class="play ${extra}" data-say="${esc(txt)}" title="Listen" aria-label="Listen">🔊</button>`;
+  document.addEventListener("click", e => {
+    const b = e.target.closest("[data-say]"); if (b) { e.stopPropagation(); speak(b.dataset.say, b.classList.contains("play") ? b : b.querySelector(".play")); }
+  });
+
+  /* ---------- avatars (simple SVG illustrations) ---------- */
+  const PAL = { m1: ["#2f6db5", "#e8e8e8"], m2: ["#1f8a8a", "#d33"], m3: ["#5b4fb5", "#fff"], m4: ["#2c3e50", "#2c3e50"], f1: ["#a3407e", "#7a2a5c"], f2: ["#6b4e9b", "#3e2a63"], f3: ["#b5563a", "#7e3520"], f4: ["#3f7a5a", "#245039"] };
+  function avatar(kind, size = 46) {
+    const [c1, c2] = PAL[kind] || ["#888", "#555"];
+    const male = kind[0] === "m";
+    const head = male
+      ? `<path d="M14 22 Q24 6 34 22 L34 26 L14 26Z" fill="${c2}" stroke="#0002"/><circle cx="24" cy="24" r="8" fill="#e9b98f"/><path d="M17 27 Q24 35 31 27 Q30 31 24 32 Q18 31 17 27Z" fill="#4a3426"/>`
+      : `<path d="M12 30 Q10 10 24 9 Q38 10 36 30 Q30 36 24 36 Q18 36 12 30Z" fill="${c2}"/><circle cx="24" cy="23" r="7.5" fill="#e9b98f"/>`;
+    return `<svg class="av" width="${size}" height="${size}" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="23" fill="${c1}22"/><path d="M8 48 Q8 34 24 34 Q40 34 40 48Z" fill="${c1}"/>${head}</svg>`;
+  }
+
+  /* ---------- sections ---------- */
+  const SECTIONS = [
+    ["overview", "Overview", "🏠"], ["dialogues", "Dialogues", "💬"], ["vocabulary", "Vocabulary", "🗂️"],
+    ["grammar", "Grammar", "🧩"], ["sounds", "Pronunciation", "🗣️"], ["listening", "Listening", "🎧"],
+    ["practice", "Quiz", "✍️"], ["speaking", "Speaking", "🎙️"], ["tips", "Teacher's tips", "💡"], ["review", "Review", "🔁"]
+  ];
+  const learnable = SECTIONS.filter(s => !["overview", "review"].includes(s[0]));
+
+  function renderShell() {
+    document.title = `${L.title} · Arabic Book ${L.book}`;
+    document.body.innerHTML = `
+    <header class="top">
+      <div class="top-inner">
+        <div class="brand"><small>${window.COURSE_HOME ? `<a href="${window.COURSE_HOME}">← Course</a> · ` : ""}Al-ʿArabiyyah Bayna Yadayk · Book ${L.book} · Lesson ${L.num}</small><b>${esc(L.title)}</b></div>
+        <div class="toggles">
+          <button class="chip" id="t-har">ـَـ Harakat</button>
+          <button class="chip" id="t-tr">abc Transliteration</button>
+          <button class="chip" id="t-en">EN Meaning</button>
+          <button class="chip" id="t-rate">🐢 Speed</button>
+        </div>
+      </div>
+      <div class="progress"><div id="pbar"></div></div>
+      <nav class="tabs" id="tabs">${SECTIONS.map(([id, n, ic]) => `<a href="#${id}" data-tab="${id}">${ic} ${n}<span class="tick"></span></a>`).join("")}</nav>
+    </header>
+    <main id="main"></main>
+    <footer>Based on <i>Al-ʿArabiyyah Bayna Yadayk</i> and the Al-Lisan video commentary · Audio is your device's Arabic text-to-speech voice, so check pronunciation against the video.</footer>`;
+    const setChips = () => {
+      $("#t-har").classList.toggle("on", S.prefs.harakat);
+      $("#t-tr").classList.toggle("on", S.prefs.tr);
+      $("#t-en").classList.toggle("on", S.prefs.en);
+      $("#t-rate").textContent = S.prefs.rate < 0.75 ? "🐢 Slow" : S.prefs.rate < 0.95 ? "🚶 Normal" : "🐇 Fast";
+      document.body.classList.toggle("no-tr", !S.prefs.tr);
+      document.body.classList.toggle("no-en", !S.prefs.en);
+    };
+    $("#t-har").onclick = () => { S.prefs.harakat = !S.prefs.harakat; save(); setChips(); refreshHarakat(); };
+    $("#t-tr").onclick = () => { S.prefs.tr = !S.prefs.tr; save(); setChips(); };
+    $("#t-en").onclick = () => { S.prefs.en = !S.prefs.en; save(); setChips(); };
+    $("#t-rate").onclick = () => { S.prefs.rate = S.prefs.rate < 0.75 ? 0.85 : S.prefs.rate < 0.95 ? 1.0 : 0.6; save(); setChips(); };
+    setChips();
+  }
+  function updateProgress() {
+    const n = learnable.filter(s => LS.done[s[0]]).length;
+    $("#pbar").style.width = (100 * n / learnable.length) + "%";
+    document.querySelectorAll("#tabs a").forEach(a => { $(".tick", a).textContent = LS.done[a.dataset.tab] ? "✓" : ""; });
+  }
+  function doneButton(id, next) {
+    const el = h(`<div class="row done-btn"><button class="btn primary">${LS.done[id] ? "✓ Completed" : "Mark as complete"} → ${next ? "next: " + SECTIONS.find(s => s[0] === next)[1] : ""}</button></div>`);
+    $("button", el).onclick = () => { LS.done[id] = true; save(); updateProgress(); if (next) location.hash = next; };
+    return el;
+  }
+  const nextOf = id => { const i = SECTIONS.findIndex(s => s[0] === id); return SECTIONS[i + 1] && SECTIONS[i + 1][0]; };
+
+  const views = {};
+  function route() {
+    const id = (location.hash || "#overview").slice(1);
+    const view = views[id] ? id : "overview";
+    document.querySelectorAll("#tabs a").forEach(a => a.classList.toggle("active", a.dataset.tab === view));
+    const a = $(`#tabs a[data-tab="${view}"]`); if (a) a.scrollIntoView({ block: "nearest", inline: "center" });
+    if (synth) synth.cancel();
+    const main = $("#main"); main.innerHTML = "";
+    main.appendChild(h(`<details class="banner" id="voice-banner" style="display:none"><summary>🔈 <b>No Arabic voice found on this device</b>, so audio won't play. Tap for how to add one.</summary><p style="margin:8px 0 0">You can still read and do the quizzes. <b>Windows:</b> Settings → Time &amp; language → Speech → Add voices → Arabic. <b>Android:</b> install Google Speech Services and add Arabic. <b>iPhone/Mac:</b> Settings → Accessibility → Spoken Content → Voices → Arabic. Chrome and Edge on a desktop usually include one already.</p></details>`));
+    pickVoice();
+    views[view](main);
+    if (!["overview", "review"].includes(view)) main.appendChild(doneButton(view, nextOf(view)));
+    window.scrollTo(0, 0);
+  }
+
+  /* ---------- Overview ---------- */
+  views.overview = (m) => {
+    m.appendChild(h(`<div class="stack">
+      <div class="card hero"><div>
+        <div class="muted">${esc(L.unitEn)}</div>
+        <div>${ar(L.titleAr, "big")}</div>
+        <h2>${esc(L.title)}</h2>
+        <p class="lead">${esc(L.covers)} · <a href="${L.video}" target="_blank" rel="noopener">Watch the video series ↗</a></p>
+      </div><div style="display:flex;gap:4px">${avatar("m1", 70)}${avatar("f1", 70)}</div></div>
+      <div class="card"><h3 style="margin-top:0">By the end of this lesson you can…</h3><ul class="goals">${L.goals.map(g => `<li>${esc(g)}</li>`).join("")}</ul></div>
+      <div><h3>Your path</h3><div class="path">${learnable.map(([id, n, ic], i) => `<a href="#${id}"><div class="step ${LS.done[id] ? "done" : ""}"><span class="num">${LS.done[id] ? "✓" : i + 1}</span><span>${ic} ${n}</span></div></a>`).join("")}</div></div>
+      <div class="card muted" style="font-size:14px">💡 <b>How to use this page:</b> watch the video first, then work through the tabs in order. Tap any 🔊 or Arabic line to hear it. Use the chips at the top to hide harakat (vowel marks), transliteration or English as you get stronger. Your progress is saved in this browser.</div>
+    </div>`));
+  };
+
+  /* ---------- Dialogues ---------- */
+  views.dialogues = (m) => {
+    m.appendChild(h(`<div><h2>Dialogues</h2><p class="lead">Listen, then read along. <b>▶ Play</b> reads the whole conversation. <b>🔁 Shadow</b> pauses after each line so you can repeat it, as the teacher asks. <b>🙈 Hide text</b> turns it into a listening test.</p></div>`));
+    L.dialogues.forEach(d => {
+      const names = Object.keys(d.people);
+      const card = h(`<div class="card" style="margin-bottom:16px">
+        <div class="dlg-head"><div><b>${esc(d.title)}</b> · ${ar(d.titleAr)}<div class="muted" style="font-size:14px">${esc(d.note)}</div></div>
+          <div class="row"><button class="btn small" data-act="play">▶ Play</button><button class="btn small" data-act="shadow">🔁 Shadow</button><button class="btn small" data-act="hide">🙈 Hide text</button></div></div>
+        <div class="scene">${names.map(n => `<figure>${avatar(d.people[n], 64)}<figcaption>${ar(n)}</figcaption></figure>`).join(`<div style="font-size:30px;align-self:center">🤝</div>`)}</div>
+        ${d.tree ? treeHTML(d.tree) : ""}
+        <div class="shadow-cue"></div>
+        <div class="bubbles">${d.lines.map((ln, i) => {
+          const side = names.indexOf(ln[0]) === 0 ? "right" : "left"; const g = d.people[ln[0]][0];
+          return `<div class="bub ${side} ${g}" data-i="${i}">${avatar(d.people[ln[0]], 38)}<div class="body"><div class="who">${ar(ln[0])}</div>${ar(ln[1], "line")}<div class="tr">${esc(ln[2])}</div><div class="en">${esc(ln[3])}</div></div></div>`;
+        }).join("")}</div></div>`);
+      const bubs = [...card.querySelectorAll(".bub")]; const cue = $(".shadow-cue", card);
+      let runId = 0;
+      bubs.forEach((b, i) => b.querySelector(".body").onclick = () => { runId++; b.classList.add("revealed"); highlight(i); speak(d.lines[i][1]); });
+      const highlight = i => bubs.forEach((b, j) => b.classList.toggle("active", j === i));
+      async function run(shadow) {
+        const my = ++runId;
+        for (let i = 0; i < d.lines.length; i++) {
+          if (my !== runId) return;
+          highlight(i); cue.textContent = shadow ? "Listen…" : "";
+          await speak(d.lines[i][1]);
+          if (my !== runId) return;
+          if (shadow) {
+            const secs = Math.max(2, Math.round(d.lines[i][1].length / 9));
+            for (let s = secs; s > 0; s--) { if (my !== runId) return; cue.textContent = `🎤 Your turn: repeat it (${s})`; await new Promise(r => setTimeout(r, 1000)); }
+          } else await new Promise(r => setTimeout(r, 350));
+        }
+        highlight(-1); cue.textContent = shadow ? "✓ Well done! Try again with the text hidden." : "";
+      }
+      card.querySelector('[data-act="play"]').onclick = () => run(false);
+      card.querySelector('[data-act="shadow"]').onclick = () => run(true);
+      card.querySelector('[data-act="hide"]').onclick = (e) => { card.classList.toggle("hidetext"); bubs.forEach(b => b.classList.remove("revealed")); e.target.textContent = card.classList.contains("hidetext") ? "👁 Show text" : "🙈 Hide text"; };
+      m.appendChild(card);
+    });
+  };
+
+  /* family tree illustration: levels of clickable name cards */
+  function treeHTML(t) {
+    return `<div class="ftree"><div class="label">${esc(t.label || "Family tree · tap a name to hear it")}</div>${t.levels.map((lv, i) => `${i ? '<div class="fline"></div>' : ""}<div class="flevel">${lv.map(n => `<button class="fnode ${n.g || ""} ${n.me ? "me" : ""}" data-say="${esc(n.say || n.ar)}">${ar(n.ar)}<small>${esc(n.en)}</small></button>`).join("")}</div>`).join("")}</div>`;
+  }
+
+  /* ---------- Vocabulary ---------- */
+  const boxOf = w => S.words[w.ar] || 0;
+  const setBox = (w, b) => { S.words[w.ar] = Math.max(0, Math.min(5, b)); save(); };
+  views.vocabulary = (m) => {
+    const cats = ["All", ...new Set(L.vocab.map(v => v.cat))];
+    let cat = "All", mode = "list";
+    m.appendChild(h(`<div><h2>Vocabulary</h2><p class="lead">${L.vocab.length} words and phrases. Learn them in <b>List</b> mode, then test yourself with <b>Flashcards</b>. Flashcard results go into your spaced-review deck: words you miss come back more often.</p></div>`));
+    const bar = h(`<div class="row" style="justify-content:space-between;margin-bottom:6px"><div class="filters"></div><div class="row"><button class="chip on" data-m="list">📋 List</button><button class="chip" data-m="flash">🃏 Flashcards</button></div></div>`);
+    const box = h(`<div></div>`); m.append(bar, box);
+    const drawFilters = () => { $(".filters", bar).innerHTML = cats.map(c => `<button class="chip ${c === cat ? "on" : ""}" data-c="${c}">${c}</button>`).join(""); };
+    bar.onclick = e => { const c = e.target.closest("[data-c]"), mm = e.target.closest("[data-m]");
+      if (c) { cat = c.dataset.c; } if (mm) { mode = mm.dataset.m; bar.querySelectorAll("[data-m]").forEach(x => x.classList.toggle("on", x === mm)); }
+      if (c || mm) draw(); };
+    const list = () => L.vocab.filter(v => cat === "All" || v.cat === cat);
+    function draw() {
+      drawFilters(); box.innerHTML = "";
+      if (mode === "list") {
+        box.appendChild(h(`<div class="grid">${list().map(v => `<div class="card vcard" data-say="${esc(v.ar)}" style="cursor:pointer">${playBtn(v.ar)}<span class="box">${"●".repeat(boxOf(v))}${"○".repeat(5 - boxOf(v))}</span><div class="pic">${v.pic}</div>${ar(v.ar)}<div class="tr">${esc(v.tr)}</div><div>${esc(v.en)}</div>${v.extra ? `<span class="tag">from the video</span>` : ""}</div>`).join("")}</div>`));
+      } else flash(box, shuffle(list()));
+    }
+    draw();
+  };
+  function flash(box, deck) {
+    let i = 0, dir = "ar", known = 0;
+    const wrap = h(`<div class="flash-wrap"><div class="row" style="justify-content:center"><button class="chip on" data-d="ar">Arabic → English</button><button class="chip" data-d="en">English → Arabic</button></div><div class="muted" id="fc-count" style="margin-top:8px"></div><div class="flash"><div class="flash-inner"><div class="face front"></div><div class="face back"></div></div></div><div class="row" style="justify-content:center" id="fc-btns"><button class="btn" data-r="0">😕 Again</button><button class="btn primary" data-r="1">😀 Got it</button></div><p class="muted" style="font-size:13px">Tap the card to flip it.</p></div>`);
+    box.appendChild(wrap);
+    const card = $(".flash", wrap);
+    function show() {
+      if (i >= deck.length) { wrap.innerHTML = `<div class="card" style="text-align:center"><div class="score">${known}/${deck.length}</div><p>Words you marked “Again” will come up more often in the <a href="#review">Review</a> tab.</p><button class="btn primary" id="fc-again">Shuffle &amp; go again</button></div>`; $("#fc-again", wrap).onclick = () => { box.innerHTML = ""; flash(box, shuffle(deck)); }; return; }
+      const v = deck[i]; card.classList.remove("flipped");
+      $("#fc-count", wrap).textContent = `Card ${i + 1} of ${deck.length}`;
+      const arFace = `<div class="pic">${v.pic}</div>${ar(v.ar)}<div class="tr">${esc(v.tr)}</div>${playBtn(v.ar)}`;
+      const enFace = `<div class="pic">${v.pic}</div><div style="font-size:22px;font-weight:600">${esc(v.en)}</div>`;
+      $(".front", wrap).innerHTML = dir === "ar" ? `${ar(v.ar)}${playBtn(v.ar)}` : enFace;
+      $(".back", wrap).innerHTML = dir === "ar" ? `<div class="pic">${v.pic}</div><div style="font-size:22px;font-weight:600">${esc(v.en)}</div><div class="tr">${esc(v.tr)}</div>` : arFace;
+      if (dir === "ar") speak(v.ar);
+    }
+    card.onclick = (e) => { if (e.target.closest(".play")) return; card.classList.toggle("flipped"); if (dir === "en" && card.classList.contains("flipped")) speak(deck[i].ar); };
+    $("#fc-btns", wrap).onclick = e => { const r = e.target.closest("[data-r]"); if (!r) return; const v = deck[i]; if (r.dataset.r === "1") { known++; setBox(v, boxOf(v) + 1); } else setBox(v, 0); i++; show(); };
+    wrap.querySelectorAll("[data-d]").forEach(b => b.onclick = () => { dir = b.dataset.d; wrap.querySelectorAll("[data-d]").forEach(x => x.classList.toggle("on", x === b)); show(); });
+    show();
+  }
+
+  /* ---------- Grammar ---------- */
+  views.grammar = (m) => {
+    m.appendChild(h(`<div><h2>Grammar</h2><p class="lead">The rules behind the dialogues. Try each interactive box. Every Arabic word you build is read aloud.</p></div>`));
+    L.grammar.forEach(g => {
+      const c = h(`<div class="card gblock" style="margin-bottom:16px"><h3>${esc(g.title)}</h3>${g.body.map(p => `<p>${arabize(p)}</p>`).join("")}</div>`);
+      if (g.table) c.appendChild(h(`<table class="g"><tr>${g.table.head.map(x => `<th>${x}</th>`).join("")}</tr>${g.table.rows.map(r => `<tr><td>${arabize(r[0])}</td><td>${ar(r[1])} ${playBtn(r[1])}</td><td class="tr">${r[2]}</td><td>${arabize(r[3])}</td></tr>`).join("")}</table>`));
+      if (g.tree) c.appendChild(h(treeHTML(g.tree)));
+      if (g.widget && g.widget.type === "suffix") c.appendChild(suffixWidget(g.widget));
+      if (g.widget && g.widget.type === "nisba") c.appendChild(nisbaWidget(g.widget));
+      if (g.widget && g.widget.type === "combo") c.appendChild(comboWidget(g.widget));
+      m.appendChild(c);
+    });
+  };
+  // wrap Arabic runs inside prose so they get the Arabic font and harakat toggle
+  function arabize(html) { return html.replace(/([؀-ۿ][؀-ۿً-ْٰ\s،؟]*[؀-ۿً-ْٰ؟]|[؀-ۿ])/g, (t) => ar(t)); }
+  function splitSfx(word, key) { const sfx = key === "my" ? "ِي" : key === "m" ? "ُكَ" : "ُكِ"; return word.endsWith(sfx) ? [word.slice(0, -sfx.length), sfx] : [word, ""]; }
+  function suffixWidget(w) {
+    let n = 0, k = "my";
+    const el = h(`<div class="widget"><div class="label">Build it yourself · pick a noun, then an ending</div><div class="row nouns"></div><div class="row" style="margin-top:8px"><button class="chip" data-k="my">ـي my</button><button class="chip" data-k="m">ـكَ your (m)</button><button class="chip" data-k="f">ـكِ your (f)</button></div><div class="result"></div><div class="center muted" id="sx-cap" style="text-align:center"></div></div>`);
+    function draw(sayIt) {
+      $(".nouns", el).innerHTML = w.nouns.map((x, i) => `<button class="chip ${i === n ? "on" : ""}" data-n="${i}">${ar(x.base)} · ${x.en}</button>`).join("");
+      el.querySelectorAll("[data-k]").forEach(b => b.classList.toggle("on", b.dataset.k === k));
+      const x = w.nouns[n], [word, tr] = x.forms[k], [stem, sfx] = splitSfx(word, k);
+      const show = s => S.prefs.harakat ? s : s.replace(HARAKAT, "");
+      // separate pieces (colour spans inside one word would break Arabic letter joining)
+      $(".result", el).innerHTML = `<span class="ar">${esc(show(word))}</span> ${playBtn(word)}<div style="font-size:22px" dir="rtl"><span class="ar">${esc(show(x.base))}</span> <span class="muted">+</span> <span class="ar sfx ${k === "my" ? "" : k}">ـ${esc(show(sfx))}</span></div>`;
+      $("#sx-cap", el).innerHTML = `<span class="tr">${tr}</span> = <b>${k === "my" ? "my" : "your"} ${x.en}</b>${k === "m" ? " (talking to a male)" : k === "f" ? " (talking to a female)" : ""}`;
+      if (sayIt) speak(word);
+    }
+    el.onclick = e => { const a = e.target.closest("[data-n]"), b = e.target.closest("[data-k]"); if (a) n = +a.dataset.n; if (b) k = b.dataset.k; if (a || b) draw(true); };
+    draw(false); return el;
+  }
+  // generic two-axis builder: pick a row, pick a column, see/hear the result
+  function comboWidget(w) {
+    let r = w.rows[0].k, c = w.cols[0].k;
+    const el = h(`<div class="widget"><div class="label">${esc(w.label)}</div><div class="row rows"></div><div class="row cols" style="margin-top:8px"></div><div class="result" style="font-size:38px"></div><div class="cap" style="text-align:center"></div></div>`);
+    function draw(sayIt) {
+      $(".rows", el).innerHTML = w.rows.map(x => `<button class="chip ${x.k === r ? "on" : ""}" data-r="${x.k}">${arabize(esc(x.label))}</button>`).join("");
+      $(".cols", el).innerHTML = w.cols.map(x => `<button class="chip ${x.k === c ? "on" : ""}" data-c="${x.k}">${arabize(esc(x.label))}</button>`).join("");
+      const o = w.out[r + "|" + c]; if (!o) return;
+      $(".result", el).innerHTML = `${ar(o[0])} ${playBtn(o[0])}`;
+      $(".cap", el).innerHTML = `<span class="tr">${esc(o[1])}</span> = <b>${esc(o[2])}</b>${o[3] ? `<div class="muted" style="font-size:13px;margin-top:4px">${arabize(esc(o[3]))}</div>` : ""}`;
+      if (sayIt) speak(o[0]);
+    }
+    el.onclick = e => { const a = e.target.closest("[data-r]"), b = e.target.closest("[data-c]"); if (a) r = a.dataset.r; if (b) c = b.dataset.c; if (a || b) draw(true); };
+    draw(false); return el;
+  }
+  function nisbaWidget(w) {
+    const el = h(`<div class="widget"><div class="label">Tap a country to make the nationality: country → male → female</div><div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(140px,1fr))"></div></div>`);
+    const g = $(".grid", el);
+    w.items.forEach(it => {
+      let st = 0; const c = h(`<div class="ncard"></div>`);
+      const draw = () => {
+        const [a, t, e] = st === 0 ? it.c : st === 1 ? it.m : [it.f[0], it.f[1], it.m[2] + " (f)"];
+        c.innerHTML = `<div class="flag">${it.flag}${st === 1 ? "👨" : st === 2 ? "👩" : ""}</div>${ar(a)}<div class="tr">${t}</div><div style="font-size:14px">${e}</div><div class="stage">${["country", "male ـيّ", "female ـيَّة"][st]}${it.bonus ? " · bonus" : ""}</div>`;
+      };
+      c.onclick = () => { st = (st + 1) % 3; draw(); speak(st === 0 ? it.c[0] : st === 1 ? it.m[0] : it.f[0]); };
+      draw(); g.appendChild(c);
+    });
+    return el;
+  }
+
+  /* ---------- Pronunciation ---------- */
+  views.sounds = (m) => {
+    const sd = L.sounds;
+    m.appendChild(h(`<div><h2>Pronunciation</h2><p class="lead">${esc(sd.intro)}</p></div>`));
+    const g = h(`<div class="stack"></div>`);
+    sd.letters.forEach(x => g.appendChild(h(`<div class="card letter"><div class="glyph" data-say="${esc(x.ex[0])}">${x.l}</div><div><b>${esc(x.name)}</b><p style="margin:4px 0 8px">${esc(x.tip)}</p>${x.ex.map(w => `<span class="ex" data-say="${esc(w)}">${ar(w)}<button class="play" style="width:28px;height:28px;font-size:12px">🔊</button></span>`).join("")}</div></div>`)));
+    m.appendChild(g);
+    m.appendChild(h(`<h3>Minimal pairs: hear the difference</h3>`));
+    const pg = h(`<div class="stack"></div>`);
+    sd.pairs.forEach(p => pg.appendChild(h(`<div class="card pair"><div class="side" data-say="${esc(p.a[0])}">${ar(p.a[0])}<span class="tr">${p.a[1]}</span><div class="en">${p.a[2]}</div></div><div class="vs">${esc(p.note)}<br>vs</div><div class="side" data-say="${esc(p.b[0])}">${ar(p.b[0])}<span class="tr">${p.b[1]}</span><div class="en">${p.b[2]}</div></div></div>`)));
+    m.appendChild(pg);
+    // which-did-you-hear game
+    m.appendChild(h(`<h3>🎯 Which one did you hear?</h3>`));
+    const game = h(`<div class="card" style="text-align:center"><button class="play big-play" id="pg-play">▶</button><div class="row" style="justify-content:center" id="pg-opts"></div><div id="pg-fb" class="muted" style="margin-top:10px">Press play, then choose the word you heard.</div><div class="muted" id="pg-score" style="font-size:13px"></div></div>`);
+    let cur, right = 0, total = 0;
+    const next = () => { const p = sd.pairs[Math.floor(Math.random() * sd.pairs.length)]; cur = { p, pick: Math.random() < .5 ? "a" : "b" }; $("#pg-opts", game).innerHTML = shuffle(["a", "b"]).map(k => `<button class="opt" data-k="${k}">${ar(p[k][0])} <span class="tr">${p[k][1]}</span></button>`).join(""); };
+    $("#pg-play", game).onclick = (e) => speak(cur.p[cur.pick][0], e.currentTarget, 0.7);
+    $("#pg-opts", game).onclick = e => { const b = e.target.closest("[data-k]"); if (!b) return; total++; const ok = b.dataset.k === cur.pick; if (ok) right++;
+      $("#pg-fb", game).innerHTML = ok ? `<span style="color:var(--good)">✓ Correct!</span>` : `<span style="color:var(--bad)">✗ It was ${ar(cur.p[cur.pick][0])}</span>`;
+      $("#pg-score", game).textContent = `Score: ${right}/${total}`; next(); };
+    next(); m.appendChild(game);
+    m.appendChild(recorderCard("Record yourself", "Say a word or a dialogue line, then play it back and compare it with the 🔊 model."));
+  };
+
+  /* ---------- recorder (works where the microphone is allowed) ---------- */
+  function recorderCard(title, sub) {
+    const el = h(`<div class="card" style="margin-top:16px"><b>🎙️ ${title}</b><p class="muted" style="margin:4px 0 10px;font-size:14px">${sub}</p><div class="rec"><button class="btn" id="rec-btn">● Record</button><span id="rec-state" class="muted"></span><audio id="rec-audio" controls style="display:none;height:36px"></audio></div></div>`);
+    let mr = null, chunks = [];
+    $("#rec-btn", el).onclick = async () => {
+      const st = $("#rec-state", el), btn = $("#rec-btn", el);
+      if (mr && mr.state === "recording") { mr.stop(); return; }
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        mr = new MediaRecorder(stream); chunks = [];
+        mr.ondataavailable = e => chunks.push(e.data);
+        mr.onstop = () => { stream.getTracks().forEach(t => t.stop()); const a = $("#rec-audio", el); a.src = URL.createObjectURL(new Blob(chunks)); a.style.display = "inline-block"; btn.textContent = "● Record again"; st.innerHTML = ""; a.play().catch(() => {}); };
+        mr.start(); btn.textContent = "■ Stop"; st.innerHTML = `<span class="dot"></span> recording…`;
+      } catch (e) { st.innerHTML = "The microphone isn't available on this page. Open the course from your GitHub Pages site to record, or simply say it out loud."; }
+    };
+    return el;
+  }
+
+  /* ---------- quiz runner ---------- */
+  function runQuiz(m, items, quizId, onDone) {
+    let i = 0, score = 0; const wrong = [];
+    const q = h(`<div class="quiz card"></div>`); m.appendChild(q);
+    function show() {
+      if (i >= items.length) {
+        const pct = Math.round(100 * score / items.length);
+        LS.best[quizId] = Math.max(LS.best[quizId] || 0, pct); save();
+        q.innerHTML = `<div style="text-align:center"><div class="score">${score} / ${items.length}</div><p>${pct >= 90 ? "Excellent! 🌟" : pct >= 70 ? "Good work! 👍" : "Keep practising. Review the tabs and try again 💪"} · Best: ${LS.best[quizId]}%</p>${wrong.length ? `<div style="text-align:left"><b>Review these:</b><ul>${wrong.map(w => `<li>${w}</li>`).join("")}</ul></div>` : ""}<button class="btn primary" id="qa">Try again</button></div>`;
+        $("#qa", q).onclick = () => { q.remove(); runQuiz(m, shuffle(items), quizId, onDone); };
+        if (onDone) onDone(pct); return;
+      }
+      const it = items[i];
+      q.innerHTML = `<div class="qhead"><span>Question ${i + 1} of ${items.length}</span><span>Score ${score}</span></div><div class="qbar"><div style="width:${100 * i / items.length}%"></div></div><div class="qbody"></div>`;
+      const body = $(".qbody", q);
+      const finish = (ok, correctText, explain) => {
+        if (ok) score++; else wrong.push(correctText);
+        if (it.word) setBox(it.word, ok ? boxOf(it.word) + 1 : 0);
+        body.appendChild(h(`<div class="feedback ${ok ? "good" : "bad"}">${ok ? "✓ Correct!" : "✗ Not quite. Answer: " + correctText}${explain ? `<span class="ex-text">${arabize(explain)}</span>` : ""}</div>`));
+        const nb = h(`<div class="row" style="justify-content:flex-end;margin-top:10px"><button class="btn primary">Next →</button></div>`);
+        $("button", nb).onclick = () => { i++; show(); }; body.appendChild(nb); $("button", nb).focus();
+      };
+      if (it.type === "order") return orderQ(body, it, finish);
+      if (it.type === "match") return matchQ(body, it, finish);
+      // mcq-like
+      let head = "";
+      if (it.type === "mcq") head = `<div class="qtext">${arabize(esc(it.q))}</div>`;
+      if (it.type === "fill") head = `<div class="qtext">Fill in the blank</div><div class="qsentence">${ar(it.sentence).replace("___", `<span class="blank">؟</span>`)}</div><div class="en" style="text-align:center">${esc(it.en)}</div>`;
+      if (it.type === "reply") head = `<div class="qtext">${esc(it.en)}</div><div class="qsentence">${ar(it.prompt)} ${playBtn(it.prompt)}</div>`;
+      if (it.type === "listen") head = `<div class="qtext">${esc(it.q || "Listen. What did you hear?")}</div><button class="play big-play" data-say="${esc(it.say)}">▶</button>`;
+      const opts = it.options.map((o, k) => ({ o, k }));
+      body.innerHTML = head + `<div class="opts">${opts.map(({ o, k }) => `<button class="opt" data-k="${k}">${/^[؀-ۿ]/.test(o) ? ar(o) : arabize(esc(o))}</button>`).join("")}</div>`;
+      if (it.type === "listen") setTimeout(() => speak(it.say, $(".big-play", body)), 250);
+      body.querySelector(".opts").onclick = e => {
+        const b = e.target.closest(".opt"); if (!b) return;
+        const k = +b.dataset.k, ok = k === it.answer;
+        body.querySelectorAll(".opt").forEach(x => { x.disabled = true; if (+x.dataset.k === it.answer) x.classList.add("correct"); });
+        if (!ok) b.classList.add("wrong");
+        if (it.type === "fill" || it.type === "reply") speak(it.type === "fill" ? it.sentence.replace("___", it.options[it.answer]) : it.options[it.answer]);
+        finish(ok, it.options[it.answer], it.explain);
+      };
+    }
+    show();
+  }
+  function orderQ(body, it, finish) {
+    const pool = shuffle(it.words.map((w, k) => ({ w, k }))); let ans = [];
+    body.innerHTML = `<div class="qtext">Build the sentence: <span class="en" style="color:var(--ink)">“${esc(it.en)}”</span></div><div class="muted" style="font-size:13px">Tap the words in order. Arabic reads right → left.</div><div class="tiles answer"></div><div class="tiles pool"></div><div class="row" style="justify-content:flex-end"><button class="btn small" id="o-clear">Clear</button><button class="btn primary" id="o-check">Check</button></div>`;
+    const draw = () => {
+      $(".answer", body).innerHTML = ans.map((x, j) => `<button class="tile" data-a="${j}">${esc(S.prefs.harakat ? x.w : x.w.replace(HARAKAT, ""))}</button>`).join("");
+      $(".pool", body).innerHTML = pool.filter(x => !ans.includes(x)).map(x => `<button class="tile" data-p="${x.k}">${esc(S.prefs.harakat ? x.w : x.w.replace(HARAKAT, ""))}</button>`).join("");
+    };
+    body.onclick = e => {
+      const p = e.target.closest("[data-p]"), a = e.target.closest("[data-a]");
+      if (p) { ans.push(pool.find(x => x.k === +p.dataset.p)); draw(); }
+      if (a) { ans.splice(+a.dataset.a, 1); draw(); }
+    };
+    $("#o-clear", body).onclick = () => { ans = []; draw(); };
+    $("#o-check", body).onclick = (e) => {
+      if (ans.length < it.words.length) return;
+      const ok = ans.every((x, j) => x.k === j); body.onclick = null; e.target.disabled = true; $("#o-clear", body).disabled = true;
+      speak(it.words.join(" ")); finish(ok, it.words.join(" "));
+    };
+    draw();
+  }
+  function matchQ(body, it, finish) {
+    const left = shuffle(it.pairs.map((p, k) => ({ t: p[0], k }))), right = shuffle(it.pairs.map((p, k) => ({ t: p[1], k })));
+    let sel = null, matched = 0, mistakes = 0;
+    body.innerHTML = `<div class="qtext">${esc(it.q || "Match each Arabic word with its meaning")}</div><div class="match">${left.map((l, j) => `<button class="mi" data-side="l" data-k="${l.k}">${ar(l.t)}</button><button class="mi" data-side="r" data-k="${right[j].k}">${/^[\u0600-\u06FF]/.test(right[j].t) ? ar(right[j].t) : esc(right[j].t)}</button>`).join("")}</div>`;
+    body.querySelector(".match").onclick = e => {
+      const b = e.target.closest(".mi"); if (!b || b.classList.contains("ok")) return;
+      if (b.dataset.side === "l") speak(it.pairs[+b.dataset.k][0]);
+      if (!sel || sel.dataset.side === b.dataset.side) { if (sel) sel.classList.remove("sel"); sel = b; b.classList.add("sel"); return; }
+      if (sel.dataset.k === b.dataset.k) { sel.classList.replace("sel", "ok"); b.classList.add("ok"); matched++; sel = null;
+        if (matched === it.pairs.length) finish(mistakes <= 1, mistakes <= 1 ? "" : `${mistakes} mismatches. Try the match again later`); }
+      else { mistakes++; const s = sel; s.classList.remove("sel"); [s, b].forEach(x => x.classList.add("no")); setTimeout(() => [s, b].forEach(x => x.classList.remove("no")), 500); sel = null; }
+    };
+  }
+  function vocabMCQ(n, dir) {
+    const pool = L.vocab;
+    return shuffle(pool).slice(0, n).map(w => {
+      const distract = shuffle(pool.filter(x => x !== w && x.en !== w.en)).slice(0, 3);
+      const opts = shuffle([w, ...distract]);
+      return dir === "listen"
+        ? { type: "listen", say: w.ar, options: opts.map(o => o.en), answer: opts.indexOf(w), word: w }
+        : dir === "en2ar"
+          ? { type: "mcq", q: `How do you say “${w.en}”?`, options: opts.map(o => o.ar), answer: opts.indexOf(w), word: w }
+          : { type: "mcq", q: `What does ${w.ar} mean?`, options: opts.map(o => o.en), answer: opts.indexOf(w), word: w };
+    });
+  }
+
+  /* ---------- Listening ---------- */
+  views.listening = (m) => {
+    m.appendChild(h(`<div><h2>Listening</h2><p class="lead">Train your ear without reading. Each question plays automatically. Press ▶ to hear it again. Set 🐢 Slow at the top if it's too fast.</p></div>`));
+    const pick = h(`<div class="row" style="margin-bottom:14px"><button class="chip on" data-l="words">🔤 Words (10)</button><button class="chip" data-l="lines">💬 Dialogue lines (8)</button><button class="chip" data-l="who">🧑‍🤝‍🧑 Male or female? (8)</button></div>`);
+    const box = h(`<div></div>`); m.append(pick, box);
+    const allLines = L.dialogues.flatMap(d => d.lines.map(l => ({ l, d })));
+    const whoLines = () => shuffle(allLines.filter(x => L.gender ? new RegExp(L.gender.any).test(x.l[1].replace(HARAKAT, "") + " ") : /ُكَ|ُكِ|أَنْتَ|أَنْتِ|يَّةٌ|يٌّ/.test(x.l[1])));
+    if (whoLines().length < 3) pick.querySelector('[data-l="who"]').remove();
+    const sets = {
+      words: () => vocabMCQ(10, "listen"),
+      lines: () => shuffle([...new Map(allLines.filter(x => !/السَّلام/.test(x.l[1])).map(x => [x.l[1], x])).values()]).slice(0, 8).map(({ l }) => {
+        const others = shuffle([...new Set(allLines.filter(x => x.l[1] !== l[1]).map(x => x.l[3]).filter(t => t !== l[3]))]).slice(0, 3);
+        const opts = shuffle([l[3], ...others]); return { type: "listen", say: l[1], options: opts, answer: opts.indexOf(l[3]) };
+      }),
+      who: () => whoLines().slice(0, 8).map(({ l }) => {
+        const fem = L.gender ? new RegExp(L.gender.fem).test(l[1].replace(HARAKAT, "") + " ") : /ُكِ|أَنْتِ|يَّةٌ/.test(l[1]);
+        return { type: "listen", q: (L.gender && L.gender.q) || "Is this sentence spoken TO or ABOUT a male or a female?", say: l[1], options: ["Male ♂", "Female ♀"], answer: fem ? 1 : 0, explain: `${l[1]} — ${l[3]}` };
+      })
+    };
+    const go = k => { box.innerHTML = ""; runQuiz(box, sets[k](), "listen-" + k); };
+    pick.onclick = e => { const b = e.target.closest("[data-l]"); if (!b) return; pick.querySelectorAll("[data-l]").forEach(x => x.classList.toggle("on", x === b)); go(b.dataset.l); };
+    go("words");
+  };
+
+  /* ---------- Practice quiz ---------- */
+  views.practice = (m) => {
+    m.appendChild(h(`<div><h2>Quiz</h2><p class="lead">Mixed practice: grammar choices, fill in the blank, sentence building, logical replies, word matching and vocabulary. Your best score is saved.</p></div>`));
+    const matchItem = { type: "match", pairs: shuffle(L.vocab.filter(v => !v.extra)).slice(0, 6).map(v => [v.ar, v.en]) };
+    const items = [...shuffle(L.practice), matchItem, ...vocabMCQ(4, "ar2en"), ...vocabMCQ(3, "en2ar")];
+    runQuiz(m, items, "practice");
+  };
+
+  /* ---------- Speaking ---------- */
+  views.speaking = (m) => {
+    m.appendChild(h(`<div><h2>Speaking: role-play</h2><p class="lead">Your partner speaks and you answer out loud with <b>your own</b> name and country. Then reveal the model answer and compare. In the role-play your partner is a man. Afterwards, practise the same answers using the feminine forms (ـكِ / أَنْتِ / ـيَّة).</p></div>`));
+    const card = h(`<div class="card rp"></div>`); m.appendChild(card);
+    let i = 0;
+    function show() {
+      if (i >= L.roleplay.length) { card.innerHTML = `<div style="text-align:center"><div class="score">🎉</div><p>Conversation complete! Do it again faster, or swap roles and ask the questions yourself.</p><button class="btn primary" id="rp-again">Start over</button></div>`; $("#rp-again", card).onclick = () => { i = 0; show(); }; return; }
+      const r = L.roleplay[i];
+      card.innerHTML = `<div class="muted">Turn ${i + 1} of ${L.roleplay.length}</div>
+        <div class="bub left m"><div>${avatar("m1", 40)}</div><div class="body" data-say="${esc(r.them)}">${ar(r.them, "line")} ${playBtn(r.them)}</div></div>
+        <div><b>Your turn:</b> ${esc(r.hint)}</div>
+        <div class="row"><button class="btn" id="rp-show">👁 Show model answer</button><button class="btn primary" id="rp-next">Next →</button></div>
+        <div id="rp-model" style="display:none" class="bub right"><div class="body">${ar(r.you, "line")} ${playBtn(r.you)}</div></div>`;
+      $("#rp-show", card).onclick = () => { $("#rp-model", card).style.display = "flex"; speak(r.you); };
+      $("#rp-next", card).onclick = () => { i++; show(); };
+      setTimeout(() => speak(r.them), 200);
+    }
+    show();
+    m.appendChild(recorderCard("Record your answers", "Record the whole role-play in one take, then listen back."));
+  };
+
+  /* ---------- Tips ---------- */
+  views.tips = (m) => {
+    m.appendChild(h(`<div><h2>Teacher's tips</h2><p class="lead">The key points and memory aids from the video.</p></div>`));
+    const g = h(`<div class="stack"></div>`);
+    L.tips.forEach(t => g.appendChild(h(`<div class="card tipcard"><div class="ic">${t.icon}</div><div><b>${esc(t.t)}</b><p style="margin:4px 0 0">${arabize(esc(t.d))}</p></div></div>`)));
+    m.appendChild(g);
+  };
+
+  /* ---------- Review ---------- */
+  views.review = (m) => {
+    const weak = L.vocab.filter(w => boxOf(w) <= 1);
+    const strong = L.vocab.filter(w => boxOf(w) >= 3).length;
+    m.appendChild(h(`<div><h2>Review</h2><p class="lead">Spaced repetition: each correct answer moves a word up a box (○ → ●●●●●). A miss sends it back to the start. Review the weak words daily until they reach 3+ boxes.</p></div>`));
+    m.appendChild(h(`<div class="grid" style="margin-bottom:16px">
+      <div class="card"><div class="muted">Sections completed</div><div class="score" style="font-size:36px;text-align:left">${learnable.filter(s => LS.done[s[0]]).length}/${learnable.length}</div></div>
+      <div class="card"><div class="muted">Words known well (3+)</div><div class="score" style="font-size:36px;text-align:left">${strong}/${L.vocab.length}</div></div>
+      <div class="card"><div class="muted">Best quiz score</div><div class="score" style="font-size:36px;text-align:left">${LS.best.practice != null ? LS.best.practice + "%" : "—"}</div></div></div>`));
+    const box = h(`<div></div>`); m.appendChild(box);
+    if (weak.length) { box.appendChild(h(`<h3>Due for review: ${weak.length} words</h3>`)); flash(box, shuffle(weak)); }
+    else box.appendChild(h(`<div class="card">🎉 Nothing due. Every word is in box 2 or higher. Come back tomorrow, or test yourself in the Quiz tab.</div>`));
+    const reset = h(`<div style="margin-top:30px"><button class="btn small" id="rs">Reset this lesson's progress</button> <span id="rs-c"></span></div>`);
+    $("#rs", reset).onclick = () => { $("#rs-c", reset).innerHTML = `Are you sure? <button class="btn small" id="rs-y">Yes, reset</button>`; $("#rs-y", reset).onclick = () => { S.lessons[L.id] = { done: {}, best: {} }; L.vocab.forEach(w => delete S.words[w.ar]); save(); location.reload(); }; };
+    m.appendChild(reset);
+  };
+
+  renderShell(); updateProgress(); route();
+  window.addEventListener("hashchange", route);
+})();
+</script></body></html>

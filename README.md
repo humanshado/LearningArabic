@@ -43,5 +43,8 @@ docs/                  built site served by GitHub Pages
 
 - [x] Book 1 · Video 1: Greetings, names and nationalities (book pp. 2–5)
 - [x] Book 1 · Video 2: Introducing people, pronouns, question words, numbers 1–10 (book pp. 6–7)
-- [ ] Book 1 · Videos 3–40 (Chapters 1–8 are in Book 1 Part 1; Chapters 9–16 are in Book 1 Part 2)
+- [x] Book 1 · Video 3: My family (Unit 2, pp. 28–31)
+- [x] Book 1 · Video 4: Where are the children? Big/small, plurals (pp. 32–33)
+- [x] Book 1 · Video 5: Present-tense verbs (teacher's special lesson)
+- [ ] Book 1 · Videos 6–40 (Chapters 1–8 are in Book 1 Part 1; Chapters 9–16 are in Book 1 Part 2)
 - [ ] Books 2–4

@@ -89,6 +89,17 @@ h2{margin:6px 0 4px;font-size:24px} h3{margin:18px 0 8px;font-size:18px}
 .hidetext .bub .ar.line{filter:blur(7px)} .hidetext .bub.revealed .ar.line{filter:none}
 .shadow-cue{font-size:13px;color:var(--accent-2);font-weight:600;min-height:20px}
 
+/* family tree */
+.ftree{margin:12px 0;padding:12px;border-radius:12px;background:var(--bg);border:1px dashed var(--accent);text-align:center}
+.ftree .label{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--accent-2);font-weight:700;margin-bottom:8px}
+.flevel{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;direction:rtl}
+.fline{width:2px;height:16px;background:var(--accent);margin:4px auto}
+.fnode{border:2px solid var(--line);background:var(--panel);border-radius:12px;padding:4px 12px;display:flex;flex-direction:column;align-items:center;line-height:1.3}
+.fnode .ar{font-size:20px}
+.fnode small{color:var(--muted);font-size:11px;direction:ltr}
+.fnode.m{border-color:var(--m)} .fnode.f{border-color:var(--f)}
+.fnode.me{background:var(--accent-soft);border-color:var(--accent);font-weight:700}
+
 /* vocab */
 .filters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
 .vcard{display:flex;flex-direction:column;gap:2px;position:relative}

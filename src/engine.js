@@ -32,7 +32,7 @@
     const b = $("#voice-banner"); if (b) b.style.display = voice ? "none" : "block";
   }
   if (synth) { pickVoice(); synth.onvoiceschanged = pickVoice; }
-  function cleanForTTS(t) { return t.replace(/\(.*?\)/g, "").replace(/…/g, " ").replace(/[\/]/g, "، ").trim(); }
+  function cleanForTTS(t) { return t.replace(/\(.*?\)/g, "").replace(/…/g, " ").replace(/[\/←→]/g, "، ").replace(/ﷺ/g, "صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ").trim(); }
   function speak(text, btn, rate) {
     return new Promise(res => {
       if (!synth) { res(); return; }
@@ -155,6 +155,7 @@
         <div class="dlg-head"><div><b>${esc(d.title)}</b> · ${ar(d.titleAr)}<div class="muted" style="font-size:14px">${esc(d.note)}</div></div>
           <div class="row"><button class="btn small" data-act="play">▶ Play</button><button class="btn small" data-act="shadow">🔁 Shadow</button><button class="btn small" data-act="hide">🙈 Hide text</button></div></div>
         <div class="scene">${names.map(n => `<figure>${avatar(d.people[n], 64)}<figcaption>${ar(n)}</figcaption></figure>`).join(`<div style="font-size:30px;align-self:center">🤝</div>`)}</div>
+        ${d.tree ? treeHTML(d.tree) : ""}
         <div class="shadow-cue"></div>
         <div class="bubbles">${d.lines.map((ln, i) => {
           const side = names.indexOf(ln[0]) === 0 ? "right" : "left"; const g = d.people[ln[0]][0];
@@ -184,6 +185,11 @@
       m.appendChild(card);
     });
   };
+
+  /* family tree illustration: levels of clickable name cards */
+  function treeHTML(t) {
+    return `<div class="ftree"><div class="label">${esc(t.label || "Family tree · tap a name to hear it")}</div>${t.levels.map((lv, i) => `${i ? '<div class="fline"></div>' : ""}<div class="flevel">${lv.map(n => `<button class="fnode ${n.g || ""} ${n.me ? "me" : ""}" data-say="${esc(n.say || n.ar)}">${ar(n.ar)}<small>${esc(n.en)}</small></button>`).join("")}</div>`).join("")}</div>`;
+  }
 
   /* ---------- Vocabulary ---------- */
   const boxOf = w => S.words[w.ar] || 0;
@@ -233,7 +239,8 @@
     m.appendChild(h(`<div><h2>Grammar</h2><p class="lead">The rules behind the dialogues. Try each interactive box. Every Arabic word you build is read aloud.</p></div>`));
     L.grammar.forEach(g => {
       const c = h(`<div class="card gblock" style="margin-bottom:16px"><h3>${esc(g.title)}</h3>${g.body.map(p => `<p>${arabize(p)}</p>`).join("")}</div>`);
-      if (g.table) c.appendChild(h(`<table class="g"><tr>${g.table.head.map(x => `<th>${x}</th>`).join("")}</tr>${g.table.rows.map(r => `<tr><td>${r[0]}</td><td>${ar(r[1])} ${playBtn(r[1])}</td><td class="tr">${r[2]}</td><td>${arabize(r[3])}</td></tr>`).join("")}</table>`));
+      if (g.table) c.appendChild(h(`<table class="g"><tr>${g.table.head.map(x => `<th>${x}</th>`).join("")}</tr>${g.table.rows.map(r => `<tr><td>${arabize(r[0])}</td><td>${ar(r[1])} ${playBtn(r[1])}</td><td class="tr">${r[2]}</td><td>${arabize(r[3])}</td></tr>`).join("")}</table>`));
+      if (g.tree) c.appendChild(h(treeHTML(g.tree)));
       if (g.widget && g.widget.type === "suffix") c.appendChild(suffixWidget(g.widget));
       if (g.widget && g.widget.type === "nisba") c.appendChild(nisbaWidget(g.widget));
       if (g.widget && g.widget.type === "combo") c.appendChild(comboWidget(g.widget));
@@ -398,7 +405,7 @@
   function matchQ(body, it, finish) {
     const left = shuffle(it.pairs.map((p, k) => ({ t: p[0], k }))), right = shuffle(it.pairs.map((p, k) => ({ t: p[1], k })));
     let sel = null, matched = 0, mistakes = 0;
-    body.innerHTML = `<div class="qtext">Match each Arabic word with its meaning</div><div class="match">${left.map((l, j) => `<button class="mi" data-side="l" data-k="${l.k}">${ar(l.t)}</button><button class="mi" data-side="r" data-k="${right[j].k}">${esc(right[j].t)}</button>`).join("")}</div>`;
+    body.innerHTML = `<div class="qtext">${esc(it.q || "Match each Arabic word with its meaning")}</div><div class="match">${left.map((l, j) => `<button class="mi" data-side="l" data-k="${l.k}">${ar(l.t)}</button><button class="mi" data-side="r" data-k="${right[j].k}">${/^[\u0600-\u06FF]/.test(right[j].t) ? ar(right[j].t) : esc(right[j].t)}</button>`).join("")}</div>`;
     body.querySelector(".match").onclick = e => {
       const b = e.target.closest(".mi"); if (!b || b.classList.contains("ok")) return;
       if (b.dataset.side === "l") speak(it.pairs[+b.dataset.k][0]);
