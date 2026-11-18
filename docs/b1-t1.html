@@ -1,0 +1,2461 @@
+<!DOCTYPE html>
+<html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Test 1 · Units 1–2 · Arabic Book 1</title><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link href="https://fonts.googleapis.com/css2?family=Noto+Naskh+Arabic:wght@400;600;700&display=swap" rel="stylesheet"><style>:root{
+  --bg:#fbf6ee; --panel:#ffffff; --ink:#2b2118; --muted:#7a6a58; --line:#ecdfcc;
+  --accent:#e0801a; --accent-2:#b35f07; --accent-soft:#fde9cf;
+  --good:#2f8a4f; --good-soft:#dff3e5; --bad:#c2402a; --bad-soft:#fbe3de;
+  --m:#2f6db5; --m-soft:#e2eefb; --f:#a3407e; --f-soft:#f8e3f0;
+  --radius:14px; --shadow:0 1px 2px rgba(60,40,10,.06),0 4px 14px rgba(60,40,10,.06);
+  --ar:"Noto Naskh Arabic","Amiri","Traditional Arabic",serif;
+  --ui:system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+}
+@media (prefers-color-scheme:dark){:root{
+  --bg:#1a1611; --panel:#241e17; --ink:#f3e9dc; --muted:#b4a28c; --line:#3a3027;
+  --accent:#f0952f; --accent-2:#ffb35c; --accent-soft:#3b2a16;
+  --good:#5cc27f; --good-soft:#1d3324; --bad:#ef7a64; --bad-soft:#3d221d;
+  --m:#7fb0ef; --m-soft:#1e2b3b; --f:#e38bc0; --f-soft:#3a2032;
+  --shadow:none;
+}}
+*{box-sizing:border-box}
+html,body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--ui);line-height:1.5}
+button{font:inherit;color:inherit;cursor:pointer}
+a{color:var(--accent-2)}
+.ar{font-family:var(--ar);direction:rtl;unicode-bidi:isolate;line-height:1.9}
+.tr{color:var(--muted);font-style:italic}
+.en{color:var(--muted)}
+body.no-tr .tr{display:none} body.no-en .en{display:none}
+
+/* header */
+header.top{position:sticky;top:0;z-index:20;background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.top-inner{max-width:1040px;margin:0 auto;padding:10px 16px;display:flex;gap:12px;align-items:center;flex-wrap:wrap}
+.brand{display:flex;flex-direction:column;min-width:0;flex:1}
+.brand small{color:var(--muted);font-size:12px}
+.brand b{font-size:17px}
+.toggles{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.chip{border:1px solid var(--line);background:var(--panel);border-radius:999px;padding:5px 11px;font-size:13px;display:inline-flex;gap:6px;align-items:center}
+.chip.on{background:var(--accent-soft);border-color:var(--accent);color:var(--accent-2);font-weight:600}
+.progress{height:4px;background:var(--line)} .progress>div{height:100%;background:var(--accent);transition:width .4s}
+
+nav.tabs{max-width:1040px;margin:0 auto;padding:8px 12px 0;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+nav.tabs::-webkit-scrollbar{display:none}
+nav.tabs a{flex:none;text-decoration:none;color:var(--muted);padding:8px 12px;border-radius:10px 10px 0 0;font-size:14px;border-bottom:3px solid transparent;white-space:nowrap}
+nav.tabs a.active{color:var(--ink);font-weight:600;border-bottom-color:var(--accent)}
+nav.tabs a .tick{color:var(--good);margin-inline-start:4px}
+
+main{max-width:1040px;margin:0 auto;padding:18px 16px 80px}
+h2{margin:6px 0 4px;font-size:24px} h3{margin:18px 0 8px;font-size:18px}
+.lead{color:var(--muted);margin:0 0 16px}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius);padding:16px;box-shadow:var(--shadow)}
+.stack>*+*{margin-top:14px}
+.grid{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(210px,1fr))}
+.row{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.btn{border:1px solid var(--line);background:var(--panel);padding:8px 14px;border-radius:10px;font-weight:500}
+.btn:hover{border-color:var(--accent)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#fff}
+.btn.primary:hover{background:var(--accent-2)}
+.btn.small{padding:4px 10px;font-size:13px}
+.play{border:none;background:var(--accent-soft);color:var(--accent-2);width:34px;height:34px;border-radius:50%;flex:none;display:inline-grid;place-items:center;font-size:14px}
+.play:hover{background:var(--accent);color:#fff}
+.play.speaking{background:var(--accent);color:#fff;animation:pulse 1s infinite}
+@keyframes pulse{50%{transform:scale(1.1)}}
+.banner{background:var(--accent-soft);border:1px solid var(--accent);border-radius:12px;padding:10px 14px;font-size:14px;margin-bottom:14px}
+.done-btn{margin-top:22px}
+
+/* overview */
+.hero{display:grid;grid-template-columns:1fr auto;gap:16px;align-items:center}
+.hero .ar.big{font-size:38px;line-height:1.6}
+.goals li{margin:4px 0}
+.path{display:grid;grid-template-columns:repeat(auto-fill,minmax(150px,1fr));gap:10px}
+.path a{text-decoration:none;color:var(--ink)}
+.path .step{padding:12px;border-radius:12px;border:1px solid var(--line);background:var(--panel);display:flex;gap:10px;align-items:center}
+.path .step.done{border-color:var(--good);background:var(--good-soft)}
+.path .num{width:28px;height:28px;border-radius:50%;background:var(--accent-soft);color:var(--accent-2);display:grid;place-items:center;font-weight:700;font-size:13px;flex:none}
+.path .done .num{background:var(--good);color:#fff}
+
+/* dialogue */
+.dlg-head{display:flex;justify-content:space-between;gap:10px;align-items:center;flex-wrap:wrap}
+.dlg-head .ar{font-size:20px}
+.scene{display:flex;justify-content:center;gap:40px;margin:6px 0 4px}
+.scene figure{margin:0;text-align:center;font-size:13px}
+.scene figure .ar{font-size:18px}
+.bubbles{display:flex;flex-direction:column;gap:10px;margin-top:10px}
+.bub{display:flex;gap:10px;align-items:flex-start;max-width:88%}
+.bub.right{align-self:flex-end;flex-direction:row-reverse}
+.bub .av{flex:none}
+.bub .body{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:8px 12px;cursor:pointer;transition:background .2s}
+.bub.right .body{text-align:right}
+.bub .who{font-size:12px;color:var(--muted)}
+.bub .ar.line{font-size:22px;display:block}
+.bub.active .body{background:var(--accent-soft);border-color:var(--accent)}
+.bub.m .who{color:var(--m)} .bub.f .who{color:var(--f)}
+.hidetext .bub .ar.line{filter:blur(7px)} .hidetext .bub.revealed .ar.line{filter:none}
+.shadow-cue{font-size:13px;color:var(--accent-2);font-weight:600;min-height:20px}
+
+/* family tree */
+.ftree{margin:12px 0;padding:12px;border-radius:12px;background:var(--bg);border:1px dashed var(--accent);text-align:center}
+.ftree .label{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--accent-2);font-weight:700;margin-bottom:8px}
+.flevel{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;direction:rtl}
+.fline{width:2px;height:16px;background:var(--accent);margin:4px auto}
+.fnode{border:2px solid var(--line);background:var(--panel);border-radius:12px;padding:4px 12px;display:flex;flex-direction:column;align-items:center;line-height:1.3}
+.fnode .ar{font-size:20px}
+.fnode small{color:var(--muted);font-size:11px;direction:ltr}
+.fnode.m{border-color:var(--m)} .fnode.f{border-color:var(--f)}
+.fnode.me{background:var(--accent-soft);border-color:var(--accent);font-weight:700}
+
+/* vocab */
+.filters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
+.vcard{display:flex;flex-direction:column;gap:2px;position:relative}
+.vcard .pic{font-size:30px;line-height:1.2}
+.vcard .ar{font-size:26px}
+.vcard .play{position:absolute;top:12px;left:12px}
+.vcard .box{position:absolute;top:14px;right:14px;font-size:11px;color:var(--muted)}
+.tag{display:inline-block;font-size:11px;background:var(--accent-soft);color:var(--accent-2);border-radius:6px;padding:1px 6px;margin-top:4px;width:max-content}
+
+.flash-wrap{max-width:440px;margin:0 auto;text-align:center}
+.flash{perspective:1000px;height:260px;cursor:pointer;margin:10px 0}
+.flash-inner{position:relative;width:100%;height:100%;transition:transform .5s;transform-style:preserve-3d}
+.flash.flipped .flash-inner{transform:rotateY(180deg)}
+.flash .face{position:absolute;inset:0;backface-visibility:hidden;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;border-radius:18px;border:1px solid var(--line);background:var(--panel);box-shadow:var(--shadow);padding:16px}
+.flash .back{transform:rotateY(180deg);background:var(--accent-soft)}
+.flash .ar{font-size:40px}
+.flash .pic{font-size:48px}
+
+/* grammar */
+.gblock h3{margin-top:0}
+.gblock p{margin:8px 0}
+.gblock .ar, .gblock b .ar{font-size:1.15em}
+table.g{border-collapse:collapse;width:100%;margin-top:10px}
+table.g td,table.g th{border-bottom:1px solid var(--line);padding:8px;text-align:left}
+table.g td.ar{font-size:24px;text-align:right}
+.widget{margin-top:14px;padding:14px;border-radius:12px;background:var(--bg);border:1px dashed var(--accent)}
+.widget .label{font-size:12px;text-transform:uppercase;letter-spacing:.06em;color:var(--accent-2);font-weight:700;margin-bottom:8px}
+.result{font-size:46px;text-align:center;margin:8px 0;min-height:80px}
+.sfx{color:var(--accent-2)}
+.sfx.m{color:var(--m)} .sfx.f{color:var(--f)}
+.ncard{border:1px solid var(--line);background:var(--panel);border-radius:12px;padding:10px;text-align:center;cursor:pointer;user-select:none}
+.ncard .flag{font-size:30px}
+.ncard .ar{font-size:26px;display:block}
+.ncard .stage{font-size:11px;color:var(--muted)}
+
+/* sounds */
+.letter{display:flex;gap:14px}
+.letter .glyph{font-family:var(--ar);font-size:64px;line-height:1;width:80px;height:80px;display:grid;place-items:center;border-radius:16px;background:var(--accent-soft);color:var(--accent-2);flex:none;cursor:pointer}
+.ex{display:inline-flex;gap:6px;align-items:center;border:1px solid var(--line);border-radius:999px;padding:2px 4px 2px 12px;margin:3px;cursor:pointer;background:var(--panel)}
+.ex .ar{font-size:20px}
+.pair{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center}
+.pair .side{text-align:center;padding:10px;border:1px solid var(--line);border-radius:12px;cursor:pointer;background:var(--panel)}
+.pair .side .ar{font-size:30px;display:block}
+.vs{color:var(--muted);font-size:12px;text-align:center}
+
+/* quiz */
+.quiz{max-width:640px;margin:0 auto}
+.qhead{display:flex;justify-content:space-between;color:var(--muted);font-size:13px;margin-bottom:8px}
+.qbar{height:6px;border-radius:6px;background:var(--line);overflow:hidden;margin-bottom:14px}.qbar>div{height:100%;background:var(--accent);transition:width .3s}
+.qtext{font-size:18px;font-weight:600;margin-bottom:10px}
+.qsentence{font-size:30px;text-align:center;margin:10px 0}
+.qsentence .blank{display:inline-block;min-width:70px;border-bottom:3px solid var(--accent);color:var(--accent-2)}
+.opts{display:grid;gap:8px}
+.opt{text-align:start;border:2px solid var(--line);background:var(--panel);border-radius:12px;padding:10px 14px;font-size:16px}
+.opt .ar{font-size:24px}
+.opt:hover:not(:disabled){border-color:var(--accent)}
+.opt.correct{border-color:var(--good);background:var(--good-soft)}
+.opt.wrong{border-color:var(--bad);background:var(--bad-soft)}
+.feedback{margin-top:12px;padding:10px 14px;border-radius:12px;font-size:15px}
+.feedback.good{background:var(--good-soft);color:var(--good)} .feedback.bad{background:var(--bad-soft);color:var(--bad)}
+.feedback .ex-text{color:var(--ink);display:block;margin-top:4px}
+.tiles{display:flex;flex-wrap:wrap;gap:8px;justify-content:center;direction:rtl;min-height:56px;padding:8px;border-radius:12px}
+.tiles.answer{border:2px dashed var(--line);margin-bottom:8px}
+.tile{font-family:var(--ar);font-size:24px;border:1px solid var(--line);background:var(--panel);border-radius:10px;padding:2px 14px}
+.big-play{width:72px;height:72px;font-size:28px;margin:6px auto 14px;display:grid}
+.score{font-size:48px;font-weight:800;text-align:center;color:var(--accent-2)}
+.match{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.match .mi{border:2px solid var(--line);background:var(--panel);border-radius:10px;padding:8px;text-align:center;min-height:52px}
+.match .mi .ar{font-size:22px}
+.match .mi.sel{border-color:var(--accent);background:var(--accent-soft)}
+.match .mi.ok{border-color:var(--good);background:var(--good-soft);opacity:.55}
+.match .mi.no{border-color:var(--bad);background:var(--bad-soft)}
+
+/* speak */
+.rp{display:flex;flex-direction:column;gap:10px}
+.rec{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.rec .dot{width:10px;height:10px;border-radius:50%;background:var(--bad);animation:pulse 1s infinite}
+.tipcard{display:flex;gap:12px}
+.tipcard .ic{font-size:28px;flex:none}
+.tipcard .ar{font-size:1.15em}
+.muted{color:var(--muted)}
+footer{text-align:center;color:var(--muted);font-size:12px;padding:30px 16px}
+
+/* tests */
+.sortgrid{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;direction:rtl;margin-top:10px}
+.scol{border:2px dashed var(--line);border-radius:12px;padding:6px;min-height:170px;display:flex;flex-direction:column;gap:4px;cursor:pointer}
+.scol:hover{border-color:var(--accent)}
+.shead{text-align:center;border-bottom:1px solid var(--line);padding-bottom:4px;display:flex;flex-direction:column}
+.shead .ar{font-size:20px;font-weight:700} .shead small{color:var(--muted);font-size:11px}
+.sitem{border:1px solid var(--line);background:var(--panel);border-radius:8px;padding:0 6px;text-align:center;display:flex;flex-direction:column}
+.sitem .ar{font-size:19px} .sitem small{font-size:10px;color:var(--bad);direction:ltr}
+.sitem.ex{opacity:.55;border-style:dashed}
+.tile.sel{border-color:var(--accent);background:var(--accent-soft)}
+.tile.x{border-color:var(--bad);background:var(--bad-soft);text-decoration:line-through}
+.tile.ok,.sitem.ok{border-color:var(--good);background:var(--good-soft)}
+.tile.no,.sitem.no{border-color:var(--bad);background:var(--bad-soft)}
+.titems{padding-inline-start:22px;margin:6px 0} .titems li{margin:10px 0}
+.qsent .ar{font-size:22px}
+.qsent select{font-family:var(--ar);font-size:18px;padding:2px 6px;border-radius:8px;border:2px solid var(--accent);background:var(--panel);color:var(--ink);margin:0 4px}
+.qsent select.ok{border-color:var(--good);background:var(--good-soft)} .qsent select.no{border-color:var(--bad);background:var(--bad-soft)}
+.blank{display:inline-block;min-width:60px;border-bottom:2px solid var(--accent);color:var(--accent-2);text-align:center}
+.wrongw{text-decoration-color:var(--bad);text-decoration-thickness:2px}
+.bank{background:var(--accent-soft);border-radius:10px;padding:8px 12px;text-align:center;direction:rtl}
+.bank .ar{font-size:20px}
+.fb{font-size:14px;margin-top:2px}
+.markbox{border:2px solid var(--accent);border-radius:10px;min-width:56px;text-align:center;display:flex;flex-direction:column;line-height:1.2;padding:4px}
+.markbox .got{font-weight:800;font-size:18px;color:var(--accent-2);border-bottom:1px solid var(--line)} .markbox .of{font-size:13px;color:var(--muted)}
+.tsec.full{border-color:var(--good)} .tsec.part{border-color:var(--accent)}
+.test-link .n{font-size:22px}
+@media (max-width:700px){.sortgrid{grid-template-columns:repeat(3,1fr)}}
+
+/* index */
+.book{margin-top:22px}
+.lesson-link{display:flex;gap:14px;align-items:center;text-decoration:none;color:var(--ink)}
+.lesson-link .n{font-size:22px;font-weight:800;color:var(--accent-2);width:44px;text-align:center}
+.lesson-link .ar{font-size:20px}
+.soon{opacity:.5}
+@media (max-width:600px){
+  .hero{grid-template-columns:1fr}
+  .bub{max-width:100%}
+  .bub .ar.line{font-size:20px}
+  .flash{height:230px}
+}
+</style></head>
+<body><script>window.LESSONS=[];window.COURSE_HOME="index.html";</script><script>// Book 1 · Video 1 — Unit 1 (التحية والتعارف), book lessons 1–2
+// Source: Al-ʿArabiyyah Bayna Yadayk Book 1 + Al-Lisan video commentary (lesson 1 transcript)
+LESSONS.push({
+  id: "b1-01",
+  book: 1,
+  num: 1,
+  unit: "الوَحْدَةُ الأُولَى · التَّحِيَّةُ وَالتَّعارُف",
+  unitEn: "Unit 1 · Greetings & Getting to Know Each Other",
+  title: "Greetings, Names & Nationalities",
+  titleAr: "التَّحِيَّةُ وَالتَّعارُف",
+  covers: "Book pages 2–5 · Dialogue 1 (a, b) & Dialogue 2 (a, b)",
+  video: "https://www.youtube.com/playlist?list=PLDS9YrkKMtPR4-S3ih8wad7oXMyrdEdXY",
+  goals: [
+    "Greet someone and reply to a greeting",
+    "Ask someone's name and say your own",
+    "Ask “how are you?” — to a man and to a woman",
+    "Ask where someone is from and say your nationality",
+    "Ask yes / no questions with هَلْ"
+  ],
+
+  dialogues: [
+    {
+      id: "d1a", title: "Dialogue 1 (a)", titleAr: "الحِوارُ الأَوَّلُ (أ)",
+      note: "Two men meet: Khālid and Khalīl.",
+      people: { "خالِد": "m1", "خَلِيل": "m2" },
+      lines: [
+        ["خالِد", "السَّلامُ عَلَيْكُمْ.", "as-salāmu ʿalaykum.", "Peace be upon you."],
+        ["خَلِيل", "وَعَلَيْكُمُ السَّلامُ.", "wa ʿalaykumu s-salām.", "And upon you be peace."],
+        ["خالِد", "اِسْمِي خالِدٌ. ما اسْمُكَ؟", "ismī Khālid. mā smuka?", "My name is Khālid. What is your name? (to a male)"],
+        ["خَلِيل", "اِسْمِي خَلِيلٌ.", "ismī Khalīl.", "My name is Khalīl."],
+        ["خالِد", "كَيْفَ حالُكَ؟", "kayfa ḥāluka?", "How are you? (to a male)"],
+        ["خَلِيل", "بِخَيْرٍ، وَالحَمْدُ لِلّٰهِ. وَكَيْفَ حالُكَ أَنْتَ؟", "bi-khayr, wa l-ḥamdu lillāh. wa kayfa ḥāluka anta?", "Fine, praise be to God. And how are you?"],
+        ["خالِد", "بِخَيْرٍ، وَالحَمْدُ لِلّٰهِ.", "bi-khayr, wa l-ḥamdu lillāh.", "Fine, praise be to God."]
+      ]
+    },
+    {
+      id: "d1b", title: "Dialogue 1 (b)", titleAr: "الحِوارُ الأَوَّلُ (ب)",
+      note: "The same conversation between two women: Khawla and Khadīja. Watch the endings change to ـكِ.",
+      people: { "خَوْلَة": "f1", "خَدِيجَة": "f2" },
+      lines: [
+        ["خَوْلَة", "السَّلامُ عَلَيْكُمْ.", "as-salāmu ʿalaykum.", "Peace be upon you."],
+        ["خَدِيجَة", "وَعَلَيْكُمُ السَّلامُ.", "wa ʿalaykumu s-salām.", "And upon you be peace."],
+        ["خَوْلَة", "اِسْمِي خَوْلَةُ. ما اسْمُكِ؟", "ismī Khawla. mā smuki?", "My name is Khawla. What is your name? (to a female)"],
+        ["خَدِيجَة", "اِسْمِي خَدِيجَةُ.", "ismī Khadīja.", "My name is Khadīja."],
+        ["خَوْلَة", "كَيْفَ حالُكِ؟", "kayfa ḥāluki?", "How are you? (to a female)"],
+        ["خَدِيجَة", "بِخَيْرٍ، وَالحَمْدُ لِلّٰهِ. وَكَيْفَ حالُكِ أَنْتِ؟", "bi-khayr, wa l-ḥamdu lillāh. wa kayfa ḥāluki anti?", "Fine, praise be to God. And how are you?"],
+        ["خَوْلَة", "بِخَيْرٍ، وَالحَمْدُ لِلّٰهِ.", "bi-khayr, wa l-ḥamdu lillāh.", "Fine, praise be to God."]
+      ]
+    },
+    {
+      id: "d2a", title: "Dialogue 2 (a)", titleAr: "الحِوارُ الثّانِي (أ)",
+      note: "Muḥammad and Sharīf talk about where they are from.",
+      people: { "مُحَمَّد": "m3", "شَرِيف": "m4" },
+      lines: [
+        ["مُحَمَّد", "السَّلامُ عَلَيْكُمْ.", "as-salāmu ʿalaykum.", "Peace be upon you."],
+        ["شَرِيف", "وَعَلَيْكُمُ السَّلامُ.", "wa ʿalaykumu s-salām.", "And upon you be peace."],
+        ["مُحَمَّد", "مِنْ أَيْنَ أَنْتَ؟", "min ayna anta?", "Where are you from? (to a male)"],
+        ["شَرِيف", "أَنا مِنْ باكِسْتانَ.", "anā min Pākistān.", "I am from Pakistan."],
+        ["مُحَمَّد", "هَلْ أَنْتَ باكِسْتانِيٌّ؟", "hal anta pākistāniyy?", "Are you Pakistani?"],
+        ["شَرِيف", "نَعَمْ، أَنا باكِسْتانِيٌّ. وَما جِنْسِيَّتُكَ أَنْتَ؟", "naʿam, anā pākistāniyy. wa mā jinsiyyatuka anta?", "Yes, I am Pakistani. And what is your nationality?"],
+        ["مُحَمَّد", "أَنا تُرْكِيٌّ. أَنا مِنْ تُرْكِيا.", "anā turkiyy. anā min Turkiyā.", "I am Turkish. I am from Turkey."],
+        ["شَرِيف", "أَهْلًا وَسَهْلًا.", "ahlan wa sahlan.", "Welcome! / Nice to meet you."]
+      ]
+    },
+    {
+      id: "d2b", title: "Dialogue 2 (b)", titleAr: "الحِوارُ الثّانِي (ب)",
+      note: "Maryam and Zaynab — the feminine version. Notice أَنْتِ and the ة on the nationality.",
+      people: { "مَرْيَم": "f3", "زَيْنَب": "f4" },
+      lines: [
+        ["مَرْيَم", "السَّلامُ عَلَيْكُمْ.", "as-salāmu ʿalaykum.", "Peace be upon you."],
+        ["زَيْنَب", "وَعَلَيْكُمُ السَّلامُ.", "wa ʿalaykumu s-salām.", "And upon you be peace."],
+        ["مَرْيَم", "مِنْ أَيْنَ أَنْتِ؟", "min ayna anti?", "Where are you from? (to a female)"],
+        ["زَيْنَب", "أَنا مِنْ مِصْرَ.", "anā min Miṣr.", "I am from Egypt."],
+        ["مَرْيَم", "هَلْ أَنْتِ مِصْرِيَّةٌ؟", "hal anti miṣriyya?", "Are you Egyptian? (female)"],
+        ["زَيْنَب", "نَعَمْ، أَنا مِصْرِيَّةٌ. وَما جِنْسِيَّتُكِ أَنْتِ؟", "naʿam, anā miṣriyya. wa mā jinsiyyatuki anti?", "Yes, I am Egyptian. And what is your nationality?"],
+        ["مَرْيَم", "أَنا سُورِيَّةٌ. أَنا مِنْ سُورِيا.", "anā sūriyya. anā min Sūriyā.", "I am Syrian. I am from Syria."],
+        ["زَيْنَب", "أَهْلًا وَسَهْلًا.", "ahlan wa sahlan.", "Welcome! / Nice to meet you."]
+      ]
+    }
+  ],
+
+  // pic: emoji or flag; cat used for grouping
+  vocab: [
+    { ar: "السَّلامُ عَلَيْكُمْ", tr: "as-salāmu ʿalaykum", en: "peace be upon you (hello)", pic: "👋", cat: "Phrases" },
+    { ar: "وَعَلَيْكُمُ السَّلامُ", tr: "wa ʿalaykumu s-salām", en: "and upon you be peace (reply)", pic: "🤝", cat: "Phrases" },
+    { ar: "كَيْفَ حالُكَ؟", tr: "kayfa ḥāluka?", en: "how are you? (to a male)", pic: "🙂", cat: "Phrases" },
+    { ar: "كَيْفَ حالُكِ؟", tr: "kayfa ḥāluki?", en: "how are you? (to a female)", pic: "🙂", cat: "Phrases" },
+    { ar: "بِخَيْرٍ", tr: "bi-khayr", en: "fine / in good condition", pic: "👍", cat: "Phrases" },
+    { ar: "الحَمْدُ لِلّٰهِ", tr: "al-ḥamdu lillāh", en: "praise be to God", pic: "🤲", cat: "Phrases" },
+    { ar: "أَهْلًا وَسَهْلًا", tr: "ahlan wa sahlan", en: "welcome / nice to meet you", pic: "🏡", cat: "Phrases" },
+    { ar: "مَرْحَبًا", tr: "marḥaban", en: "hello / welcome", pic: "😊", cat: "Phrases", extra: true },
+
+    { ar: "أَنا", tr: "anā", en: "I (male or female)", pic: "🙋", cat: "Pronouns" },
+    { ar: "أَنْتَ", tr: "anta", en: "you (to a male)", pic: "👉👨", cat: "Pronouns" },
+    { ar: "أَنْتِ", tr: "anti", en: "you (to a female)", pic: "👉👩", cat: "Pronouns" },
+
+    { ar: "ما", tr: "mā", en: "what?", pic: "❓", cat: "Questions" },
+    { ar: "كَيْفَ", tr: "kayfa", en: "how?", pic: "❔", cat: "Questions" },
+    { ar: "أَيْنَ", tr: "ayna", en: "where?", pic: "📍", cat: "Questions" },
+    { ar: "مِنْ أَيْنَ", tr: "min ayna", en: "from where?", pic: "🧭", cat: "Questions" },
+    { ar: "هَلْ", tr: "hal", en: "(starts a yes/no question)", pic: "⁉️", cat: "Questions" },
+    { ar: "نَعَمْ", tr: "naʿam", en: "yes", pic: "✅", cat: "Questions" },
+    { ar: "لا", tr: "lā", en: "no", pic: "❌", cat: "Questions" },
+
+    { ar: "اِسْمٌ", tr: "ism", en: "name", pic: "🏷️", cat: "Words" },
+    { ar: "اِسْمِي", tr: "ismī", en: "my name", pic: "🏷️", cat: "Words" },
+    { ar: "حالٌ", tr: "ḥāl", en: "condition, state", pic: "🌡️", cat: "Words" },
+    { ar: "مِنْ", tr: "min", en: "from", pic: "➡️", cat: "Words" },
+    { ar: "جِنْسِيَّةٌ", tr: "jinsiyya", en: "nationality", pic: "🛂", cat: "Words" },
+    { ar: "كِتابٌ", tr: "kitāb", en: "book", pic: "📕", cat: "Words", extra: true },
+    { ar: "هاتِفٌ", tr: "hātif", en: "phone", pic: "📱", cat: "Words", extra: true },
+    { ar: "قَلَمٌ", tr: "qalam", en: "pen", pic: "🖊️", cat: "Words", extra: true },
+
+    { ar: "باكِسْتانُ", tr: "Pākistān", en: "Pakistan", pic: "🇵🇰", cat: "Countries" },
+    { ar: "تُرْكِيا", tr: "Turkiyā", en: "Turkey", pic: "🇹🇷", cat: "Countries" },
+    { ar: "مِصْرُ", tr: "Miṣr", en: "Egypt", pic: "🇪🇬", cat: "Countries" },
+    { ar: "سُورِيا", tr: "Sūriyā", en: "Syria", pic: "🇸🇾", cat: "Countries" },
+    { ar: "باكِسْتانِيٌّ", tr: "pākistāniyy", en: "Pakistani (m)", pic: "🇵🇰👨", cat: "Nationalities" },
+    { ar: "تُرْكِيٌّ", tr: "turkiyy", en: "Turkish (m)", pic: "🇹🇷👨", cat: "Nationalities" },
+    { ar: "مِصْرِيَّةٌ", tr: "miṣriyya", en: "Egyptian (f)", pic: "🇪🇬👩", cat: "Nationalities" },
+    { ar: "سُورِيَّةٌ", tr: "sūriyya", en: "Syrian (f)", pic: "🇸🇾👩", cat: "Nationalities" }
+  ],
+
+  grammar: [
+    {
+      id: "g-pron",
+      title: "I and you: أَنا · أَنْتَ · أَنْتِ",
+      body: [
+        "<b>أَنا</b> (anā) means <i>I</i>. The same word works for a man or a woman.",
+        "<b>أَنْتَ</b> (anta) means <i>you</i> when you speak to a <b>male</b>. <b>أَنْتِ</b> (anti) means <i>you</i> when you speak to a <b>female</b>. Only the last vowel changes: <b>a</b> for male, <b>i</b> for female.",
+        "The rule from the video: <b>the person you are talking to decides the form, not your own gender.</b> If you are speaking to a woman, always use the feminine form."
+      ],
+      table: { head: ["", "Arabic", "Say it", "Meaning"], rows: [
+        ["🙋", "أَنا", "anā", "I"],
+        ["👉👨", "أَنْتَ", "anta", "you (m)"],
+        ["👉👩", "أَنْتِ", "anti", "you (f)"]
+      ]}
+    },
+    {
+      id: "g-suffix",
+      title: "Possessive endings: ـي · ـكَ · ـكِ",
+      body: [
+        "Arabic has no separate words for <i>my</i> or <i>your</i>. You attach a short ending to the noun:",
+        "<b>ـي</b> (-ī) = <i>my</i> &nbsp;·&nbsp; <b>ـكَ</b> (-ka) = <i>your</i>, to a male &nbsp;·&nbsp; <b>ـكِ</b> (-ki) = <i>your</i>, to a female",
+        "So اِسْم (name) becomes <b>اِسْمِي</b> (my name), <b>اِسْمُكَ</b> (your name, to a male), <b>اِسْمُكِ</b> (your name, to a female). And حال (condition) becomes <b>حالُكَ / حالُكِ</b>. That is how كَيْفَ حالُكَ؟ is built."
+      ],
+      widget: {
+        type: "suffix",
+        nouns: [
+          { base: "اِسْم", tr: "ism", en: "name", forms: { my: ["اِسْمِي","ismī"], m: ["اِسْمُكَ","ismuka"], f: ["اِسْمُكِ","ismuki"] } },
+          { base: "حال", tr: "ḥāl", en: "condition", forms: { my: ["حالِي","ḥālī"], m: ["حالُكَ","ḥāluka"], f: ["حالُكِ","ḥāluki"] } },
+          { base: "كِتاب", tr: "kitāb", en: "book", forms: { my: ["كِتابِي","kitābī"], m: ["كِتابُكَ","kitābuka"], f: ["كِتابُكِ","kitābuki"] } },
+          { base: "هاتِف", tr: "hātif", en: "phone", forms: { my: ["هاتِفِي","hātifī"], m: ["هاتِفُكَ","hātifuka"], f: ["هاتِفُكِ","hātifuki"] } },
+          { base: "قَلَم", tr: "qalam", en: "pen", forms: { my: ["قَلَمِي","qalamī"], m: ["قَلَمُكَ","qalamuka"], f: ["قَلَمُكِ","qalamuki"] } }
+        ]
+      }
+    },
+    {
+      id: "g-q",
+      title: "Question words: ما · كَيْفَ · أَيْنَ · هَلْ",
+      body: [
+        "<b>ما</b> = what? → ما اسْمُكَ؟ <i>What is your name?</i>",
+        "<b>كَيْفَ</b> = how? → كَيْفَ حالُكَ؟ Word for word this is <i>How is your condition?</i>, but it is the everyday way to say <i>How are you?</i>",
+        "<b>أَيْنَ</b> = where? and <b>مِنْ</b> = from, so <b>مِنْ أَيْنَ</b> = from where? → مِنْ أَيْنَ أَنْتَ؟ <i>Where are you from?</i>",
+        "<b>هَلْ</b> has <u>no translation</u>. It goes at the start of a sentence to turn it into a yes/no question: أَنْتَ باكِسْتانِيٌّ (You are Pakistani) → <b>هَلْ</b> أَنْتَ باكِسْتانِيٌّ؟ (Are you Pakistani?). The answer is <b>نَعَمْ</b> (yes) or <b>لا</b> (no)."
+      ]
+    },
+    {
+      id: "g-nisba",
+      title: "Nationality endings: ـيّ and ـيَّة",
+      body: [
+        "Add <b>ـيّ</b> (a yāʾ with a <b>shadda</b> ـّ) to a country name and it becomes an adjective: مِصْر (Egypt) → <b>مِصْرِيّ</b> (Egyptian).",
+        "If the country name ends in a long ا (like تُرْكِيا or سُورِيا), drop the ا first: تُرْكِيا → <b>تُرْكِيّ</b>.",
+        "For a <b>female</b>, add the <b>tāʾ marbūṭa ة</b>. The video describes it as a \"hat with two dots\": مِصْرِيّ → <b>مِصْرِيَّة</b>. The ة is the usual sign that a word is feminine.",
+        "⚠️ <b>Don't mix up the two yāʾs.</b> The ـي in اِسْمِي is the pronoun <i>my</i> and has no shadda. The ـيّ in مِصْرِيّ has a shadda and makes a nationality adjective."
+      ],
+      widget: {
+        type: "nisba",
+        items: [
+          { flag: "🇵🇰", c: ["باكِسْتان","Pākistān","Pakistan"], m: ["باكِسْتانِيّ","pākistāniyy","Pakistani"], f: ["باكِسْتانِيَّة","pākistāniyya"] },
+          { flag: "🇹🇷", c: ["تُرْكِيا","Turkiyā","Turkey"], m: ["تُرْكِيّ","turkiyy","Turkish"], f: ["تُرْكِيَّة","turkiyya"] },
+          { flag: "🇪🇬", c: ["مِصْر","Miṣr","Egypt"], m: ["مِصْرِيّ","miṣriyy","Egyptian"], f: ["مِصْرِيَّة","miṣriyya"] },
+          { flag: "🇸🇾", c: ["سُورِيا","Sūriyā","Syria"], m: ["سُورِيّ","sūriyy","Syrian"], f: ["سُورِيَّة","sūriyya"] },
+          { flag: "🇺🇸", c: ["أَمْرِيكا","Amrīkā","America"], m: ["أَمْرِيكِيّ","amrīkiyy","American"], f: ["أَمْرِيكِيَّة","amrīkiyya"] },
+          { flag: "🇨🇦", c: ["كَنَدا","Kanadā","Canada"], m: ["كَنَدِيّ","kanadiyy","Canadian"], f: ["كَنَدِيَّة","kanadiyya"] },
+          { flag: "🇬🇧", c: ["بِرِيطانْيا","Brīṭānyā","Britain"], m: ["بِرِيطانِيّ","brīṭāniyy","British"], f: ["بِرِيطانِيَّة","brīṭāniyya"] },
+          { flag: "🇫🇷", c: ["فَرَنْسا","Faransā","France"], m: ["فَرَنْسِيّ","faransiyy","French"], f: ["فَرَنْسِيَّة","faransiyya"] },
+          { flag: "🇳🇬", c: ["نَيْجِيرِيا","Naygīriyā","Nigeria"], m: ["نَيْجِيرِيّ","naygīriyy","Nigerian"], f: ["نَيْجِيرِيَّة","naygīriyya"], bonus: true }
+        ]
+      }
+    }
+  ],
+
+  sounds: {
+    intro: "This lesson's names and phrases use several sounds that English doesn't have. Tap each one, listen, and repeat. Use the slow speed first.",
+    letters: [
+      { l: "خ", name: "khāʾ", tip: "A rough sound from the back of the throat, like the ch in Scottish “loch” or German “Bach”.", ex: ["خالِد","خَلِيل","خَوْلَة","خَدِيجَة","بِخَيْرٍ"] },
+      { l: "ح", name: "ḥāʾ", tip: "A strong, breathy h from the middle of the throat with no scraping. Imagine fogging up a mirror, but tighter.", ex: ["حالُكَ","الحَمْدُ","مُحَمَّد"] },
+      { l: "ه", name: "hāʾ", tip: "A light English h, as in “hat”.", ex: ["هَلْ","أَهْلًا","هاتِف"] },
+      { l: "ع", name: "ʿayn", tip: "Squeeze the throat muscles, as if starting to gag, and add a voiced vowel. English has nothing like it, so copy the audio.", ex: ["عَلَيْكُمْ","نَعَمْ"] },
+      { l: "ص", name: "ṣād", tip: "A heavy s. Pull your tongue back and lower your jaw so the vowels around it sound deeper.", ex: ["مِصْر","مِصْرِيَّة"] },
+      { l: "ق", name: "qāf", tip: "A k pronounced much further back, at the uvula.", ex: ["قَلَم"] },
+      { l: "ة", name: "tāʾ marbūṭa", tip: "The feminine ending. At the end of a phrase it sounds like a soft “-a”. When the word carries its case ending, it sounds like “-t”: مِصْرِيَّةٌ = miṣriyyatun.", ex: ["خَوْلَة","جِنْسِيَّة","سُورِيَّة"] }
+    ],
+    pairs: [
+      { a: ["حال","ḥāl","condition"], b: ["خال","khāl","maternal uncle"], note: "ح vs خ" },
+      { a: ["هَلْ","hal","(yes/no question)"], b: ["حَلّ","ḥall","solution"], note: "ه vs ح" },
+      { a: ["أَنْتَ","anta","you (m)"], b: ["أَنْتِ","anti","you (f)"], note: "a vs i at the end" },
+      { a: ["اِسْمُكَ","ismuka","your name (m)"], b: ["اِسْمُكِ","ismuki","your name (f)"], note: "-ka vs -ki" },
+      { a: ["مِصْرِيّ","miṣriyy","Egyptian (m)"], b: ["مِصْرِيَّة","miṣriyya","Egyptian (f)"], note: "ـيّ vs ـيَّة" }
+    ]
+  },
+
+  tips: [
+    { icon: "⏸️", t: "Pause and repeat", d: "The teacher's main method: read every line aloud right after you hear it. In this app, press 🔁 Shadow on any dialogue. It plays one line, waits for you to repeat, then plays the next." },
+    { icon: "🎯", t: "The listener decides the form", d: "When you speak to a woman, use ـكِ and أَنْتِ, whatever your own gender. When you speak to a man, use ـكَ and أَنْتَ." },
+    { icon: "🌡️", t: "كَيْفَ حالُكَ is literally “how is your condition?”", d: "حال means state or condition. The normal reply is بِخَيْرٍ وَالحَمْدُ لِلّٰهِ, “in good condition, praise God”." },
+    { icon: "⁉️", t: "هَلْ has no meaning of its own", d: "Put it at the start of a statement and the statement becomes a yes/no question. Answer with نَعَمْ or لا." },
+    { icon: "🎩", t: "ة is the “hat with two dots”", d: "The tāʾ marbūṭa (ة) almost always marks a feminine word: مِصْرِيّ → مِصْرِيَّة, and names such as خَوْلَة and خَدِيجَة." },
+    { icon: "⚠️", t: "Two different yāʾs", d: "ـي (my), as in اِسْمِي and كِتابِي, has no shadda. ـيّ, as in مِصْرِيّ and تُرْكِيّ, has a shadda and turns a country into a nationality." },
+    { icon: "🤝", t: "Welcoming someone", d: "أَهْلًا وَسَهْلًا is hard to translate word for word. Use it to welcome a guest or when you meet someone new. مَرْحَبًا works too, and so does أَهْلًا وَسَهْلًا، مَرْحَبًا together." }
+  ],
+
+  // Custom practice items (vocab-based quizzes are generated automatically)
+  practice: [
+    { type: "mcq", q: "You are asking a WOMAN her name. Which is correct?", options: ["ما اسْمُكَ؟", "ما اسْمُكِ؟", "ما اسْمِي؟"], answer: 1, explain: "ـكِ (-ki) is “your” when you speak to a female." },
+    { type: "mcq", q: "You are a woman asking a MAN how he is. What do you say?", options: ["كَيْفَ حالُكِ؟", "كَيْفَ حالُكَ؟", "كَيْفَ حالِي؟"], answer: 1, explain: "The listener decides the form. He is male, so use ـكَ." },
+    { type: "mcq", q: "Someone says السَّلامُ عَلَيْكُمْ. You reply…", options: ["أَهْلًا وَسَهْلًا", "وَعَلَيْكُمُ السَّلامُ", "بِخَيْرٍ"], answer: 1 },
+    { type: "mcq", q: "Someone asks كَيْفَ حالُكَ؟ The best answer is…", options: ["اِسْمِي خالِدٌ", "أَنا مِنْ مِصْرَ", "بِخَيْرٍ، وَالحَمْدُ لِلّٰهِ"], answer: 2 },
+    { type: "mcq", q: "What does هَلْ do in هَلْ أَنْتَ تُرْكِيٌّ؟", options: ["It means “where”", "It turns the sentence into a yes/no question", "It means “you”"], answer: 1, explain: "هَلْ has no translation. It only marks a yes/no question." },
+    { type: "mcq", q: "Zaynab is from Egypt. She says: أَنا ___", options: ["مِصْرِيٌّ", "مِصْرِيَّةٌ", "مِصْرُ"], answer: 1, explain: "She is female, so the nationality takes ة." },
+    { type: "mcq", q: "Which ـي means “my”?", options: ["the one in اِسْمِي", "the one in مِصْرِيّ"], answer: 0, explain: "The ـيّ with a shadda in مِصْرِيّ makes a nationality. The plain ـي in اِسْمِي means “my”." },
+    { type: "mcq", q: "Which question asks about NATIONALITY?", options: ["ما اسْمُكَ؟", "ما جِنْسِيَّتُكَ؟", "كَيْفَ حالُكَ؟"], answer: 1 },
+    { type: "fill", sentence: "___ أَيْنَ أَنْتَ؟", en: "Where are you from?", options: ["مِنْ", "هَلْ", "ما"], answer: 0 },
+    { type: "fill", sentence: "___ أَنْتِ سُورِيَّةٌ؟", en: "Are you Syrian? (f)", options: ["كَيْفَ", "هَلْ", "مِنْ"], answer: 1 },
+    { type: "fill", sentence: "بِخَيْرٍ، وَالحَمْدُ لِلّٰهِ. وَكَيْفَ حالُكِ ___؟", en: "…And how are YOU? (to a female)", options: ["أَنْتَ", "أَنا", "أَنْتِ"], answer: 2 },
+    { type: "fill", sentence: "أَنا تُرْكِيٌّ. أَنا مِنْ ___.", en: "I am Turkish. I am from Turkey.", options: ["تُرْكِيا", "مِصْرَ", "سُورِيا"], answer: 0 },
+    { type: "order", words: ["ما", "اسْمُكَ؟"], en: "What is your name? (m)" },
+    { type: "order", words: ["مِنْ", "أَيْنَ", "أَنْتِ؟"], en: "Where are you from? (f)" },
+    { type: "order", words: ["هَلْ", "أَنْتَ", "باكِسْتانِيٌّ؟"], en: "Are you Pakistani?" },
+    { type: "order", words: ["أَنا", "مِنْ", "سُورِيا."], en: "I am from Syria." },
+    { type: "order", words: ["وَكَيْفَ", "حالُكَ", "أَنْتَ؟"], en: "And how are you? (m)" },
+    { type: "reply", prompt: "مِنْ أَيْنَ أَنْتَ؟", en: "Choose a logical reply", options: ["أَنا مِنْ باكِسْتانَ.", "اِسْمِي شَرِيفٌ.", "وَعَلَيْكُمُ السَّلامُ."], answer: 0 },
+    { type: "reply", prompt: "هَلْ أَنْتِ مِصْرِيَّةٌ؟", en: "Choose a logical reply", options: ["نَعَمْ، أَنا مِصْرِيَّةٌ.", "نَعَمْ، أَنا مِصْرِيٌّ.", "بِخَيْرٍ."], answer: 0 },
+    { type: "reply", prompt: "ما اسْمُكِ؟", en: "Choose a logical reply", options: ["أَنا مِنْ سُورِيا.", "اِسْمِي مَرْيَمُ.", "أَهْلًا وَسَهْلًا."], answer: 1 }
+  ],
+
+  // Speaking role-play: the app plays the other speaker, you answer
+  roleplay: [
+    { them: "السَّلامُ عَلَيْكُمْ.", you: "وَعَلَيْكُمُ السَّلامُ.", hint: "Return the greeting" },
+    { them: "ما اسْمُكَ؟", you: "اِسْمِي … (your name)", hint: "Say your name" },
+    { them: "كَيْفَ حالُكَ؟", you: "بِخَيْرٍ، وَالحَمْدُ لِلّٰهِ. وَكَيْفَ حالُكَ أَنْتَ؟", hint: "Say you're fine and ask back" },
+    { them: "مِنْ أَيْنَ أَنْتَ؟", you: "أَنا مِنْ … (your country)", hint: "Say where you're from" },
+    { them: "ما جِنْسِيَّتُكَ؟", you: "أَنا … (nationality: add ـيّ / ـيَّة)", hint: "Say your nationality" },
+    { them: "هَلْ أَنْتَ مِصْرِيٌّ؟", you: "نَعَمْ، أَنا … / لا، أَنا …", hint: "Answer with نَعَمْ or لا, then your nationality" },
+    { them: "أَهْلًا وَسَهْلًا.", you: "أَهْلًا وَسَهْلًا.", hint: "Welcome them back" }
+  ]
+});
+</script><script>// Book 1 · Video 2 — Unit 1 (التحية والتعارف), book lesson 3 (pp. 6–7) + teacher's summary pages
+// Source: Al-ʿArabiyyah Bayna Yadayk Book 1 + Al-Lisan video commentary (lesson 2 transcript)
+(function () {
+  // helpers to build forms with correct harakat
+  const POSS = [
+    { k: "my", label: "ـي my", sfx: "ِي", tr: "ī", en: "my" },
+    { k: "our", label: "ـنا our", sfx: "ُنا", tr: "unā", en: "our" },
+    { k: "m", label: "ـكَ your (m)", sfx: "ُكَ", tr: "uka", en: "your (to a male)" },
+    { k: "f", label: "ـكِ your (f)", sfx: "ُكِ", tr: "uki", en: "your (to a female)" },
+    { k: "his", label: "ـهُ his", sfx: "ُهُ", tr: "uhu", en: "his" },
+    { k: "her", label: "ـها her", sfx: "ُها", tr: "uhā", en: "her" }
+  ];
+  const NOUNS = [
+    { k: "kitab", stem: "كِتاب", tr: "kitāb", en: "book", pic: "📕" },
+    { k: "qalam", stem: "قَلَم", tr: "qalam", en: "pen", pic: "🖊️" },
+    { k: "bayt", stem: "بَيْت", tr: "bayt", en: "house", pic: "🏠" },
+    { k: "sadiqa", stem: "صَدِيقَت", tr: "ṣadīqat", en: "friend (f)", pic: "👭", note: "صَدِيقَة ends in ة, so the ة becomes ت before the ending: صَدِيقَة → صَدِيقَتـ" }
+  ];
+  const possOut = {};
+  NOUNS.forEach(n => POSS.forEach(p => {
+    const word = n.stem + p.sfx;
+    possOut[n.k + "|" + p.k] = [word, n.tr + p.tr, `${p.en} ${n.en}`, n.note || ""];
+  }));
+
+  const PEOPLE = [
+    { k: "akh", ar: "أَخِي", g: "m", tr: "akhī", en: "my brother" },
+    { k: "ukht", ar: "أُخْتِي", g: "f", tr: "ukhtī", en: "my sister" },
+    { k: "sadiq", ar: "صَدِيقِي", g: "m", tr: "ṣadīqī", en: "my friend (m)" },
+    { k: "sadiqa", ar: "صَدِيقَتِي", g: "f", tr: "ṣadīqatī", en: "my friend (f)" }
+  ];
+  const JOBS = [
+    { k: "mudarris", m: ["مُدَرِّسٌ", "mudarris"], f: ["مُدَرِّسَةٌ", "mudarrisa"], en: "a teacher" },
+    { k: "tabib", m: ["طَبِيبٌ", "ṭabīb"], f: ["طَبِيبَةٌ", "ṭabība"], en: "a doctor" },
+    { k: "muhandis", m: ["مُهَنْدِسٌ", "muhandis"], f: ["مُهَنْدِسَةٌ", "muhandisa"], en: "an engineer" },
+    { k: "talib", m: ["طالِبٌ", "ṭālib"], f: ["طالِبَةٌ", "ṭāliba"], en: "a student" }
+  ];
+  const introOut = {};
+  PEOPLE.forEach(p => JOBS.forEach(j => {
+    const m = p.g === "m", job = m ? j.m : j.f;
+    introOut[p.k + "|" + j.k] = [
+      `${m ? "هَذا" : "هَذِهِ"} ${p.ar}. ${m ? "هُوَ" : "هِيَ"} ${job[0]}.`,
+      `${m ? "hādhā" : "hādhihi"} ${p.tr}. ${m ? "huwa" : "hiya"} ${job[1]}.`,
+      `This is ${p.en}. ${m ? "He" : "She"} is ${j.en}.`,
+      m ? "Male person → هَذا … هُوَ … and the job without ة" : "Female person → هَذِهِ … هِيَ … and the job with ة"
+    ];
+  }));
+
+  LESSONS.push({
+    id: "b1-02",
+    book: 1,
+    num: 2,
+    unit: "الوَحْدَةُ الأُولَى · التَّحِيَّةُ وَالتَّعارُف",
+    unitEn: "Unit 1 · Greetings & Getting to Know Each Other",
+    title: "This Is My Brother: Introducing People",
+    titleAr: "هَذا أَخِي",
+    covers: "Book pages 6–7 · Dialogue 3 (a, b) + the teacher's summary: pronouns, question words, numbers 1–10",
+    video: "https://www.youtube.com/playlist?list=PLDS9YrkKMtPR4-S3ih8wad7oXMyrdEdXY",
+    goals: [
+      "Introduce someone: هَذا أَخِي، هَذِهِ صَدِيقَتِي",
+      "Say what someone does: هُوَ مُدَرِّسٌ، هِيَ طَبِيبَةٌ",
+      "Turn a male noun into a female one with ة, and change ة to ت before an ending",
+      "Use every possessive ending: my, our, your, his, her",
+      "Point near and far: هَذا / ذَلِكَ · هَذِهِ / تِلْكَ",
+      "Recognise the main question words and count from 1 to 10",
+      "Say goodbye: مَعَ السَّلامَةِ"
+    ],
+
+    // listening drill "male or female?" for this lesson (tested on text without harakat)
+    gender: { any: "هذا|هذه|هو |هي ", fem: "هذه|هي ", q: "Is this sentence about a male or a female?" },
+
+    dialogues: [
+      {
+        id: "d3a", title: "Dialogue 3 (a)", titleAr: "الحِوارُ الثّالِثُ (أ)",
+        note: "Aḥmad introduces his brother and his friend to Badr.",
+        people: { "أَحْمَد": "m3", "بَدْر": "m2", "الأَخ": "m1" },
+        lines: [
+          ["أَحْمَد", "السَّلامُ عَلَيْكُمْ.", "as-salāmu ʿalaykum.", "Peace be upon you."],
+          ["بَدْر", "وَعَلَيْكُمُ السَّلامُ.", "wa ʿalaykumu s-salām.", "And upon you be peace."],
+          ["أَحْمَد", "هَذا أَخِي. هُوَ مُدَرِّسٌ.", "hādhā akhī. huwa mudarris.", "This is my brother. He is a teacher."],
+          ["بَدْر", "أَهْلًا وَسَهْلًا.", "ahlan wa sahlan.", "Welcome! / Nice to meet you."],
+          ["أَحْمَد", "هَذا صَدِيقِي. هُوَ مُهَنْدِسٌ.", "hādhā ṣadīqī. huwa muhandis.", "This is my friend. He is an engineer."],
+          ["الأَخ", "أَهْلًا وَسَهْلًا.", "ahlan wa sahlan.", "Welcome! (the brother replies)"],
+          ["أَحْمَد", "مَعَ السَّلامَةِ.", "maʿa s-salāma.", "Goodbye."],
+          ["بَدْر", "مَعَ السَّلامَةِ.", "maʿa s-salāma.", "Goodbye."]
+        ]
+      },
+      {
+        id: "d3b", title: "Dialogue 3 (b)", titleAr: "الحِوارُ الثّالِثُ (ب)",
+        note: "Nadā introduces her sister and her friend to Hudā. Notice هَذِهِ, هِيَ and the ة.",
+        people: { "نَدَى": "f1", "هُدَى": "f2", "الأُخْت": "f3" },
+        lines: [
+          ["نَدَى", "السَّلامُ عَلَيْكُمْ.", "as-salāmu ʿalaykum.", "Peace be upon you."],
+          ["هُدَى", "وَعَلَيْكُمُ السَّلامُ.", "wa ʿalaykumu s-salām.", "And upon you be peace."],
+          ["نَدَى", "هَذِهِ أُخْتِي. هِيَ طَبِيبَةٌ.", "hādhihi ukhtī. hiya ṭabība.", "This is my sister. She is a doctor."],
+          ["هُدَى", "أَهْلًا وَسَهْلًا.", "ahlan wa sahlan.", "Welcome! / Nice to meet you."],
+          ["نَدَى", "هَذِهِ صَدِيقَتِي. هِيَ طالِبَةٌ.", "hādhihi ṣadīqatī. hiya ṭāliba.", "This is my friend. She is a student."],
+          ["الأُخْت", "أَهْلًا وَسَهْلًا.", "ahlan wa sahlan.", "Welcome! (the sister replies)"],
+          ["نَدَى", "مَعَ السَّلامَةِ.", "maʿa s-salāma.", "Goodbye."],
+          ["هُدَى", "مَعَ السَّلامَةِ.", "maʿa s-salāma.", "Goodbye."]
+        ]
+      }
+    ],
+
+    vocab: [
+      { ar: "أَخٌ", tr: "akh", en: "brother", pic: "👦", cat: "People" },
+      { ar: "أُخْتٌ", tr: "ukht", en: "sister", pic: "👧", cat: "People" },
+      { ar: "صَدِيقٌ", tr: "ṣadīq", en: "friend (m)", pic: "🧑‍🤝‍🧑", cat: "People" },
+      { ar: "صَدِيقَةٌ", tr: "ṣadīqa", en: "friend (f)", pic: "👭", cat: "People" },
+      { ar: "مُدَرِّسٌ", tr: "mudarris", en: "teacher (m)", pic: "👨‍🏫", cat: "Jobs" },
+      { ar: "مُدَرِّسَةٌ", tr: "mudarrisa", en: "teacher (f)", pic: "👩‍🏫", cat: "Jobs", extra: true },
+      { ar: "مُهَنْدِسٌ", tr: "muhandis", en: "engineer (m)", pic: "👷", cat: "Jobs" },
+      { ar: "طَبِيبٌ", tr: "ṭabīb", en: "doctor (m)", pic: "👨‍⚕️", cat: "Jobs", extra: true },
+      { ar: "طَبِيبَةٌ", tr: "ṭabība", en: "doctor (f)", pic: "👩‍⚕️", cat: "Jobs" },
+      { ar: "طالِبٌ", tr: "ṭālib", en: "student (m)", pic: "👨‍🎓", cat: "Jobs", extra: true },
+      { ar: "طالِبَةٌ", tr: "ṭāliba", en: "student (f)", pic: "👩‍🎓", cat: "Jobs" },
+
+      { ar: "هَذا", tr: "hādhā", en: "this (m)", pic: "👇📕", cat: "Pointing" },
+      { ar: "هَذِهِ", tr: "hādhihi", en: "this (f)", pic: "👇🐈", cat: "Pointing" },
+      { ar: "ذَلِكَ", tr: "dhālika", en: "that (m), far away", pic: "👉📕", cat: "Pointing", extra: true },
+      { ar: "تِلْكَ", tr: "tilka", en: "that (f), far away", pic: "👉🐈", cat: "Pointing", extra: true },
+      { ar: "هُنا", tr: "hunā", en: "here", pic: "📍", cat: "Pointing", extra: true },
+      { ar: "هُناكَ", tr: "hunāka", en: "there", pic: "🗺️", cat: "Pointing", extra: true },
+
+      { ar: "هُوَ", tr: "huwa", en: "he", pic: "👨", cat: "Pronouns" },
+      { ar: "هِيَ", tr: "hiya", en: "she", pic: "👩", cat: "Pronouns" },
+      { ar: "نَحْنُ", tr: "naḥnu", en: "we", pic: "👨‍👩‍👧", cat: "Pronouns", extra: true },
+
+      { ar: "مَعَ السَّلامَةِ", tr: "maʿa s-salāma", en: "goodbye (literally: with safety)", pic: "👋", cat: "Phrases" },
+      { ar: "مَعَ", tr: "maʿa", en: "with", pic: "➕", cat: "Phrases", extra: true },
+      { ar: "قِطَّةٌ", tr: "qiṭṭa", en: "cat", pic: "🐈", cat: "Phrases", extra: true },
+      { ar: "بَيْتٌ", tr: "bayt", en: "house", pic: "🏠", cat: "Phrases", extra: true },
+
+      { ar: "مَنْ", tr: "man", en: "who?", pic: "🧑❓", cat: "Questions", extra: true },
+      { ar: "ماذا", tr: "mādhā", en: "what? (before a verb)", pic: "🛠️❓", cat: "Questions", extra: true },
+      { ar: "لِماذا", tr: "limādhā", en: "why?", pic: "🤔", cat: "Questions", extra: true },
+      { ar: "أَيُّ", tr: "ayyu", en: "which?", pic: "👈👉", cat: "Questions", extra: true },
+      { ar: "مَتَى", tr: "matā", en: "when?", pic: "🕒", cat: "Questions", extra: true },
+      { ar: "كَمْ", tr: "kam", en: "how many? / how much?", pic: "🔢", cat: "Questions", extra: true },
+
+      { ar: "واحِدٌ", tr: "wāḥid", en: "one", pic: "١ · 1", cat: "Numbers", extra: true },
+      { ar: "اِثْنانِ", tr: "ithnān", en: "two", pic: "٢ · 2", cat: "Numbers", extra: true },
+      { ar: "ثَلاثَةٌ", tr: "thalātha", en: "three", pic: "٣ · 3", cat: "Numbers", extra: true },
+      { ar: "أَرْبَعَةٌ", tr: "arbaʿa", en: "four", pic: "٤ · 4", cat: "Numbers", extra: true },
+      { ar: "خَمْسَةٌ", tr: "khamsa", en: "five", pic: "٥ · 5", cat: "Numbers", extra: true },
+      { ar: "سِتَّةٌ", tr: "sitta", en: "six", pic: "٦ · 6", cat: "Numbers", extra: true },
+      { ar: "سَبْعَةٌ", tr: "sabʿa", en: "seven", pic: "٧ · 7", cat: "Numbers", extra: true },
+      { ar: "ثَمانِيَةٌ", tr: "thamāniya", en: "eight", pic: "٨ · 8", cat: "Numbers", extra: true },
+      { ar: "تِسْعَةٌ", tr: "tisʿa", en: "nine", pic: "٩ · 9", cat: "Numbers", extra: true },
+      { ar: "عَشَرَةٌ", tr: "ʿashara", en: "ten", pic: "١٠ · 10", cat: "Numbers", extra: true }
+    ],
+
+    grammar: [
+      {
+        id: "g-this",
+        title: "This is…: هَذا · هَذِهِ, and he / she: هُوَ · هِيَ",
+        body: [
+          "<b>هَذا</b> (hādhā) = <i>this</i>, for something or someone <b>masculine</b>: هَذا أَخِي <i>This is my brother</i>.",
+          "<b>هَذِهِ</b> (hādhihi) = <i>this</i>, for something or someone <b>feminine</b>: هَذِهِ أُخْتِي <i>This is my sister</i>.",
+          "<b>هُوَ</b> (huwa) = <i>he</i> and <b>هِيَ</b> (hiya) = <i>she</i>. Arabic has no word for <i>is</i> here: هُوَ مُدَرِّسٌ is literally <i>he teacher</i>, meaning <i>He is a teacher</i>.",
+          "Everything must agree: a female person takes هَذِهِ, هِيَ and the job word with <b>ة</b>."
+        ],
+        table: { head: ["", "Arabic", "Say it", "Meaning"], rows: [
+          ["👇👨", "هَذا", "hādhā", "this (m)"],
+          ["👇👩", "هَذِهِ", "hādhihi", "this (f)"],
+          ["👨", "هُوَ", "huwa", "he"],
+          ["👩", "هِيَ", "hiya", "she"]
+        ]},
+        widget: {
+          type: "combo", label: "Introduce someone · pick a person, then a job",
+          rows: PEOPLE.map(p => ({ k: p.k, label: `${p.ar} · ${p.en}` })),
+          cols: JOBS.map(j => ({ k: j.k, label: `${j.m[0].replace(/[ٌ]/g, "")} · ${j.en.replace(/^an? /, "")}` })),
+          out: introOut
+        }
+      },
+      {
+        id: "g-fem",
+        title: "Male → female: add ة",
+        body: [
+          "Most words for people and jobs become feminine when you add <b>ة</b> (tāʾ marbūṭa) at the end:",
+          "مُدَرِّس → <b>مُدَرِّسَة</b> &nbsp;·&nbsp; طالِب → <b>طالِبَة</b> &nbsp;·&nbsp; طَبِيب → <b>طَبِيبَة</b> &nbsp;·&nbsp; مُهَنْدِس → <b>مُهَنْدِسَة</b> &nbsp;·&nbsp; صَدِيق → <b>صَدِيقَة</b>",
+          "The teacher's example: in the picture the doctor is a woman, so the book says طَبِيبَة. Without the ة, طَبِيب is a male doctor."
+        ],
+        widget: {
+          type: "combo", label: "Switch the gender",
+          rows: [["mudarris", "مُدَرِّس", "teacher"], ["talib", "طالِب", "student"], ["tabib", "طَبِيب", "doctor"], ["muhandis", "مُهَنْدِس", "engineer"], ["sadiq", "صَدِيق", "friend"]].map(r => ({ k: r[0], label: `${r[1]} · ${r[2]}` })),
+          cols: [{ k: "m", label: "👨 male" }, { k: "f", label: "👩 female (+ة)" }],
+          out: {
+            "mudarris|m": ["مُدَرِّسٌ", "mudarris", "teacher (m)"], "mudarris|f": ["مُدَرِّسَةٌ", "mudarrisa", "teacher (f)"],
+            "talib|m": ["طالِبٌ", "ṭālib", "student (m)"], "talib|f": ["طالِبَةٌ", "ṭāliba", "student (f)"],
+            "tabib|m": ["طَبِيبٌ", "ṭabīb", "doctor (m)"], "tabib|f": ["طَبِيبَةٌ", "ṭabība", "doctor (f)"],
+            "muhandis|m": ["مُهَنْدِسٌ", "muhandis", "engineer (m)"], "muhandis|f": ["مُهَنْدِسَةٌ", "muhandisa", "engineer (f)"],
+            "sadiq|m": ["صَدِيقٌ", "ṣadīq", "friend (m)"], "sadiq|f": ["صَدِيقَةٌ", "ṣadīqa", "friend (f)"]
+          }
+        }
+      },
+      {
+        id: "g-ta",
+        title: "ة turns into ت before an ending",
+        body: [
+          "The teacher's rule: when a word ends in <b>ة</b> and you add an ending such as <i>my</i>, <i>your</i> or <i>her</i>, the ة becomes an ordinary <b>ت</b>.",
+          "صَدِيقَة + ي → <b>صَدِيقَتِي</b> (my friend, f) &nbsp;·&nbsp; مُدَرِّسَة + ي → <b>مُدَرِّسَتِي</b> &nbsp;·&nbsp; طالِبَة + ي → <b>طالِبَتِي</b>",
+          "This is why the dialogue says هَذِهِ صَدِيقَتِي, with a ت in the middle."
+        ],
+        table: { head: ["", "Arabic", "Say it", "Meaning"], rows: [
+          ["👭", "صَدِيقَتِي", "ṣadīqatī", "my friend (f)"],
+          ["👩‍🏫", "مُدَرِّسَتِي", "mudarrisatī", "my teacher (f)"],
+          ["👩‍🎓", "طالِبَتُكَ", "ṭālibatuka", "your student (f), said to a male"],
+          ["🐈", "قِطَّتُها", "qiṭṭatuhā", "her cat"]
+        ]}
+      },
+      {
+        id: "g-pron",
+        title: "Personal pronouns so far",
+        body: [
+          "The teacher's summary page. <b>نَحْنُ</b> (naḥnu) = <i>we</i> is new: نَحْنُ فِي مِصْرَ <i>We are in Egypt</i>, and نَحْنُ بِخَيْرٍ <i>We are well</i>.",
+          "Example: أَنْتِ طَبِيبَةٌ <i>You are a doctor</i>, said to a woman."
+        ],
+        table: { head: ["", "Arabic", "Say it", "Meaning"], rows: [
+          ["🙋", "أَنا", "anā", "I"],
+          ["👨‍👩‍👧", "نَحْنُ", "naḥnu", "we"],
+          ["👉👨", "أَنْتَ", "anta", "you (m)"],
+          ["👉👩", "أَنْتِ", "anti", "you (f)"],
+          ["👨", "هُوَ", "huwa", "he"],
+          ["👩", "هِيَ", "hiya", "she"]
+        ]}
+      },
+      {
+        id: "g-poss",
+        title: "Possessive endings: my · our · your · his · her",
+        body: [
+          "Lesson 1 had ـي, ـكَ and ـكِ. The full set from the teacher's summary:",
+          "<b>ـي</b> my · <b>ـنا</b> our · <b>ـكَ</b> your (m) · <b>ـكِ</b> your (f) · <b>ـهُ</b> his · <b>ـها</b> her",
+          "The teacher's examples: قَلَمِي (my pen), كِتابُنا and رَبُّنا (our book, our Lord), اِسْمُكَ (your name), بَيْتُهُ and رَبُّهُ (his house, his Lord), قَلَمُها and كِتابُها (her pen, her book)."
+        ],
+        widget: {
+          type: "combo", label: "Build it yourself · pick a noun, then an ending",
+          rows: NOUNS.map(n => ({ k: n.k, label: `${n.pic} ${n.en}` })),
+          cols: POSS.map(p => ({ k: p.k, label: p.label })),
+          out: possOut
+        }
+      },
+      {
+        id: "g-far",
+        title: "Near and far: هَذا / ذَلِكَ · هَذِهِ / تِلْكَ",
+        body: [
+          "هَذا and هَذِهِ point at something <b>close</b> (<i>this</i>). For something <b>far away</b> (<i>that</i>), use:",
+          "<b>ذَلِكَ</b> (dhālika) for masculine and <b>تِلْكَ</b> (tilka) for feminine.",
+          "The teacher's examples: هَذا كِتابٌ <i>This is a book</i> (next to me), ذَلِكَ كِتابٌ <i>That is a book</i> (over there). For قِطَّة (cat), which is feminine: هَذِهِ قِطَّتِي and تِلْكَ قِطَّتِي."
+        ],
+        widget: {
+          type: "combo", label: "Point at it · pick a thing, then near or far",
+          rows: [{ k: "kitab", label: "📕 book (m)" }, { k: "qalam", label: "🖊️ pen (m)" }, { k: "qitta", label: "🐈 my cat (f)" }, { k: "talib", label: "👩‍🎓 student (f)" }],
+          cols: [{ k: "near", label: "👇 near: this" }, { k: "far", label: "👉 far: that" }],
+          out: {
+            "kitab|near": ["هَذا كِتابٌ.", "hādhā kitāb.", "This is a book."], "kitab|far": ["ذَلِكَ كِتابٌ.", "dhālika kitāb.", "That is a book."],
+            "qalam|near": ["هَذا قَلَمٌ.", "hādhā qalam.", "This is a pen."], "qalam|far": ["ذَلِكَ قَلَمٌ.", "dhālika qalam.", "That is a pen."],
+            "qitta|near": ["هَذِهِ قِطَّتِي.", "hādhihi qiṭṭatī.", "This is my cat."], "qitta|far": ["تِلْكَ قِطَّتِي.", "tilka qiṭṭatī.", "That is my cat."],
+            "talib|near": ["هَذِهِ طالِبَةٌ.", "hādhihi ṭāliba.", "This is a student (f)."], "talib|far": ["تِلْكَ طالِبَةٌ.", "tilka ṭāliba.", "That is a student (f)."]
+          }
+        }
+      },
+      {
+        id: "g-q",
+        title: "Question words: the full list",
+        body: [
+          "From the teacher's summary page. You don't need to use all of them yet, but learn to recognise them. They come up again and again in the book.",
+          "<b>ما</b> and <b>ماذا</b> both mean <i>what</i>. ماذا usually comes before a verb: ماذا تَفْعَلُ؟ <i>What are you doing?</i>",
+          "<b>هَلْ</b> still has no translation. It only starts a yes/no question."
+        ],
+        table: { head: ["", "Arabic", "Say it", "Meaning · example"], rows: [
+          ["❓", "ما", "mā", "what? · ما اسْمُكَ؟ What's your name?"],
+          ["🛠️", "ماذا", "mādhā", "what? (before verbs) · ماذا تَفْعَلُ؟ What are you doing?"],
+          ["🤔", "لِماذا", "limādhā", "why? · لِماذا أَنْتَ هُنا؟ Why are you here?"],
+          ["👈👉", "أَيُّ", "ayyu", "which? · أَيُّ قَلَمٍ؟ Which pen?"],
+          ["🧑", "مَنْ", "man", "who? · مَنْ هَذا؟ Who is this (m)? · مَنْ هَذِهِ؟ Who is this (f)?"],
+          ["📍", "أَيْنَ", "ayna", "where? · أَيْنَ أَحْمَدُ؟ Where is Aḥmad?"],
+          ["🕒", "مَتَى", "matā", "when?"],
+          ["🙂", "كَيْفَ", "kayfa", "how? · كَيْفَ حالُكَ؟ How are you?"],
+          ["⁉️", "هَلْ", "hal", "(yes/no) · هَلْ أَنْتَ مِصْرِيٌّ؟ Are you Egyptian?"],
+          ["🔢", "كَمْ", "kam", "how many? · كَمْ قَلَمًا لَدَيْكَ؟ How many pens do you have?"]
+        ]}
+      },
+      {
+        id: "g-num",
+        title: "Numbers 1–10",
+        body: [
+          "The teacher says to read them again and again, and write them down until you know them by heart. Notice the Arabic digits: these are the forms printed on the page numbers of your book.",
+          "Practise counting up and down out loud. You'll be tested on them in the Listening tab."
+        ],
+        table: { head: ["", "Arabic", "Say it", "Number"], rows: [
+          ["١", "واحِدٌ", "wāḥid", "1"], ["٢", "اِثْنانِ", "ithnān", "2"], ["٣", "ثَلاثَةٌ", "thalātha", "3"],
+          ["٤", "أَرْبَعَةٌ", "arbaʿa", "4"], ["٥", "خَمْسَةٌ", "khamsa", "5"], ["٦", "سِتَّةٌ", "sitta", "6"],
+          ["٧", "سَبْعَةٌ", "sabʿa", "7"], ["٨", "ثَمانِيَةٌ", "thamāniya", "8"], ["٩", "تِسْعَةٌ", "tisʿa", "9"],
+          ["١٠", "عَشَرَةٌ", "ʿashara", "10"]
+        ]}
+      }
+    ],
+
+    sounds: {
+      intro: "New sounds in this lesson's words. Two of them, ذ and ث, are like the two ways English says “th”. Tap, listen and repeat, using the slow speed first.",
+      letters: [
+        { l: "ذ", name: "dhāl", tip: "The “th” in “this” and “that”, with the tongue between the teeth and the sound voiced. Handy, because هَذا means “this”!", ex: ["هَذا", "هَذِهِ", "ذَلِكَ", "ماذا"] },
+        { l: "ث", name: "thāʾ", tip: "The “th” in “think” and “three”, with no voice. ثَلاثَة (three) has two of them.", ex: ["ثَلاثَةٌ", "ثَمانِيَةٌ", "اِثْنانِ"] },
+        { l: "ط", name: "ṭāʾ", tip: "A heavy t. Press the tongue up and back and lower the jaw, and the vowels after it sound deeper. Compare it with the light ت.", ex: ["طَبِيبَةٌ", "طالِبَةٌ", "قِطَّةٌ"] },
+        { l: "ص", name: "ṣād", tip: "A heavy s, the partner of ط. Your mouth feels “full”.", ex: ["صَدِيقٌ", "صَدِيقَتِي"] },
+        { l: "ع", name: "ʿayn", tip: "The throat squeeze from Lesson 1. It appears in مَعَ and in three of the numbers.", ex: ["مَعَ السَّلامَةِ", "أَرْبَعَةٌ", "سَبْعَةٌ", "تِسْعَةٌ", "عَشَرَةٌ"] },
+        { l: "ة / ت", name: "tāʾ marbūṭa → tāʾ", tip: "At the end of a word ة sounds like “-a”. Once an ending is added it becomes ت and you hear a clear “t”: ṣadīqa → ṣadīqatī.", ex: ["صَدِيقَةٌ", "صَدِيقَتِي", "قِطَّتُها"] }
+      ],
+      pairs: [
+        { a: ["هَذا", "hādhā", "this (m)"], b: ["هَذِهِ", "hādhihi", "this (f)"], note: "m vs f" },
+        { a: ["هُوَ", "huwa", "he"], b: ["هِيَ", "hiya", "she"], note: "u vs i" },
+        { a: ["أَخِي", "akhī", "my brother"], b: ["أُخْتِي", "ukhtī", "my sister"], note: "m vs f" },
+        { a: ["تِينٌ", "tīn", "figs"], b: ["طِينٌ", "ṭīn", "mud"], note: "ت vs ط" },
+        { a: ["سَيْفٌ", "sayf", "sword"], b: ["صَيْفٌ", "ṣayf", "summer"], note: "س vs ص" },
+        { a: ["ذَلِكَ", "dhālika", "that (m)"], b: ["تِلْكَ", "tilka", "that (f)"], note: "m vs f, far" }
+      ]
+    },
+
+    tips: [
+      { icon: "🧠", t: "Memorise words early", d: "The teacher's main warning: don't put off learning the vocabulary. A solid base makes every later lesson easier. Do the Review tab every day." },
+      { icon: "👇", t: "هَذا for him, هَذِهِ for her", d: "هَذا points at something masculine and هَذِهِ at something feminine. The word you point at decides which one you use." },
+      { icon: "🎩", t: "ة means female", d: "طَبِيب is a male doctor and طَبِيبَة a female one. The same goes for طالِب / طالِبَة and صَدِيق / صَدِيقَة." },
+      { icon: "🔁", t: "ة becomes ت before an ending", d: "صَدِيقَة + ي = صَدِيقَتِي. The round ة opens into an ordinary ت whenever something is added after it." },
+      { icon: "👋", t: "مَعَ السَّلامَةِ means “go with safety”", d: "مَعَ = with and سَلامَة = safety, so it's like saying “be safe”. It's the everyday goodbye, and the reply is the same phrase." },
+      { icon: "📏", t: "Near vs far", d: "هَذا / هَذِهِ for things close to you, ذَلِكَ / تِلْكَ for things over there. Likewise هُنا (here) vs هُناكَ (there)." },
+      { icon: "❓", t: "ما vs ماذا", d: "Both mean “what”. ماذا tends to come before a verb: ماذا تَفْعَلُ؟ What are you doing?" },
+      { icon: "✍️", t: "Write the numbers by hand", d: "Read 1–10 aloud again and again and write them down, including the Arabic digits ١ ٢ ٣ …, until you know them by heart." }
+    ],
+
+    practice: [
+      { type: "mcq", q: "Aḥmad introduces his BROTHER. He says: ___ أَخِي.", options: ["هَذِهِ", "هَذا", "هِيَ"], answer: 1, explain: "أَخ (brother) is masculine, so use هَذا." },
+      { type: "mcq", q: "Nadā introduces her SISTER. She says: ___ أُخْتِي.", options: ["هَذا", "هُوَ", "هَذِهِ"], answer: 2, explain: "أُخْت (sister) is feminine, so use هَذِهِ." },
+      { type: "mcq", q: "The sister is a doctor. Complete: هِيَ ___", options: ["طَبِيبٌ", "طَبِيبَةٌ", "طَبِيبِي"], answer: 1, explain: "She is female, so the job takes ة." },
+      { type: "mcq", q: "How do you say “my friend” to mean a female friend?", options: ["صَدِيقَةِي", "صَدِيقِي", "صَدِيقَتِي"], answer: 2, explain: "ة becomes ت before an ending: صَدِيقَة → صَدِيقَتِي." },
+      { type: "mcq", q: "What does مَعَ السَّلامَةِ literally mean?", options: ["peace be upon you", "with safety", "welcome"], answer: 1, explain: "مَعَ = with, سَلامَة = safety. It is the everyday “goodbye”." },
+      { type: "mcq", q: "A book is far away from you. You say: ___ كِتابٌ.", options: ["هَذا", "ذَلِكَ", "تِلْكَ"], answer: 1, explain: "Far + masculine = ذَلِكَ. تِلْكَ is far + feminine." },
+      { type: "mcq", q: "Which ending means “her”?", options: ["ـهُ", "ـها", "ـنا"], answer: 1, explain: "ـها = her, ـهُ = his, ـنا = our." },
+      { type: "mcq", q: "كِتابُنا means…", options: ["my book", "our book", "his book"], answer: 1 },
+      { type: "mcq", q: "Which question word means “why?”", options: ["لِماذا", "ماذا", "مَتَى"], answer: 0 },
+      { type: "mcq", q: "Which question word means “who?”", options: ["ما", "مَنْ", "مِنْ"], answer: 1, explain: "Careful: مَنْ (man) = who, but مِنْ (min) = from." },
+      { type: "mcq", q: "What is نَحْنُ?", options: ["we", "he", "here"], answer: 0 },
+      { type: "fill", sentence: "هَذا صَدِيقِي. ___ مُهَنْدِسٌ.", en: "This is my friend. He is an engineer.", options: ["هِيَ", "هُوَ", "أَنا"], answer: 1 },
+      { type: "fill", sentence: "هَذِهِ صَدِيقَتِي. هِيَ ___.", en: "This is my friend. She is a student.", options: ["طالِبٌ", "طالِبَةٌ", "طالِبِي"], answer: 1 },
+      { type: "fill", sentence: "___ قِطَّتِي.", en: "That is my cat. (far away)", options: ["ذَلِكَ", "هَذا", "تِلْكَ"], answer: 2 },
+      { type: "order", words: ["هَذا", "أَخِي."], en: "This is my brother." },
+      { type: "order", words: ["هِيَ", "طَبِيبَةٌ."], en: "She is a doctor." },
+      { type: "order", words: ["هَذِهِ", "صَدِيقَتِي."], en: "This is my friend (f)." },
+      { type: "order", words: ["لِماذا", "أَنْتَ", "هُنا؟"], en: "Why are you here?" },
+      { type: "reply", prompt: "مَعَ السَّلامَةِ.", en: "Choose a logical reply", options: ["أَهْلًا وَسَهْلًا.", "مَعَ السَّلامَةِ.", "هُوَ مُدَرِّسٌ."], answer: 1 },
+      { type: "reply", prompt: "هَذا صَدِيقِي.", en: "Choose a logical reply", options: ["أَهْلًا وَسَهْلًا.", "وَعَلَيْكُمُ السَّلامُ.", "نَعَمْ، هِيَ طالِبَةٌ."], answer: 0 },
+      { type: "reply", prompt: "مَنْ هَذِهِ؟", en: "Choose a logical reply", options: ["هَذا أَخِي.", "هَذِهِ أُخْتِي.", "هُوَ مُهَنْدِسٌ."], answer: 1 },
+      { type: "listen", q: "Which number did you hear?", say: "ثَلاثَةٌ", options: ["3", "8", "2", "6"], answer: 0 },
+      { type: "listen", q: "Which number did you hear?", say: "سَبْعَةٌ", options: ["9", "7", "4", "1"], answer: 1 },
+      { type: "listen", q: "Which number did you hear?", say: "عَشَرَةٌ", options: ["5", "2", "10", "6"], answer: 2 },
+      { type: "listen", q: "Which number did you hear?", say: "ثَمانِيَةٌ", options: ["3", "6", "4", "8"], answer: 3 }
+    ],
+
+    roleplay: [
+      { them: "السَّلامُ عَلَيْكُمْ.", you: "وَعَلَيْكُمُ السَّلامُ.", hint: "Return the greeting" },
+      { them: "مَنْ هَذا؟", you: "هَذا أَخِي. هُوَ … (job)", hint: "Introduce your brother and say his job" },
+      { them: "أَهْلًا وَسَهْلًا. وَمَنْ هَذِهِ؟", you: "هَذِهِ صَدِيقَتِي. هِيَ … (job + ة)", hint: "Introduce a female friend, and remember the ة" },
+      { them: "هَلْ هِيَ طَبِيبَةٌ؟", you: "نَعَمْ، هِيَ طَبِيبَةٌ. / لا، هِيَ طالِبَةٌ.", hint: "Answer yes or no" },
+      { them: "هَلْ أَنْتَ طالِبٌ؟", you: "نَعَمْ، أَنا طالِبٌ. / لا، أَنا …", hint: "Talk about yourself" },
+      { them: "مَعَ السَّلامَةِ.", you: "مَعَ السَّلامَةِ.", hint: "Say goodbye" }
+    ]
+  });
+})();
+</script><script>// Book 1 · Video 3 — Unit 2 (الأسرة), Dialogues 1–2 (book pp. 28–31)
+// Source: Al-ʿArabiyyah Bayna Yadayk Book 1 + Al-Lisan video commentary (lesson 3 transcript)
+(function () {
+  const OWN = [
+    { k: "my", label: "ـي my", sfx: "ِي", tr: "ī", en: "my" },
+    { k: "m", label: "ـكَ your (m)", sfx: "ُكَ", tr: "uka", en: "your" },
+    { k: "f", label: "ـكِ your (f)", sfx: "ُكِ", tr: "uki", en: "your" },
+    { k: "his", label: "ـهُ his", sfx: "ُهُ", tr: "uhu", en: "his" },
+    { k: "her", label: "ـها her", sfx: "ُها", tr: "uhā", en: "her" }
+  ];
+  const REL = [
+    { k: "walid", stem: "والِد", tr: "wālid", en: "father", pic: "👨" },
+    { k: "walida", stem: "والِدَت", tr: "wālidat", en: "mother", pic: "👩", fem: true },
+    { k: "jadd", stem: "جَدّ", tr: "jadd", en: "grandfather", pic: "👴" },
+    { k: "jadda", stem: "جَدَّت", tr: "jaddat", en: "grandmother", pic: "👵", fem: true },
+    { k: "amm", stem: "عَمّ", tr: "ʿamm", en: "uncle (father's side)", pic: "🧔" },
+    { k: "amma", stem: "عَمَّت", tr: "ʿammat", en: "aunt (father's side)", pic: "🧕", fem: true },
+    { k: "ibn", stem: "اِبْن", tr: "ibn", en: "son", pic: "👦" },
+    { k: "ibna", stem: "اِبْنَت", tr: "ibnat", en: "daughter", pic: "👧", fem: true }
+  ];
+  const relOut = {};
+  REL.forEach(r => OWN.forEach(o => {
+    relOut[r.k + "|" + o.k] = [r.stem + o.sfx, r.tr + o.tr, `${o.en} ${r.en}${o.k === "m" ? " (said to a male)" : o.k === "f" ? " (said to a female)" : ""}`,
+      r.fem ? "Feminine word: its ة becomes ت before the ending." : ""];
+  }));
+
+  LESSONS.push({
+    id: "b1-03",
+    book: 1,
+    num: 3,
+    unit: "الوَحْدَةُ الثّانِيَةُ · الأُسْرَةُ",
+    unitEn: "Unit 2 · The Family",
+    title: "My Family",
+    titleAr: "هَذِهِ صُورَةُ أُسْرَتِي",
+    covers: "Book pages 28–31 · Unit 2, Dialogue 1 (a family photo) and Dialogue 2 (the family tree of the Prophet ﷺ)",
+    video: "https://www.youtube.com/playlist?list=PLDS9YrkKMtPR4-S3ih8wad7oXMyrdEdXY",
+    goals: [
+      "Name your family: father, mother, grandparents, brother, sister",
+      "Use the synonyms والِد = أَب, والِدَة = أُمّ, مُدَرِّس = مُعَلِّم",
+      "Talk about father's-side uncles and aunts: عَمّ, عَمَّة",
+      "Say son and daughter: اِبْن, اِبْنَة",
+      "Say whose relative it is: والِدِي, والِدُهُ, عَمَّتُهُ …",
+      "Know that some words are feminine only grammatically, e.g. صُورَة → هَذِهِ"
+    ],
+    gender: { any: "هذا|هذه", fem: "هذه", q: "Is the person being introduced male or female?" },
+
+    dialogues: [
+      {
+        id: "u2d1", title: "Dialogue 1", titleAr: "الحِوارُ الأَوَّلُ",
+        note: "ʿAlī shows ʿAmmār a photo of his family.",
+        people: { "عَلِيّ": "m1", "عَمّار": "m2" },
+        tree: { label: "ʿAlī's family · tap a name", levels: [
+          [{ ar: "جَدِّي", en: "my grandfather", say: "وَهَذا جَدِّي.", g: "m" }, { ar: "جَدَّتِي", en: "my grandmother", say: "وَهَذِهِ جَدَّتِي.", g: "f" }],
+          [{ ar: "والِدِي عَدْنانُ", en: "my father · engineer", say: "هَذا والِدِي عَدْنانُ وَهُوَ مُهَنْدِسٌ.", g: "m" }, { ar: "والِدَتِي سَعِيدَةُ", en: "my mother · doctor", say: "هَذِهِ والِدَتِي سَعِيدَةُ وَهِيَ طَبِيبَةٌ.", g: "f" }],
+          [{ ar: "أَخِي عِيسَى", en: "my brother · student", say: "هَذا أَخِي عِيسَى وَهُوَ طالِبٌ.", g: "m" }, { ar: "أَنا عَلِيٌّ", en: "me", say: "أَنا عَلِيٌّ.", me: true }, { ar: "أُخْتِي عَبْلَةُ", en: "my sister · teacher", say: "هَذِهِ أُخْتِي عَبْلَةُ وَهِيَ مُعَلِّمَةٌ.", g: "f" }]
+        ]},
+        lines: [
+          ["عَلِيّ", "السَّلامُ عَلَيْكُمْ.", "as-salāmu ʿalaykum.", "Peace be upon you."],
+          ["عَمّار", "وَعَلَيْكُمُ السَّلامُ.", "wa ʿalaykumu s-salām.", "And upon you be peace."],
+          ["عَلِيّ", "هَذِهِ صُورَةُ أُسْرَتِي.", "hādhihi ṣūratu usratī.", "This is a picture of my family."],
+          ["عَمّار", "ما شاءَ اللهُ! مَنْ هَذا؟", "mā shāʾa llāh! man hādhā?", "Mā shāʾ Allāh! Who is this (m)?"],
+          ["عَلِيّ", "هَذا والِدِي عَدْنانُ وَهُوَ مُهَنْدِسٌ.", "hādhā wālidī ʿAdnān wa huwa muhandis.", "This is my father ʿAdnān, and he is an engineer."],
+          ["عَمّار", "وَمَنْ هَذِهِ؟", "wa man hādhihi?", "And who is this (f)?"],
+          ["عَلِيّ", "هَذِهِ والِدَتِي سَعِيدَةُ وَهِيَ طَبِيبَةٌ.", "hādhihi wālidatī Saʿīda wa hiya ṭabība.", "This is my mother Saʿīda, and she is a doctor."],
+          ["عَمّار", "وَمَنْ هَذا؟", "wa man hādhā?", "And who is this (m)?"],
+          ["عَلِيّ", "هَذا أَخِي عِيسَى وَهُوَ طالِبٌ.", "hādhā akhī ʿĪsā wa huwa ṭālib.", "This is my brother ʿĪsā, and he is a student."],
+          ["عَمّار", "وَمَنْ هَذِهِ؟", "wa man hādhihi?", "And who is this (f)?"],
+          ["عَلِيّ", "هَذِهِ أُخْتِي عَبْلَةُ وَهِيَ مُعَلِّمَةٌ. وَهَذا جَدِّي، وَهَذِهِ جَدَّتِي.", "hādhihi ukhtī ʿAbla wa hiya muʿallima. wa hādhā jaddī, wa hādhihi jaddatī.", "This is my sister ʿAbla, and she is a teacher. And this is my grandfather, and this is my grandmother."],
+          ["عَمّار", "ما شاءَ اللهُ!", "mā shāʾa llāh!", "Mā shāʾ Allāh! (How lovely!)"]
+        ]
+      },
+      {
+        id: "u2d2", title: "Dialogue 2", titleAr: "الحِوارُ الثّانِي",
+        note: "ʿUmar and ʿUthmān look at a family tree: the family of the Prophet Muḥammad ﷺ. Notice ـهُ (his) on every relative.",
+        people: { "عُمَر": "m3", "عُثْمان": "m4" },
+        tree: { label: "The family of the Prophet ﷺ · tap a name", levels: [
+          [{ ar: "عَبْدُ المُطَّلِبِ", en: "his grandfather", say: "وَهَذا جَدُّهُ عَبْدُ المُطَّلِبِ.", g: "m" }],
+          [{ ar: "العَبّاسُ", en: "his uncle", say: "وَهَذا عَمُّهُ العَبّاسُ.", g: "m" }, { ar: "حَمْزَةُ", en: "his uncle", say: "وَهَذا عَمُّهُ حَمْزَةُ.", g: "m" }, { ar: "عَبْدُ اللهِ", en: "his father", say: "هَذا والِدُهُ عَبْدُ اللهِ.", g: "m" }, { ar: "آمِنَةُ", en: "his mother", say: "وَهَذِهِ والِدَتُهُ آمِنَةُ.", g: "f" }, { ar: "أَبُو طالِبٍ", en: "his uncle", say: "وَهَذا عَمُّهُ أَبُو طالِبٍ.", g: "m" }, { ar: "صَفِيَّةُ", en: "his aunt", say: "وَهَذِهِ عَمَّتُهُ صَفِيَّةُ.", g: "f" }],
+          [{ ar: "مُحَمَّدٌ ﷺ", en: "the Messenger", say: "مُحَمَّدٌ رَسُولُ اللهِ ﷺ", me: true }],
+          [{ ar: "القاسِمُ", en: "his son", say: "وَهَذا ابْنُهُ القاسِمُ.", g: "m" }, { ar: "عَبْدُ اللهِ", en: "his son", say: "وَهَذا ابْنُهُ عَبْدُ اللهِ.", g: "m" }, { ar: "إِبْراهِيمُ", en: "his son", say: "وَهَذا ابْنُهُ إِبْراهِيمُ.", g: "m" }, { ar: "فاطِمَةُ", en: "his daughter", say: "وَهَذِهِ ابْنَتُهُ فاطِمَةُ.", g: "f" }, { ar: "رُقَيَّةُ", en: "his daughter", say: "وَهَذِهِ ابْنَتُهُ رُقَيَّةُ.", g: "f" }, { ar: "زَيْنَبُ", en: "his daughter", say: "وَهَذِهِ ابْنَتُهُ زَيْنَبُ.", g: "f" }, { ar: "أُمُّ كُلْثُومٍ", en: "his daughter", say: "وَهَذِهِ ابْنَتُهُ أُمُّ كُلْثُومٍ.", g: "f" }]
+        ]},
+        lines: [
+          ["عُمَر", "هَلْ هَذِهِ شَجَرَةٌ؟", "hal hādhihi shajara?", "Is this a tree?"],
+          ["عُثْمان", "نَعَمْ، هَذِهِ أُسْرَةُ الرَّسُولِ، صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ.", "naʿam, hādhihi usratu r-rasūl, ṣallā llāhu ʿalayhi wa sallam.", "Yes, this is the family of the Messenger, peace and blessings be upon him."],
+          ["عُمَر", "صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ.", "ṣallā llāhu ʿalayhi wa sallam.", "Peace and blessings be upon him."],
+          ["عُثْمان", "هَذا والِدُهُ عَبْدُ اللهِ.", "hādhā wāliduhu ʿAbdullāh.", "This is his father, ʿAbdullāh."],
+          ["عُمَر", "وَهَذِهِ والِدَتُهُ آمِنَةُ.", "wa hādhihi wālidatuhu Āmina.", "And this is his mother, Āmina."],
+          ["عُثْمان", "وَهَذا جَدُّهُ عَبْدُ المُطَّلِبِ.", "wa hādhā jadduhu ʿAbdul-Muṭṭalib.", "And this is his grandfather, ʿAbd al-Muṭṭalib."],
+          ["عُمَر", "وَهَذا عَمُّهُ العَبّاسُ.", "wa hādhā ʿammuhu l-ʿAbbās.", "And this is his uncle, al-ʿAbbās."],
+          ["عُثْمان", "وَهَذا عَمُّهُ حَمْزَةُ.", "wa hādhā ʿammuhu Ḥamza.", "And this is his uncle, Ḥamza."],
+          ["عُمَر", "وَهَذا عَمُّهُ أَبُو طالِبٍ.", "wa hādhā ʿammuhu Abū Ṭālib.", "And this is his uncle, Abū Ṭālib."],
+          ["عُثْمان", "وَهَذِهِ عَمَّتُهُ صَفِيَّةُ.", "wa hādhihi ʿammatuhu Ṣafiyya.", "And this is his aunt, Ṣafiyya."],
+          ["عُمَر", "وَهَذا ابْنُهُ القاسِمُ.", "wa hādhā bnuhu l-Qāsim.", "And this is his son, al-Qāsim."],
+          ["عُثْمان", "وَهَذا ابْنُهُ عَبْدُ اللهِ.", "wa hādhā bnuhu ʿAbdullāh.", "And this is his son, ʿAbdullāh."],
+          ["عُمَر", "وَهَذا ابْنُهُ إِبْراهِيمُ.", "wa hādhā bnuhu Ibrāhīm.", "And this is his son, Ibrāhīm."],
+          ["عُثْمان", "وَهَذِهِ ابْنَتُهُ فاطِمَةُ.", "wa hādhihi bnatuhu Fāṭima.", "And this is his daughter, Fāṭima."],
+          ["عُمَر", "وَهَذِهِ ابْنَتُهُ رُقَيَّةُ.", "wa hādhihi bnatuhu Ruqayya.", "And this is his daughter, Ruqayya."],
+          ["عُثْمان", "وَهَذِهِ ابْنَتُهُ زَيْنَبُ.", "wa hādhihi bnatuhu Zaynab.", "And this is his daughter, Zaynab."],
+          ["عُمَر", "وَهَذِهِ ابْنَتُهُ أُمُّ كُلْثُومٍ.", "wa hādhihi bnatuhu Umm Kulthūm.", "And this is his daughter, Umm Kulthūm."]
+        ]
+      }
+    ],
+
+    vocab: [
+      { ar: "أُسْرَةٌ", tr: "usra", en: "family", pic: "👨‍👩‍👧‍👦", cat: "Family" },
+      { ar: "والِدٌ", tr: "wālid", en: "father", pic: "👨", cat: "Family" },
+      { ar: "أَبٌ", tr: "ab", en: "father (synonym of والِد)", pic: "👨", cat: "Family" },
+      { ar: "والِدَةٌ", tr: "wālida", en: "mother", pic: "👩", cat: "Family" },
+      { ar: "أُمٌّ", tr: "umm", en: "mother (synonym of والِدَة)", pic: "👩", cat: "Family" },
+      { ar: "جَدٌّ", tr: "jadd", en: "grandfather", pic: "👴", cat: "Family" },
+      { ar: "جَدَّةٌ", tr: "jadda", en: "grandmother", pic: "👵", cat: "Family" },
+      { ar: "عَمٌّ", tr: "ʿamm", en: "uncle (father's brother)", pic: "🧔", cat: "Family" },
+      { ar: "عَمَّةٌ", tr: "ʿamma", en: "aunt (father's sister)", pic: "🧕", cat: "Family" },
+      { ar: "اِبْنٌ", tr: "ibn", en: "son", pic: "👦", cat: "Family" },
+      { ar: "اِبْنَةٌ", tr: "ibna", en: "daughter", pic: "👧", cat: "Family" },
+      { ar: "مُعَلِّمٌ", tr: "muʿallim", en: "teacher (m), same as مُدَرِّس", pic: "👨‍🏫", cat: "Jobs" },
+      { ar: "مُعَلِّمَةٌ", tr: "muʿallima", en: "teacher (f)", pic: "👩‍🏫", cat: "Jobs" },
+      { ar: "صُورَةٌ", tr: "ṣūra", en: "picture, photo", pic: "🖼️", cat: "Other words" },
+      { ar: "شَجَرَةٌ", tr: "shajara", en: "tree", pic: "🌳", cat: "Other words" },
+      { ar: "رَسُولٌ", tr: "rasūl", en: "messenger", pic: "✉️", cat: "Other words" },
+      { ar: "ما شاءَ اللهُ", tr: "mā shāʾa llāh", en: "what God has willed (said when admiring something)", pic: "😍", cat: "Phrases" },
+      { ar: "صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ", tr: "ṣallā llāhu ʿalayhi wa sallam", en: "peace and blessings be upon him (ﷺ)", pic: "🤲", cat: "Phrases" },
+      { ar: "مَنْ هَذا؟", tr: "man hādhā?", en: "who is this? (m)", pic: "🧑❓", cat: "Phrases" },
+      { ar: "مَنْ هَذِهِ؟", tr: "man hādhihi?", en: "who is this? (f)", pic: "👩❓", cat: "Phrases" }
+    ],
+
+    grammar: [
+      {
+        id: "g-syn",
+        title: "Synonyms: two words, one meaning",
+        body: [
+          "The teacher points out three pairs of words that mean the same thing. Both forms are common, so learn both:",
+          "<b>والِد</b> = <b>أَب</b> (father) · <b>والِدَة</b> = <b>أُمّ</b> (mother) · <b>مُدَرِّس</b> = <b>مُعَلِّم</b> (teacher)",
+          "So ʿAlī could just as well have said هَذِهِ أُمِّي سَعِيدَةُ instead of هَذِهِ والِدَتِي سَعِيدَةُ. It's like saying <i>mom</i> instead of <i>mother</i>."
+        ],
+        table: { head: ["", "Arabic", "Say it", "Meaning"], rows: [
+          ["👨", "والِدٌ / أَبٌ", "wālid / ab", "father"],
+          ["👩", "والِدَةٌ / أُمٌّ", "wālida / umm", "mother"],
+          ["👨‍🏫", "مُدَرِّسٌ / مُعَلِّمٌ", "mudarris / muʿallim", "teacher (m)"],
+          ["👩‍🏫", "مُدَرِّسَةٌ / مُعَلِّمَةٌ", "mudarrisa / muʿallima", "teacher (f)"]
+        ]}
+      },
+      {
+        id: "g-family",
+        title: "Family words, and whose relative it is",
+        body: [
+          "Every relative takes the possessive endings from Lessons 1–2. Dialogue 1 uses <b>ـي</b> (my): والِدِي، والِدَتِي، جَدِّي، جَدَّتِي.",
+          "Dialogue 2 talks about the Prophet ﷺ, so every relative takes <b>ـهُ</b> (his): والِدُهُ، جَدُّهُ، عَمُّهُ، عَمَّتُهُ، ابْنُهُ، ابْنَتُهُ.",
+          "Remember the rule from Lesson 2: feminine words ending in ة change it to ت before the ending, e.g. والِدَة → والِدَتُهُ and عَمَّة → عَمَّتُهُ."
+        ],
+        widget: {
+          type: "combo", label: "Whose relative? · pick a relative, then an owner",
+          rows: REL.map(r => ({ k: r.k, label: `${r.pic} ${r.en.replace(/ \(.*\)/, "")}` })),
+          cols: OWN.map(o => ({ k: o.k, label: o.label })),
+          out: relOut
+        }
+      },
+      {
+        id: "g-amm",
+        title: "عَمّ and عَمَّة: uncle and aunt on the FATHER's side",
+        body: [
+          "Arabic has different words for uncles and aunts depending on which parent they're related to.",
+          "<b>عَمّ</b> (ʿamm) is your <b>father's brother</b>, and <b>عَمَّة</b> (ʿamma, adding ة) is your <b>father's sister</b>.",
+          "In Dialogue 2: العَبّاسُ، حَمْزَةُ and أَبُو طالِبٍ are his عَمّ (the teacher notes the Prophet ﷺ had about 10–11 paternal uncles), and صَفِيَّةُ is his عَمَّة.",
+          "The words for the <b>mother's</b> side (خال / خالَة) come in the next lesson."
+        ]
+      },
+      {
+        id: "g-ibn",
+        title: "Son and daughter: اِبْن · اِبْنَة",
+        body: [
+          "<b>اِبْن</b> (ibn) = son. Add ة for <b>اِبْنَة</b> (ibna) = daughter. Another common word for daughter is <b>بِنْت</b> (bint).",
+          "The alif at the start is only pronounced at the beginning of speech. After another word it falls silent: وَهَذا ابْنُهُ is said <i>wa hādhā <b>bnu</b>hu</i>.",
+          "The teacher's summary: the Prophet ﷺ had three sons (القاسِم، عَبْدُ الله، إِبْراهِيم) and four daughters (فاطِمَة، رُقَيَّة، زَيْنَب، أُمّ كُلْثُوم)."
+        ]
+      },
+      {
+        id: "g-gram-fem",
+        title: "Grammatically feminine words",
+        body: [
+          "ʿAlī says <b>هَذِهِ</b> صُورَةُ أُسْرَتِي, using هَذِهِ, not هَذا. That's because صُورَة (picture) is a <b>feminine word</b>: it ends in ة.",
+          "As the teacher puts it, a picture isn't biologically female; it's <b>linguistically</b> feminine. The same is true for أُسْرَة (family) and شَجَرَة (tree): هَلْ <b>هَذِهِ</b> شَجَرَةٌ؟",
+          "Rule of thumb for now: a word ending in ة takes هَذِهِ and هِيَ."
+        ],
+        widget: {
+          type: "combo", label: "This is… · pick a word",
+          rows: [{ k: "sura", label: "🖼️ picture" }, { k: "shajara", label: "🌳 tree" }, { k: "usra", label: "👨‍👩‍👧 family" }, { k: "kitab", label: "📕 book" }, { k: "qalam", label: "🖊️ pen" }],
+          cols: [{ k: "x", label: "👇 هَذا or هَذِهِ?" }],
+          out: {
+            "sura|x": ["هَذِهِ صُورَةٌ.", "hādhihi ṣūra.", "This is a picture.", "ends in ة → feminine → هَذِهِ"],
+            "shajara|x": ["هَذِهِ شَجَرَةٌ.", "hādhihi shajara.", "This is a tree.", "ends in ة → feminine → هَذِهِ"],
+            "usra|x": ["هَذِهِ أُسْرَةٌ.", "hādhihi usra.", "This is a family.", "ends in ة → feminine → هَذِهِ"],
+            "kitab|x": ["هَذا كِتابٌ.", "hādhā kitāb.", "This is a book.", "no ة → masculine → هَذا"],
+            "qalam|x": ["هَذا قَلَمٌ.", "hādhā qalam.", "This is a pen.", "no ة → masculine → هَذا"]
+          }
+        }
+      }
+    ],
+
+    sounds: {
+      intro: "The family words bring in two important sounds: ع versus the plain hamza (أ), and the shadda, which doubles a letter. Tap, listen and repeat.",
+      letters: [
+        { l: "ع", name: "ʿayn", tip: "The throat squeeze. Don't skip it: عَمّ (uncle) and أُمّ (mother) differ only in this first sound!", ex: ["عَمٌّ", "عَمَّةٌ", "مُعَلِّمَةٌ", "عَدْنانُ", "عَبْلَةُ"] },
+        { l: "ـّ", name: "shadda (doubling)", tip: "A shadda means the letter is held twice as long: jad-d, ʿam-m, muʿal-lim. Lean on it, or the word changes.", ex: ["جَدٌّ", "جَدَّةٌ", "أُمٌّ", "عَمّار", "مُعَلِّمٌ"] },
+        { l: "ج", name: "jīm", tip: "Like English “j” in “jam”. (In Egypt it's often said like a hard “g”.)", ex: ["جَدِّي", "جَدَّتِي", "شَجَرَةٌ"] },
+        { l: "ش", name: "shīn", tip: "Like English “sh”.", ex: ["شَجَرَةٌ", "ما شاءَ اللهُ"] },
+        { l: "ص", name: "ṣād", tip: "The heavy s again. Keep the vowels deep: ṣūra, not sūra.", ex: ["صُورَةٌ", "صَفِيَّةُ"] }
+      ],
+      pairs: [
+        { a: ["عَمٌّ", "ʿamm", "uncle"], b: ["أُمٌّ", "umm", "mother"], note: "ع vs أ" },
+        { a: ["عَمٌّ", "ʿamm", "uncle"], b: ["عَمَّةٌ", "ʿamma", "aunt"], note: "m vs f" },
+        { a: ["جَدٌّ", "jadd", "grandfather"], b: ["جَدَّةٌ", "jadda", "grandmother"], note: "m vs f" },
+        { a: ["اِبْنٌ", "ibn", "son"], b: ["اِبْنَةٌ", "ibna", "daughter"], note: "m vs f" },
+        { a: ["والِدِي", "wālidī", "my father"], b: ["والِدُهُ", "wāliduhu", "his father"], note: "my vs his" }
+      ]
+    },
+
+    tips: [
+      { icon: "📖", t: "Revise the previous chapter", d: "The teacher reminds you that مُهَنْدِس, طالِب and طَبِيبَة all come from Unit 1. If you don't recognise them instantly, go back to Lessons 1–2 and do a flashcard round." },
+      { icon: "🎩", t: "Feminine doesn't have to mean female", d: "صُورَة (picture) is linguistically feminine because of its ة, so you say هَذِهِ صُورَةٌ. The same goes for أُسْرَة and شَجَرَة." },
+      { icon: "😍", t: "ما شاءَ اللهُ", d: "Say it when you like or admire something, e.g. a nice family photo. ʿAmmār says it twice in Dialogue 1." },
+      { icon: "🔁", t: "Two words, same meaning", d: "والِد = أَب, والِدَة = أُمّ, مُدَرِّس = مُعَلِّم. Learn both of each pair." },
+      { icon: "👨‍👦", t: "عَمّ is the father's brother only", d: "عَمّ and عَمَّة are the uncle and aunt on your father's side. The mother's side uses different words, coming in the next lesson." },
+      { icon: "🤲", t: "ﷺ after the Prophet's name", d: "When the Prophet is mentioned, both speakers say صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ. In writing it's often shortened to ﷺ." },
+      { icon: "🧠", t: "ـهُ = his", d: "Dialogue 2 is a great drill for the ending ـهُ: والِدُهُ، والِدَتُهُ، جَدُّهُ، عَمُّهُ، عَمَّتُهُ، ابْنُهُ، ابْنَتُهُ." }
+    ],
+
+    practice: [
+      { type: "mcq", q: "Which word means the same as والِد (father)?", options: ["أَخ", "أَب", "جَدّ"], answer: 1 },
+      { type: "mcq", q: "Which word means the same as والِدَة (mother)?", options: ["أُمّ", "عَمَّة", "أُخْت"], answer: 0 },
+      { type: "mcq", q: "Which word means the same as مُدَرِّس (teacher)?", options: ["مُهَنْدِس", "مُعَلِّم", "طالِب"], answer: 1 },
+      { type: "mcq", q: "Your FATHER's brother is your…", options: ["جَدّ", "عَمّ", "اِبْن"], answer: 1 },
+      { type: "mcq", q: "Your FATHER's sister is your…", options: ["عَمَّة", "جَدَّة", "اِبْنَة"], answer: 0 },
+      { type: "mcq", q: "Why does ʿAlī say هَذِهِ صُورَةُ أُسْرَتِي and not هَذا?", options: ["Because his mother is in the photo", "Because صُورَة is a feminine word (it ends in ة)", "Because هَذِهِ means “picture”"], answer: 1 },
+      { type: "mcq", q: "How do you say “his mother”?", options: ["والِدَتُهُ", "والِدَةُهُ", "والِدَتِي"], answer: 0, explain: "ة becomes ت before the ending ـهُ." },
+      { type: "mcq", q: "عَمُّهُ means…", options: ["his uncle", "my uncle", "her uncle"], answer: 0 },
+      { type: "mcq", q: "How many daughters of the Prophet ﷺ are named in Dialogue 2?", options: ["three", "four", "seven"], answer: 1, explain: "فاطِمَة، رُقَيَّة، زَيْنَب، أُمّ كُلْثُوم. The three sons are القاسِم، عَبْدُ الله، إِبْراهِيم." },
+      { type: "fill", sentence: "هَذا ___ عَدْنانُ وَهُوَ مُهَنْدِسٌ.", en: "This is my father ʿAdnān, and he is an engineer.", options: ["والِدَتِي", "والِدِي", "جَدَّتِي"], answer: 1 },
+      { type: "fill", sentence: "هَذِهِ أُخْتِي عَبْلَةُ وَهِيَ ___.", en: "This is my sister ʿAbla, and she is a teacher.", options: ["مُعَلِّمٌ", "مُعَلِّمَةٌ", "طالِبٌ"], answer: 1 },
+      { type: "fill", sentence: "___ صُورَةُ أُسْرَتِي.", en: "This is a picture of my family.", options: ["هَذا", "هَذِهِ", "هُوَ"], answer: 1 },
+      { type: "fill", sentence: "وَهَذِهِ ___ صَفِيَّةُ.", en: "And this is his aunt Ṣafiyya.", options: ["عَمُّهُ", "عَمَّتُهُ", "عَمَّةُهُ"], answer: 1 },
+      { type: "order", words: ["هَذِهِ", "صُورَةُ", "أُسْرَتِي."], en: "This is a picture of my family." },
+      { type: "order", words: ["هَذا", "جَدِّي."], en: "This is my grandfather." },
+      { type: "order", words: ["هَلْ", "هَذِهِ", "شَجَرَةٌ؟"], en: "Is this a tree?" },
+      { type: "order", words: ["وَهَذا", "ابْنُهُ", "إِبْراهِيمُ."], en: "And this is his son Ibrāhīm." },
+      { type: "reply", prompt: "هَذِهِ صُورَةُ أُسْرَتِي.", en: "Choose a logical reply", options: ["ما شاءَ اللهُ!", "مَعَ السَّلامَةِ.", "وَعَلَيْكُمُ السَّلامُ."], answer: 0 },
+      { type: "reply", prompt: "مَنْ هَذِهِ؟", en: "Choose a logical reply", options: ["هَذا جَدِّي.", "هَذِهِ جَدَّتِي.", "هُوَ طالِبٌ."], answer: 1 },
+      { type: "reply", prompt: "هَذِهِ أُسْرَةُ الرَّسُولِ، صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ.", en: "Choose a logical reply", options: ["صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ.", "أَهْلًا وَسَهْلًا.", "مَنْ هَذا؟"], answer: 0 }
+    ],
+
+    roleplay: [
+      { them: "السَّلامُ عَلَيْكُمْ.", you: "وَعَلَيْكُمُ السَّلامُ. هَذِهِ صُورَةُ أُسْرَتِي.", hint: "Reply, then show your family photo" },
+      { them: "ما شاءَ اللهُ! مَنْ هَذا؟", you: "هَذا والِدِي … وَهُوَ … (name, job)", hint: "Introduce your father: name and job" },
+      { them: "وَمَنْ هَذِهِ؟", you: "هَذِهِ والِدَتِي … وَهِيَ … (name, job + ة)", hint: "Introduce your mother" },
+      { them: "وَمَنْ هَذا؟", you: "هَذا أَخِي … / هَذا جَدِّي.", hint: "A brother or your grandfather" },
+      { them: "وَمَنْ هَذِهِ؟", you: "هَذِهِ أُخْتِي … / هَذِهِ جَدَّتِي.", hint: "A sister or your grandmother" },
+      { them: "هَلْ هَذا عَمُّكَ؟", you: "نَعَمْ، هَذا عَمِّي. / لا، هَذا أَبِي.", hint: "Is this your uncle? Answer yes or no" },
+      { them: "ما شاءَ اللهُ! مَعَ السَّلامَةِ.", you: "مَعَ السَّلامَةِ.", hint: "Say goodbye" }
+    ]
+  });
+})();
+</script><script>// Book 1 · Video 4 — Unit 2 (الأسرة), Dialogue 3 (book pp. 32–33) + teacher's family summary and singular/plural table
+// Source: Al-ʿArabiyyah Bayna Yadayk Book 1 + Al-Lisan video commentary (lesson 4 transcript)
+(function () {
+  const REL = [
+    ["ibn", "اِبْنٌ", "ibn", "son", "m"], ["bint", "بِنْتٌ", "bint", "daughter", "f"],
+    ["akh", "أَخٌ", "akh", "brother", "m"], ["ukht", "أُخْتٌ", "ukht", "sister", "f"],
+    ["amm", "عَمٌّ", "ʿamm", "uncle (father's side)", "m"], ["amma", "عَمَّةٌ", "ʿamma", "aunt (father's side)", "f"],
+    ["khal", "خالٌ", "khāl", "uncle (mother's side)", "m"], ["khala", "خالَةٌ", "khāla", "aunt (mother's side)", "f"]
+  ];
+  const sizeOut = {};
+  REL.forEach(([k, a, t, e, g]) => {
+    sizeOut[k + "|big"] = [`${a} ${g === "f" ? "كَبِيرَةٌ" : "كَبِيرٌ"}`, `${t} ${g === "f" ? "kabīra" : "kabīr"}`, `an older ${e}`, g === "f" ? "Feminine noun → feminine adjective with ة" : "Masculine noun → masculine adjective"];
+    sizeOut[k + "|small"] = [`${a} ${g === "f" ? "صَغِيرَةٌ" : "صَغِيرٌ"}`, `${t} ${g === "f" ? "ṣaghīra" : "ṣaghīr"}`, `a younger ${e}`, g === "f" ? "Feminine noun → feminine adjective with ة" : "Masculine noun → masculine adjective"];
+  });
+
+  const WHO = [["saad", "سَعْدٌ", "Saʿd", "Saʿdun"], ["saida", "سَعِيدَةُ", "Saʿīda", "Saʿīdatu"], ["ab", "الأَبُ", "The father", "al-abu"], ["umm", "الأُمُّ", "The mother", "al-ummu"]];
+  const WHERE = [["hammam", "الحَمّامِ", "l-ḥammām", "the bathroom"], ["ghurfa", "الغُرْفَةِ", "l-ghurfa", "the room"], ["musalla", "المُصَلَّى", "l-muṣallā", "the prayer room"], ["masjid", "المَسْجِدِ", "l-masjid", "the mosque"]];
+  const whereOut = {};
+  WHO.forEach(([k, a, e, t]) => WHERE.forEach(([pk, pa, pt, pe]) => {
+    whereOut[k + "|" + pk] = [`${a} فِي ${pa}.`, `${t} fi ${pt}`, `${e} is in ${pe}.`, "No word for “is”: just person + فِي + place."];
+  }));
+
+  LESSONS.push({
+    id: "b1-04",
+    book: 1,
+    num: 4,
+    unit: "الوَحْدَةُ الثّانِيَةُ · الأُسْرَةُ",
+    unitEn: "Unit 2 · The Family",
+    title: "Where Are the Children? Big, Small & Plurals",
+    titleAr: "أَيْنَ الأَوْلادُ؟",
+    covers: "Book pages 32–33 · Dialogue 3 + the teacher's family summary and singular/plural table",
+    video: "https://www.youtube.com/playlist?list=PLDS9YrkKMtPR4-S3ih8wad7oXMyrdEdXY",
+    goals: [
+      "Say where someone is: سَعْدٌ فِي الحَمّامِ",
+      "Recognise your first verbs: يَتَوَضَّأُ، يَقْرَأُ، تُصَلِّي",
+      "Name places at home and for prayer: حَمّام، غُرْفَة، مُصَلًّى، مَسْجِد",
+      "Complete the family: خال and خالَة (the mother's side)",
+      "Describe size and age with كَبِير / صَغِير, matching the gender",
+      "Learn singular → plural pairs, including the ة → ات rule"
+    ],
+    gender: { any: "يتوضأ|يقرأ|تصلي|هذا هو|هذه هي|سعيدة", fem: "تصلي|هذه هي|سعيدة", q: "Is this about a male (or masculine thing) or a female (or feminine thing)?" },
+
+    dialogues: [
+      {
+        id: "u2d3", title: "Dialogue 3", titleAr: "الحِوارُ الثّالِثُ",
+        note: "Dawn. The adhān is calling, and the father asks where the children are before going to the mosque.",
+        people: { "الأُمّ": "f1", "الأَب": "m4", "سَعْد": "m1", "سَعِيد": "m2", "سَعْد وَسَعِيد": "m3" },
+        lines: [
+          ["الأُمّ", "هَذا أَذانُ الفَجْرِ.", "hādhā adhānu l-fajr.", "This is the call to the dawn prayer."],
+          ["الأَب", "اللهُ أَكْبَرُ، اللهُ أَكْبَرُ. أَيْنَ الأَوْلادُ؟", "allāhu akbar, allāhu akbar. ayna l-awlād?", "God is the greatest, God is the greatest. Where are the children?"],
+          ["الأُمّ", "سَعْدٌ فِي الحَمّامِ يَتَوَضَّأُ.", "Saʿdun fi l-ḥammām yatawaḍḍaʾ.", "Saʿd is in the bathroom doing wuḍūʾ."],
+          ["الأَب", "وَأَيْنَ سَعِيدٌ؟", "wa ayna Saʿīd?", "And where is Saʿīd?"],
+          ["الأُمّ", "سَعِيدٌ فِي الغُرْفَةِ يَقْرَأُ القُرْآنَ.", "Saʿīdun fi l-ghurfa yaqraʾu l-qurʾān.", "Saʿīd is in the room reading the Qurʾān."],
+          ["الأَب", "وَأَيْنَ سَعِيدَةُ؟", "wa ayna Saʿīda?", "And where is Saʿīda?"],
+          ["الأُمّ", "سَعِيدَةُ فِي المُصَلَّى تُصَلِّي.", "Saʿīdatu fi l-muṣallā tuṣallī.", "Saʿīda is in the prayer room praying."],
+          ["الأَب", "أَيْنَ المِعْطَفُ؟", "ayna l-miʿṭaf?", "Where is the coat?"],
+          ["سَعْد", "هَذا هُوَ المِعْطَفُ يا والِدِي.", "hādhā huwa l-miʿṭaf yā wālidī.", "Here is the coat, father."],
+          ["الأَب", "وَأَيْنَ النَّظّارَةُ؟", "wa ayna n-naẓẓāra?", "And where are the glasses?"],
+          ["سَعِيد", "هَذِهِ هِيَ النَّظّارَةُ يا والِدِي.", "hādhihi hiya n-naẓẓāra yā wālidī.", "Here are the glasses, father."],
+          ["الأَب", "هَيّا بِنا إِلَى المَسْجِدِ.", "hayyā binā ila l-masjid.", "Let's go to the mosque."],
+          ["سَعْد وَسَعِيد", "هَيّا بِنا.", "hayyā binā.", "Let's go."]
+        ]
+      }
+    ],
+
+    vocab: [
+      { ar: "أَذانٌ", tr: "adhān", en: "call to prayer", pic: "📢", cat: "Prayer" },
+      { ar: "الفَجْرُ", tr: "al-fajr", en: "dawn (the dawn prayer)", pic: "🌅", cat: "Prayer" },
+      { ar: "اللهُ أَكْبَرُ", tr: "allāhu akbar", en: "God is the greatest", pic: "🤲", cat: "Prayer" },
+      { ar: "القُرْآنُ", tr: "al-qurʾān", en: "the Qurʾān", pic: "📖", cat: "Prayer" },
+      { ar: "مَسْجِدٌ", tr: "masjid", en: "mosque", pic: "🕌", cat: "Places" },
+      { ar: "مُصَلًّى", tr: "muṣallā", en: "prayer room (not a full mosque)", pic: "🧎", cat: "Places" },
+      { ar: "حَمّامٌ", tr: "ḥammām", en: "bathroom", pic: "🚿", cat: "Places" },
+      { ar: "غُرْفَةٌ", tr: "ghurfa", en: "room", pic: "🚪", cat: "Places" },
+      { ar: "يَتَوَضَّأُ", tr: "yatawaḍḍaʾu", en: "he does wuḍūʾ (ablution)", pic: "💧", cat: "Verbs" },
+      { ar: "يَقْرَأُ", tr: "yaqraʾu", en: "he reads", pic: "📖", cat: "Verbs" },
+      { ar: "تُصَلِّي", tr: "tuṣallī", en: "she prays", pic: "🧎‍♀️", cat: "Verbs" },
+      { ar: "مِعْطَفٌ", tr: "miʿṭaf", en: "coat", pic: "🧥", cat: "Things" },
+      { ar: "نَظّارَةٌ", tr: "naẓẓāra", en: "glasses", pic: "👓", cat: "Things" },
+      { ar: "وَلَدٌ", tr: "walad", en: "boy, child", pic: "👦", cat: "Family" },
+      { ar: "أَوْلادٌ", tr: "awlād", en: "children, boys (plural of وَلَد)", pic: "👦👦", cat: "Family" },
+      { ar: "بِنْتٌ", tr: "bint", en: "girl, daughter", pic: "👧", cat: "Family" },
+      { ar: "بَناتٌ", tr: "banāt", en: "girls, daughters (plural of بِنْت)", pic: "👧👧", cat: "Family" },
+      { ar: "خالٌ", tr: "khāl", en: "uncle (mother's brother)", pic: "🧔", cat: "Family" },
+      { ar: "خالَةٌ", tr: "khāla", en: "aunt (mother's sister)", pic: "🧕", cat: "Family" },
+      { ar: "كَبِيرٌ", tr: "kabīr", en: "big; old (older)", pic: "🐘", cat: "Describing" },
+      { ar: "صَغِيرٌ", tr: "ṣaghīr", en: "small; young (younger)", pic: "🐭", cat: "Describing" },
+      { ar: "فِي", tr: "fī", en: "in", pic: "📥", cat: "Little words" },
+      { ar: "إِلَى", tr: "ilā", en: "to", pic: "➡️", cat: "Little words" },
+      { ar: "يا", tr: "yā", en: "O… (used when calling someone)", pic: "📣", cat: "Little words" },
+      { ar: "هَيّا بِنا", tr: "hayyā binā", en: "let's go", pic: "🏃", cat: "Little words" }
+    ],
+
+    grammar: [
+      {
+        id: "g-fi",
+        title: "Where is…? Person + فِي + place",
+        body: [
+          "To say where someone is, put the person, then <b>فِي</b> (in), then the place. As before, there's no word for <i>is</i>: سَعْدٌ فِي الحَمّامِ <i>Saʿd [is] in the bathroom</i>.",
+          "After فِي, the place word ends in an <b>i</b> sound: الحَمّامِ، الغُرْفَةِ، المَسْجِدِ. (Grammar for later: فِي puts the noun in the genitive case.)",
+          "The mother then adds what each child is doing, using the book's first verbs: يَتَوَضَّأُ (he does wuḍūʾ), يَقْرَأُ (he reads), تُصَلِّي (she prays). Notice that the verb for Saʿīda starts with ت, not ي. That's the topic of Lesson 5!"
+        ],
+        widget: {
+          type: "combo", label: "Where is everyone? · pick a person, then a place",
+          rows: WHO.map(([k, a, e]) => ({ k, label: `${a} · ${e}` })),
+          cols: WHERE.map(([k, a, t, e]) => ({ k, label: `${a.replace(/ِ$/, "")} · ${e.replace("the ", "")}` })),
+          out: whereOut
+        }
+      },
+      {
+        id: "g-places",
+        title: "مُصَلًّى vs مَسْجِد",
+        body: [
+          "The teacher explains the difference. <b>مَسْجِد</b> (masjid) is a mosque: a dedicated building where the five daily prayers are held, with the adhān and usually a fixed imam.",
+          "<b>مُصَلًّى</b> (muṣallā) comes from صَلاة (prayer). It's simply a <b>place to pray</b>: a prayer room in a house, an airport, a company or a school."
+        ]
+      },
+      {
+        id: "g-words",
+        title: "يا · هَيّا بِنا · إِلَى · اللهُ أَكْبَرُ",
+        body: [
+          "<b>يا</b> is used before you call someone: يا والِدِي <i>(O) my father!</i>, يا أَحْمَدُ, يا أُمِّي. It's optional but very common.",
+          "<b>هَيّا بِنا</b> = <i>let's (go / do it)</i>. With <b>إِلَى</b> (to): هَيّا بِنا إِلَى المَسْجِدِ <i>Let's go to the mosque</i>.",
+          "<b>أَكْبَرُ</b> comes from <b>كَبِير</b> (big, great), so اللهُ أَكْبَرُ = <i>God is the greatest</i>. The father repeats it after the adhān, which the teacher notes is highly recommended."
+        ]
+      },
+      {
+        id: "g-gender",
+        title: "Coat is masculine, glasses are feminine",
+        body: [
+          "The father asks about المِعْطَف, and Saʿd answers <b>هَذا هُوَ</b> المِعْطَفُ. For النَّظّارَة the answer is <b>هَذِهِ هِيَ</b> النَّظّارَةُ.",
+          "As the teacher jokes, glasses aren't only for girls! The <b>word</b> نَظّارَة is feminine because of its ة. Grammatical gender belongs to the word, not the object.",
+          "<b>هَذا هُوَ …</b> / <b>هَذِهِ هِيَ …</b> means <i>Here is the…</i> when you hand something over."
+        ]
+      },
+      {
+        id: "g-tree",
+        title: "The whole family, including the mother's side",
+        body: [
+          "From the teacher's summary page. On your <b>father's</b> side the uncle and aunt are <b>عَمّ / عَمَّة</b>. On your <b>mother's</b> side they're <b>خال / خالَة</b>.",
+          "For children: <b>وَلَد</b> = boy or child (plural <b>أَوْلاد</b>, children). <b>بِنْت</b> = girl or daughter (plural <b>بَنات</b>). اِبْن / اِبْنَة from Lesson 3 also mean son / daughter."
+        ],
+        tree: { label: "Your family · tap to hear", levels: [
+          [{ ar: "جَدٌّ", en: "grandfather", g: "m" }, { ar: "جَدَّةٌ", en: "grandmother", g: "f" }],
+          [{ ar: "عَمٌّ", en: "father's brother", g: "m" }, { ar: "عَمَّةٌ", en: "father's sister", g: "f" }, { ar: "أَبٌ / والِدٌ", en: "father", g: "m" }, { ar: "أُمٌّ / والِدَةٌ", en: "mother", g: "f" }, { ar: "خالٌ", en: "mother's brother", g: "m" }, { ar: "خالَةٌ", en: "mother's sister", g: "f" }],
+          [{ ar: "أَخٌ", en: "brother", g: "m" }, { ar: "أَنا", en: "me", me: true }, { ar: "أُخْتٌ", en: "sister", g: "f" }],
+          [{ ar: "اِبْنٌ / وَلَدٌ", en: "son / boy", g: "m" }, { ar: "اِبْنَةٌ / بِنْتٌ", en: "daughter / girl", g: "f" }]
+        ]}
+      },
+      {
+        id: "g-size",
+        title: "كَبِير and صَغِير: big/small AND old/young",
+        body: [
+          "<b>كَبِير</b> = big and <b>صَغِير</b> = small. The teacher points out that they also describe <b>age</b>: اِبْنٌ كَبِيرٌ is an <i>older son</i> and بِنْتٌ صَغِيرَةٌ is a <i>young daughter</i>.",
+          "The adjective comes <b>after</b> the noun and must <b>match its gender</b>. For a feminine noun, add ة: عَمَّةٌ كَبِيرَةٌ (an older aunt) and عَمٌّ صَغِيرٌ (a young uncle)."
+        ],
+        widget: {
+          type: "combo", label: "Describe them · pick a relative, then older or younger",
+          rows: REL.map(([k, a, t, e]) => ({ k, label: `${a} · ${e.replace(/ \(.*\)/, "")}` })),
+          cols: [{ k: "big", label: "🐘 كَبِير big / older" }, { k: "small", label: "🐭 صَغِير small / younger" }],
+          out: sizeOut
+        }
+      },
+      {
+        id: "g-plural",
+        title: "Singular and plural: المُفْرَدُ وَالجَمْعُ",
+        body: [
+          "The teacher's \"bad news\": Arabic plurals are not as simple as adding -s. There are many patterns, and most aren't predictable yet, so <b>memorise each singular together with its plural</b>.",
+          "Once you've memorised enough of them you'll start to feel the patterns. Here is the teacher's table of the nouns so far (singular ← plural, read right to left):"
+        ],
+        table: { head: ["", "Singular ← Plural", "Say it", "Meaning"], rows: [
+          ["🏷️", "اِسْمٌ ← أَسْماءٌ", "ism → asmāʾ", "name → names"],
+          ["👦", "أَخٌ ← إِخْوَةٌ", "akh → ikhwa", "brother → brothers"],
+          ["👧", "أُخْتٌ ← أَخَواتٌ", "ukht → akhawāt", "sister → sisters"],
+          ["👨", "أَبٌ ← آباءٌ", "ab → ābāʾ", "father → fathers"],
+          ["👩", "أُمٌّ ← أُمَّهاتٌ", "umm → ummahāt", "mother → mothers"],
+          ["👦", "اِبْنٌ ← أَبْناءٌ", "ibn → abnāʾ", "son → sons"],
+          ["👧", "بِنْتٌ ← بَناتٌ", "bint → banāt", "girl → girls"],
+          ["🧒", "وَلَدٌ ← أَوْلادٌ", "walad → awlād", "boy → children"],
+          ["👴", "جَدٌّ ← أَجْدادٌ", "jadd → ajdād", "grandfather → grandfathers"],
+          ["🧔", "عَمٌّ ← أَعْمامٌ", "ʿamm → aʿmām", "uncle (f. side) → uncles"],
+          ["🧔", "خالٌ ← أَخْوالٌ", "khāl → akhwāl", "uncle (m. side) → uncles"],
+          ["👨‍⚕️", "طَبِيبٌ ← أَطِبّاءُ", "ṭabīb → aṭibbāʾ", "doctor → doctors"],
+          ["👨‍🏫", "مُدَرِّسٌ ← مُدَرِّسُونَ", "mudarris → mudarrisūn", "teacher → teachers"],
+          ["👷", "مُهَنْدِسٌ ← مُهَنْدِسُونَ", "muhandis → muhandisūn", "engineer → engineers"],
+          ["👨‍🎓", "طالِبٌ ← طُلّابٌ", "ṭālib → ṭullāb", "student → students"],
+          ["✉️", "رَسُولٌ ← رُسُلٌ", "rasūl → rusul", "messenger → messengers"],
+          ["🖼️", "صُورَةٌ ← صُوَرٌ", "ṣūra → ṣuwar", "picture → pictures"],
+          ["🕌", "مَسْجِدٌ ← مَساجِدُ", "masjid → masājid", "mosque → mosques"],
+          ["🚪", "غُرْفَةٌ ← غُرَفٌ", "ghurfa → ghuraf", "room → rooms"],
+          ["👓", "نَظّارَةٌ ← نَظّاراتٌ", "naẓẓāra → naẓẓārāt", "glasses → pairs of glasses"],
+          ["🧥", "مِعْطَفٌ ← مَعاطِفُ", "miʿṭaf → maʿāṭif", "coat → coats"]
+        ]}
+      },
+      {
+        id: "g-at",
+        title: "The good news: ة → ات",
+        body: [
+          "For feminine words that end in <b>ة</b>, most plurals follow one easy rule: remove the ة and add <b>ات</b> (-āt).",
+          "مُعَلِّمَة → <b>مُعَلِّمات</b> · طَبِيبَة → <b>طَبِيبات</b> · عَمَّة → <b>عَمّات</b> · خالَة → <b>خالات</b> · جَدَّة → <b>جَدّات</b>",
+          "Watch for exceptions you've already met: صُورَة → صُوَر and غُرْفَة → غُرَف."
+        ],
+        widget: {
+          type: "combo", label: "Make it plural · pick a word",
+          rows: [["muallima", "مُعَلِّمَة · teacher"], ["tabiba", "طَبِيبَة · doctor"], ["amma", "عَمَّة · aunt"], ["khala", "خالَة · aunt"], ["jadda", "جَدَّة · grandmother"], ["talibah", "طالِبَة · student"]].map(([k, l]) => ({ k, label: l })),
+          cols: [{ k: "s", label: "one (مُفْرَد)" }, { k: "p", label: "many (جَمْع) +ات" }],
+          out: {
+            "muallima|s": ["مُعَلِّمَةٌ", "muʿallima", "a teacher (f)"], "muallima|p": ["مُعَلِّماتٌ", "muʿallimāt", "teachers (f)", "ة → ات"],
+            "tabiba|s": ["طَبِيبَةٌ", "ṭabība", "a doctor (f)"], "tabiba|p": ["طَبِيباتٌ", "ṭabībāt", "doctors (f)", "ة → ات"],
+            "amma|s": ["عَمَّةٌ", "ʿamma", "an aunt"], "amma|p": ["عَمّاتٌ", "ʿammāt", "aunts", "ة → ات"],
+            "khala|s": ["خالَةٌ", "khāla", "an aunt"], "khala|p": ["خالاتٌ", "khālāt", "aunts", "ة → ات"],
+            "jadda|s": ["جَدَّةٌ", "jadda", "a grandmother"], "jadda|p": ["جَدّاتٌ", "jaddāt", "grandmothers", "ة → ات"],
+            "talibah|s": ["طالِبَةٌ", "ṭāliba", "a student (f)"], "talibah|p": ["طالِباتٌ", "ṭālibāt", "students (f)", "ة → ات"]
+          }
+        }
+      }
+    ],
+
+    sounds: {
+      intro: "This dialogue has lots of throat and heavy sounds. Practise them slowly, then try the whole dialogue in Shadow mode.",
+      letters: [
+        { l: "ض", name: "ḍād", tip: "The heavy d, famous as the sound “only Arabic has” (Arabic is called لُغَةُ الضّاد). Say d with the tongue pressed wide and the mouth full.", ex: ["يَتَوَضَّأُ"] },
+        { l: "ظ", name: "ẓāʾ", tip: "The heavy version of ذ (the “th” in “this”). It appears in نَظّارَة.", ex: ["نَظّارَةٌ"] },
+        { l: "غ", name: "ghayn", tip: "A gargled g, like the French r in “Paris”. It's the voiced partner of خ.", ex: ["غُرْفَةٌ", "صَغِيرٌ"] },
+        { l: "ح", name: "ḥāʾ", tip: "The breathy throat h from Lesson 1. Hold it in حَمّام.", ex: ["حَمّامٌ"] },
+        { l: "ء", name: "hamza", tip: "A tiny catch in the throat, like the break in “uh-oh”. Don't swallow it at the end of يَقْرَأُ or يَتَوَضَّأُ.", ex: ["يَقْرَأُ", "أَذانٌ", "القُرْآنُ"] }
+      ],
+      pairs: [
+        { a: ["كَبِيرٌ", "kabīr", "big"], b: ["صَغِيرٌ", "ṣaghīr", "small"], note: "opposites" },
+        { a: ["خالٌ", "khāl", "mother's brother"], b: ["حالٌ", "ḥāl", "condition"], note: "خ vs ح" },
+        { a: ["عَمٌّ", "ʿamm", "father's brother"], b: ["خالٌ", "khāl", "mother's brother"], note: "the two uncles" },
+        { a: ["وَلَدٌ", "walad", "boy"], b: ["أَوْلادٌ", "awlād", "children"], note: "singular vs plural" },
+        { a: ["يَقْرَأُ", "yaqraʾu", "he reads"], b: ["تُصَلِّي", "tuṣallī", "she prays"], note: "ي (he) vs ت (she)" }
+      ]
+    },
+
+    tips: [
+      { icon: "📢", t: "Repeat after the adhān", d: "The father replies اللهُ أَكْبَرُ، اللهُ أَكْبَرُ when he hears the adhān. The teacher notes that repeating after the adhān is highly recommended." },
+      { icon: "🕌", t: "مَسْجِد ≠ مُصَلًّى", d: "A مَسْجِد is a dedicated mosque with the adhān and the five prayers. A مُصَلًّى is any prayer room: at home, at an airport or at school." },
+      { icon: "👓", t: "Grammatical gender belongs to the word", d: "النَّظّارَة (glasses) is feminine because of its ة, not because glasses are for girls. So: هَذِهِ هِيَ النَّظّارَةُ. Meanwhile المِعْطَف is masculine: هَذا هُوَ المِعْطَفُ." },
+      { icon: "📣", t: "يا is optional", d: "يا والِدِي = O my father. You can drop يا, but Arabs use it all the time when calling someone." },
+      { icon: "🐘", t: "كَبِير / صَغِير also mean older / younger", d: "اِبْنٌ كَبِيرٌ = an older son, عَمٌّ صَغِيرٌ = a young uncle. Add ة for feminine nouns: بِنْتٌ صَغِيرَةٌ." },
+      { icon: "🧠", t: "Memorise plurals in pairs", d: "Plurals are mostly unpredictable at this stage. Learn وَلَد ← أَوْلاد as one unit, never the singular alone. The patterns will come later." },
+      { icon: "✅", t: "Easy plural: ة → ات", d: "Most feminine words in ة make their plural with ات: مُعَلِّمَة → مُعَلِّمات. Exceptions so far: صُوَر, غُرَف." },
+      { icon: "✏️", t: "Typo alert", d: "The teacher notes that وَأَيْنَ سَعِيدَةُ should have no tanween. If your copy prints سَعِيدَةٌ, read it as سَعِيدَةُ." }
+    ],
+
+    practice: [
+      { type: "mcq", q: "أَيْنَ الأَوْلادُ؟ means…", options: ["Where are the children?", "Where is the coat?", "Who are the children?"], answer: 0 },
+      { type: "mcq", q: "Where is Saʿd, and what is he doing?", options: ["In the room, reading the Qurʾān", "In the bathroom, doing wuḍūʾ", "In the prayer room, praying"], answer: 1 },
+      { type: "mcq", q: "Where is Saʿīda?", options: ["فِي المُصَلَّى", "فِي الحَمّامِ", "فِي المَسْجِدِ"], answer: 0 },
+      { type: "mcq", q: "Why is it هَذِهِ هِيَ النَّظّارَةُ (feminine)?", options: ["Because Saʿīda wears them", "Because the word نَظّارَة ends in ة", "Because هِيَ means glasses"], answer: 1 },
+      { type: "mcq", q: "Your MOTHER's brother is your…", options: ["عَمّ", "خال", "جَدّ"], answer: 1 },
+      { type: "mcq", q: "Your MOTHER's sister is your…", options: ["خالَة", "عَمَّة", "أُخْت"], answer: 0 },
+      { type: "mcq", q: "How do you say “a young daughter”?", options: ["بِنْتٌ صَغِيرٌ", "بِنْتٌ صَغِيرَةٌ", "صَغِيرَةٌ بِنْتٌ"], answer: 1, explain: "The adjective comes after the noun and takes ة to match a feminine noun." },
+      { type: "mcq", q: "What is the plural of وَلَد?", options: ["وَلَدات", "أَوْلاد", "وُلُود"], answer: 1 },
+      { type: "mcq", q: "What is the plural of مُعَلِّمَة?", options: ["مُعَلِّمات", "مُعَلِّمُون", "مَعالِم"], answer: 0, explain: "ة → ات" },
+      { type: "mcq", q: "What is the plural of طالِب?", options: ["طالِبات", "طُلّاب", "طالِبُون"], answer: 1 },
+      { type: "mcq", q: "What is the plural of أُمّ?", options: ["أُمّات", "أُمَّهات", "أَمْام"], answer: 1 },
+      { type: "mcq", q: "مَسْجِد ← ? (plural)", options: ["مَساجِد", "مَسْجِدات", "مُسُوج"], answer: 0 },
+      { type: "mcq", q: "What does هَيّا بِنا mean?", options: ["Here you are", "Let's go", "Goodbye"], answer: 1 },
+      { type: "fill", sentence: "سَعِيدٌ ___ الغُرْفَةِ يَقْرَأُ القُرْآنَ.", en: "Saʿīd is in the room reading the Qurʾān.", options: ["إِلَى", "فِي", "مِنْ"], answer: 1 },
+      { type: "fill", sentence: "هَذا ___ المِعْطَفُ يا والِدِي.", en: "Here is the coat, father.", options: ["هِيَ", "هُوَ", "هَذِهِ"], answer: 1 },
+      { type: "fill", sentence: "هَيّا بِنا ___ المَسْجِدِ.", en: "Let's go to the mosque.", options: ["فِي", "إِلَى", "يا"], answer: 1 },
+      { type: "fill", sentence: "عَمَّةٌ ___", en: "an older aunt", options: ["كَبِيرٌ", "كَبِيرَةٌ", "صَغِيرٌ"], answer: 1 },
+      { type: "order", words: ["أَيْنَ", "الأَوْلادُ؟"], en: "Where are the children?" },
+      { type: "order", words: ["سَعْدٌ", "فِي", "الحَمّامِ."], en: "Saʿd is in the bathroom." },
+      { type: "order", words: ["هَيّا", "بِنا", "إِلَى", "المَسْجِدِ."], en: "Let's go to the mosque." },
+      { type: "reply", prompt: "وَأَيْنَ سَعِيدَةُ؟", en: "Choose a logical reply", options: ["سَعِيدَةُ فِي المُصَلَّى تُصَلِّي.", "هَذا هُوَ المِعْطَفُ.", "اللهُ أَكْبَرُ."], answer: 0 },
+      { type: "reply", prompt: "هَيّا بِنا إِلَى المَسْجِدِ.", en: "Choose a logical reply", options: ["هَيّا بِنا.", "أَيْنَ النَّظّارَةُ؟", "ما شاءَ اللهُ."], answer: 0 },
+      { type: "match", pairs: [["وَلَدٌ", "أَوْلادٌ"], ["بِنْتٌ", "بَناتٌ"], ["طالِبٌ", "طُلّابٌ"], ["أُمٌّ", "أُمَّهاتٌ"], ["مَسْجِدٌ", "مَساجِدُ"], ["غُرْفَةٌ", "غُرَفٌ"]], q: "Match each singular with its plural" }
+    ],
+
+    roleplay: [
+      { them: "أَيْنَ الأَوْلادُ؟", you: "سَعْدٌ فِي الحَمّامِ يَتَوَضَّأُ.", hint: "Say Saʿd is in the bathroom doing wuḍūʾ" },
+      { them: "وَأَيْنَ سَعِيدٌ؟", you: "سَعِيدٌ فِي الغُرْفَةِ يَقْرَأُ القُرْآنَ.", hint: "Saʿīd is in the room reading the Qurʾān" },
+      { them: "وَأَيْنَ سَعِيدَةُ؟", you: "سَعِيدَةُ فِي المُصَلَّى تُصَلِّي.", hint: "Saʿīda is in the prayer room praying" },
+      { them: "أَيْنَ المِعْطَفُ؟", you: "هَذا هُوَ المِعْطَفُ يا والِدِي.", hint: "Hand him the coat" },
+      { them: "وَأَيْنَ النَّظّارَةُ؟", you: "هَذِهِ هِيَ النَّظّارَةُ يا والِدِي.", hint: "Hand him the glasses (feminine!)" },
+      { them: "هَلْ عِنْدَكَ أَخٌ كَبِيرٌ؟", you: "نَعَمْ، … / لا، …", hint: "“Do you have an older brother?” (عِنْدَكَ = you have). Answer about your own family" },
+      { them: "هَيّا بِنا إِلَى المَسْجِدِ.", you: "هَيّا بِنا.", hint: "Agree: let's go" }
+    ]
+  });
+})();
+</script><script>// Book 1 · Video 5 — Teacher's special video on verbs: الفعل المضارع (present / future tense)
+// Not from the book pages: rebuilt from the teacher's own slides as described in the audio (lesson 5 transcript)
+(function () {
+  const PERSONS = [
+    { k: "ana", ar: "أَنا", en: "I", tag: "I" },
+    { k: "nahnu", ar: "نَحْنُ", en: "we", tag: "we" },
+    { k: "anta", ar: "أَنْتَ", en: "you (m)", tag: "you (m)" },
+    { k: "anti", ar: "أَنْتِ", en: "you (f)", tag: "you (f)" },
+    { k: "huwa", ar: "هُوَ", en: "he", tag: "he" },
+    { k: "hiya", ar: "هِيَ", en: "she", tag: "she" }
+  ];
+  // [ar, translit] per person, in PERSONS order
+  const VERBS = [
+    { k: "faal", en: "do", ing: "doing", pic: "🛠️", forms: [["أَفْعَلُ", "afʿalu"], ["نَفْعَلُ", "nafʿalu"], ["تَفْعَلُ", "tafʿalu"], ["تَفْعَلِينَ", "tafʿalīna"], ["يَفْعَلُ", "yafʿalu"], ["تَفْعَلُ", "tafʿalu"]] },
+    { k: "qara", en: "read", ing: "reading", pic: "📖", forms: [["أَقْرَأُ", "aqraʾu"], ["نَقْرَأُ", "naqraʾu"], ["تَقْرَأُ", "taqraʾu"], ["تَقْرَئِينَ", "taqraʾīna"], ["يَقْرَأُ", "yaqraʾu"], ["تَقْرَأُ", "taqraʾu"]] },
+    { k: "kataba", en: "write", ing: "writing", pic: "✍️", forms: [["أَكْتُبُ", "aktubu"], ["نَكْتُبُ", "naktubu"], ["تَكْتُبُ", "taktubu"], ["تَكْتُبِينَ", "taktubīna"], ["يَكْتُبُ", "yaktubu"], ["تَكْتُبُ", "taktubu"]] },
+    { k: "wudu", en: "do wuḍūʾ", ing: "doing wuḍūʾ", pic: "💧", forms: [["أَتَوَضَّأُ", "atawaḍḍaʾu"], ["نَتَوَضَّأُ", "natawaḍḍaʾu"], ["تَتَوَضَّأُ", "tatawaḍḍaʾu"], ["تَتَوَضَّئِينَ", "tatawaḍḍaʾīna"], ["يَتَوَضَّأُ", "yatawaḍḍaʾu"], ["تَتَوَضَّأُ", "tatawaḍḍaʾu"]] },
+    { k: "salla", en: "pray", ing: "praying", pic: "🧎", forms: [["أُصَلِّي", "uṣallī"], ["نُصَلِّي", "nuṣallī"], ["تُصَلِّي", "tuṣallī"], ["تُصَلِّينَ", "tuṣallīna"], ["يُصَلِّي", "yuṣallī"], ["تُصَلِّي", "tuṣallī"]] }
+  ];
+  const PREFIX = { ana: "أ", nahnu: "ن", anta: "ت", anti: "ت … ينَ", huwa: "ي", hiya: "ت" };
+  const conjOut = {}, futOut = {};
+  VERBS.forEach(v => PERSONS.forEach((p, i) => {
+    const [a, t] = v.forms[i];
+    const be = { ana: "am", nahnu: "are", anta: "are", anti: "are", huwa: "is", hiya: "is" }[p.k];
+    conjOut[v.k + "|" + p.k] = [`${p.ar} ${a}`, `${p.k === "ana" ? "anā" : p.k === "nahnu" ? "naḥnu" : p.k} ${t}`, `${p.en} ${be} ${v.ing}`, `Starts with ${PREFIX[p.k]}${p.k === "anti" ? " (the extra ينَ marks a female “you”)" : ""}`];
+    futOut[v.k + "|" + p.k] = [`سَ${a}`, `sa-${t}`, `${p.en} will ${v.en}`, "سَـ (or سَوْفَ) in front makes it future"];
+  }));
+
+  LESSONS.push({
+    id: "b1-05",
+    book: 1,
+    num: 5,
+    unit: "الفِعْلُ المُضارِعُ · دَرْسٌ خاصٌّ",
+    unitEn: "Special lesson · Verbs (after Unit 2)",
+    title: "Present-Tense Verbs: I, We, You, He, She",
+    titleAr: "الفِعْلُ المُضارِعُ",
+    covers: "The teacher's dedicated video on verbs. Not in the book pages: built from his own slides as described in the video",
+    video: "https://www.youtube.com/playlist?list=PLDS9YrkKMtPR4-S3ih8wad7oXMyrdEdXY",
+    goals: [
+      "Know the three kinds of verb: past (ماضٍ), present/future (مُضارِع) and command (أَمْر)",
+      "Know that every present verb starts with one of four letters: أ ن ي ت",
+      "Conjugate for أَنا، نَحْنُ، أَنْتَ، أَنْتِ، هُوَ، هِيَ, including the ـينَ for a female “you”",
+      "Make the future with سَـ or سَوْفَ",
+      "Ask and answer ماذا تَفْعَلُ؟ ماذا تَقْرَأُ؟ ماذا يَفْعَلُ…؟",
+      "Put the verb before the doer: يُصَلِّي عُثْمانُ"
+    ],
+    gender: { any: "تفعلين|تكتبين|تفعل |يفعل|يصلي|تصلي|تتوضأ", fem: "تفعلين|تكتبين|تصلي|تتوضأ|تفعل مريم|تفعل زينب", q: "Is the person doing it male or female?" },
+
+    dialogues: [
+      {
+        id: "v1", title: "Practice dialogue 1 · between men", titleAr: "حِوارٌ بَيْنَ رِجالٍ",
+        note: "From the teacher's slide (reconstructed from the audio). Watch the first letter of every verb: ت when talking to someone, أ about yourself, ي about another man.",
+        people: { "حامِد": "m3", "سَعِيد": "m2" },
+        lines: [
+          ["حامِد", "ماذا تَفْعَلُ يا سَعِيدُ؟", "mādhā tafʿalu yā Saʿīd?", "What are you doing, Saʿīd?"],
+          ["سَعِيد", "أَقْرَأُ.", "aqraʾu.", "I'm reading."],
+          ["حامِد", "ماذا تَقْرَأُ؟", "mādhā taqraʾu?", "What are you reading?"],
+          ["سَعِيد", "أَقْرَأُ القُرْآنَ. وَماذا يَفْعَلُ عُثْمانُ؟", "aqraʾu l-qurʾān. wa mādhā yafʿalu ʿUthmān?", "I'm reading the Qurʾān. And what is ʿUthmān doing?"],
+          ["حامِد", "يُصَلِّي.", "yuṣallī.", "He's praying."],
+          ["سَعِيد", "ماذا يُصَلِّي؟", "mādhā yuṣallī?", "Which prayer is he praying?"],
+          ["حامِد", "يُصَلِّي الفَجْرَ.", "yuṣalli l-fajr.", "He's praying Fajr (the dawn prayer)."]
+        ]
+      },
+      {
+        id: "v2", title: "Practice dialogue 2 · between women", titleAr: "حِوارٌ بَيْنَ نِساءٍ",
+        note: "The same idea between women. Talking to a woman, the verb gets ـينَ on the end: تَفْعَلِينَ، تَكْتُبِينَ.",
+        people: { "مَرْيَم": "f3", "فاطِمَة": "f1" },
+        lines: [
+          ["مَرْيَم", "ماذا تَفْعَلِينَ يا فاطِمَةُ؟", "mādhā tafʿalīna yā Fāṭima?", "What are you doing, Fāṭima?"],
+          ["فاطِمَة", "أَكْتُبُ.", "aktubu.", "I'm writing."],
+          ["مَرْيَم", "ماذا تَكْتُبِينَ؟", "mādhā taktubīna?", "What are you writing?"],
+          ["فاطِمَة", "أَكْتُبُ كِتابًا. وَماذا تَفْعَلُ زَيْنَبُ؟", "aktubu kitāban. wa mādhā tafʿalu Zaynab?", "I'm writing a book. And what is Zaynab doing?"],
+          ["مَرْيَم", "تَتَوَضَّأُ وَتُصَلِّي.", "tatawaḍḍaʾu wa tuṣallī.", "She's doing wuḍūʾ and praying."],
+          ["فاطِمَة", "أَيْنَ تَتَوَضَّأُ؟", "ayna tatawaḍḍaʾu?", "Where is she doing wuḍūʾ?"],
+          ["مَرْيَم", "تَتَوَضَّأُ فِي الحَمّامِ.", "tatawaḍḍaʾu fi l-ḥammām.", "She's doing wuḍūʾ in the bathroom."]
+        ]
+      }
+    ],
+
+    vocab: [
+      { ar: "فِعْلٌ", tr: "fiʿl", en: "verb", pic: "🏃", cat: "Grammar words" },
+      { ar: "الماضِي", tr: "al-māḍī", en: "the past tense", pic: "⏪", cat: "Grammar words", extra: true },
+      { ar: "المُضارِعُ", tr: "al-muḍāriʿ", en: "the present / future tense", pic: "▶️", cat: "Grammar words" },
+      { ar: "الأَمْرُ", tr: "al-amr", en: "the command form", pic: "📢", cat: "Grammar words", extra: true },
+      { ar: "يَفْعَلُ", tr: "yafʿalu", en: "he does", pic: "🛠️", cat: "Verbs" },
+      { ar: "يَقْرَأُ", tr: "yaqraʾu", en: "he reads", pic: "📖", cat: "Verbs" },
+      { ar: "يَكْتُبُ", tr: "yaktubu", en: "he writes", pic: "✍️", cat: "Verbs" },
+      { ar: "يَتَوَضَّأُ", tr: "yatawaḍḍaʾu", en: "he does wuḍūʾ", pic: "💧", cat: "Verbs" },
+      { ar: "يُصَلِّي", tr: "yuṣallī", en: "he prays", pic: "🧎", cat: "Verbs" },
+      { ar: "أَقْرَأُ", tr: "aqraʾu", en: "I read", pic: "🙋📖", cat: "Forms" },
+      { ar: "نَكْتُبُ", tr: "naktubu", en: "we write", pic: "👨‍👩‍👧✍️", cat: "Forms" },
+      { ar: "تَفْعَلُ", tr: "tafʿalu", en: "you (m) do / she does", pic: "👉👨🛠️", cat: "Forms" },
+      { ar: "تَفْعَلِينَ", tr: "tafʿalīna", en: "you (f) do", pic: "👉👩🛠️", cat: "Forms" },
+      { ar: "تُصَلِّي", tr: "tuṣallī", en: "she prays / you (m) pray", pic: "👩🧎", cat: "Forms" },
+      { ar: "سَـ", tr: "sa-", en: "will (future prefix)", pic: "⏩", cat: "Future" },
+      { ar: "سَوْفَ", tr: "sawfa", en: "will (future word)", pic: "⏩", cat: "Future" },
+      { ar: "سَأَقْرَأُ", tr: "sa-aqraʾu", en: "I will read", pic: "⏩📖", cat: "Future" },
+      { ar: "ماذا", tr: "mādhā", en: "what? (before a verb)", pic: "❓", cat: "Questions" }
+    ],
+
+    grammar: [
+      {
+        id: "g-kinds",
+        title: "Three kinds of verb",
+        body: [
+          "A verb is a <b>فِعْل</b> (fiʿl). Arabic has three kinds:",
+          "<b>الماضِي</b> (past) · <b>المُضارِعُ</b> (present / future) · <b>الأَمْرُ</b> (command or request).",
+          "The teacher calls verbs \"a long story\" in Arabic, so this lesson covers only <b>المُضارِع</b>. For now we'll just call it the present tense."
+        ]
+      },
+      {
+        id: "g-prefix",
+        title: "The four added letters: أ · ن · ي · ت",
+        body: [
+          "Every present verb <b>must begin with one of four added letters</b>. They're not part of the verb's root. They're added to show <b>who</b> is doing it:",
+          "<b>أ</b> → أَنا (I) · <b>ن</b> → نَحْنُ (we) · <b>ت</b> → أَنْتَ / أَنْتِ / هِيَ (you, she) · <b>ي</b> → هُوَ (he)",
+          "A classic way to remember them is the word <b>أَنَيْتُ</b>: it uses exactly these four letters. (That memory aid is ours, not from the video.)",
+          "Speaking to a <b>woman</b>, the verb also gets <b>ـينَ</b> at the end: أَنْتِ تَكْتُبِينَ (you write).",
+          "⚠️ تَكْتُبُ can mean <i>you (m) write</i> or <i>she writes</i>. Context, or the pronoun, tells you which."
+        ],
+        table: { head: ["Who", "Verb", "Say it", "Meaning"], rows: [
+          ["أَنا", "أَكْتُبُ", "aktubu", "I write (أ)"],
+          ["نَحْنُ", "نَكْتُبُ", "naktubu", "we write (ن)"],
+          ["أَنْتَ", "تَكْتُبُ", "taktubu", "you (m) write (ت)"],
+          ["أَنْتِ", "تَكْتُبِينَ", "taktubīna", "you (f) write (ت … ينَ)"],
+          ["هُوَ", "يَكْتُبُ", "yaktubu", "he writes (ي)"],
+          ["هِيَ", "تَكْتُبُ", "taktubu", "she writes (ت)"]
+        ]},
+        widget: {
+          type: "combo", label: "Conjugate it · pick a verb, then a person",
+          rows: VERBS.map(v => ({ k: v.k, label: `${v.pic} ${v.en}` })),
+          cols: PERSONS.map(p => ({ k: p.k, label: `${p.ar} ${p.en}` })),
+          out: conjOut
+        }
+      },
+      {
+        id: "g-damma",
+        title: "The ending: usually ـُ (u)",
+        body: [
+          "A present verb normally ends with a <b>ḍamma</b> (ـُ): أَقْرَأُ، أَكْتُبُ، يَفْعَلُ.",
+          "When something is attached to the end, as with ـينَ in تَكْتُبِينَ, the ending changes. The teacher saves the full story for a later video.",
+          "Verbs that end in ي, like يُصَلِّي, have no visible ḍamma."
+        ]
+      },
+      {
+        id: "g-future",
+        title: "The future: add سَـ or سَوْفَ",
+        body: [
+          "المُضارِع covers present <b>and</b> future. To make the future clear, put <b>سَـ</b> (joined to the verb) or <b>سَوْفَ</b> (a separate word) in front:",
+          "أَقْرَأُ الكِتابَ <i>I read the book</i> → <b>سَ</b>أَقْرَأُ الكِتابَ <i>I will read the book</i>.",
+          "The teacher's examples: ماذا تَكْتُبُ؟ <i>What are you writing?</i> → ماذا <b>سَ</b>تَكْتُبُ؟ <i>What will you write?</i> And to a woman: ماذا <b>سَوْفَ</b> تَفْعَلِينَ؟ <i>What are you going to do?</i>"
+        ],
+        widget: {
+          type: "combo", label: "Make it future · pick a verb, then a person",
+          rows: VERBS.map(v => ({ k: v.k, label: `${v.pic} ${v.en}` })),
+          cols: PERSONS.map(p => ({ k: p.k, label: `${p.ar} ${p.en}` })),
+          out: futOut
+        }
+      },
+      {
+        id: "g-order",
+        title: "Verb first, then the doer",
+        body: [
+          "In English the doer comes first: <i>Ḥāmid does…</i>. In Arabic the default is <b>verb first</b>: ماذا <b>يَفْعَلُ</b> حامِدٌ؟ <i>What is Ḥāmid doing?</i> and <b>يُصَلِّي</b> عُثْمانُ <i>ʿUthmān is praying</i>.",
+          "A verb that comes before a named person uses the هُوَ / هِيَ form: <b>يَ</b>فْعَلُ حامِدٌ (male) · <b>تَ</b>فْعَلُ زَيْنَبُ (female).",
+          "Asking about the person you're talking to? Use the ت form, e.g. ماذا <b>تَ</b>فْعَلُ؟, and answer with the أ form: <b>أَ</b>قْرَأُ."
+        ]
+      }
+    ],
+
+    sounds: {
+      intro: "In this lesson the sound that matters most is the first letter of each verb. Listen closely: aqraʾu, naqraʾu, taqraʾu, yaqraʾu.",
+      letters: [
+        { l: "أ", name: "hamza (I)", tip: "A clean start in the throat: a-. أَقْرَأُ, أَكْتُبُ. For يُصَلِّي the vowel changes to u: أُصَلِّي.", ex: ["أَقْرَأُ", "أَكْتُبُ", "أُصَلِّي"] },
+        { l: "ن", name: "nūn (we)", tip: "Plain English n.", ex: ["نَقْرَأُ", "نَكْتُبُ", "نُصَلِّي"] },
+        { l: "ت", name: "tāʾ (you / she)", tip: "A light t, keep it clearly different from the heavy ط.", ex: ["تَقْرَأُ", "تَكْتُبِينَ", "تُصَلِّينَ"] },
+        { l: "ي", name: "yāʾ (he)", tip: "Like English y.", ex: ["يَقْرَأُ", "يَكْتُبُ", "يُصَلِّي"] },
+        { l: "ق", name: "qāf", tip: "The deep k from the very back of the throat, as in يَقْرَأُ. Don't let it slide into a plain k.", ex: ["أَقْرَأُ", "تَقْرَئِينَ"] },
+        { l: "ف", name: "fāʾ", tip: "Like English f.", ex: ["أَفْعَلُ", "يَفْعَلُ", "سَوْفَ"] }
+      ],
+      pairs: [
+        { a: ["أَقْرَأُ", "aqraʾu", "I read"], b: ["يَقْرَأُ", "yaqraʾu", "he reads"], note: "أ vs ي" },
+        { a: ["نَكْتُبُ", "naktubu", "we write"], b: ["تَكْتُبُ", "taktubu", "you (m) / she write(s)"], note: "ن vs ت" },
+        { a: ["تَكْتُبُ", "taktubu", "you (m) write"], b: ["تَكْتُبِينَ", "taktubīna", "you (f) write"], note: "+ ينَ" },
+        { a: ["يُصَلِّي", "yuṣallī", "he prays"], b: ["تُصَلِّي", "tuṣallī", "she prays"], note: "ي vs ت" },
+        { a: ["أَقْرَأُ", "aqraʾu", "I read"], b: ["سَأَقْرَأُ", "sa-aqraʾu", "I will read"], note: "present vs future" }
+      ]
+    },
+
+    tips: [
+      { icon: "🔤", t: "Look at the first letter", d: "Every present verb starts with أ, ن, ي or ت, and that letter tells you who is doing it. Before translating, look at the first letter." },
+      { icon: "🧠", t: "Memory aid: أَنَيْتُ", d: "The word أَنَيْتُ is spelled with exactly the four letters أ ن ي ت. (A traditional trick, not from the video.)" },
+      { icon: "👩", t: "Female “you” adds ـينَ", d: "تَكْتُبُ (to a man) → تَكْتُبِينَ (to a woman). When you're speaking to a woman, the ending tells her you mean her." },
+      { icon: "⚖️", t: "تَـ is shared", d: "تَفْعَلُ can be “you (m) do” or “she does”. Use the context or add the pronoun: أَنْتَ تَفْعَلُ / هِيَ تَفْعَلُ." },
+      { icon: "🙋", t: "Yourself = أ, whatever your gender", d: "Fāṭima says أَكْتُبُ, just like Saʿīd says أَقْرَأُ. The أ form is the same for men and women." },
+      { icon: "⏩", t: "Future = سَـ / سَوْفَ", d: "سَأَقْرَأُ / سَوْفَ أَقْرَأُ = I will read. Same verb, one extra piece in front." },
+      { icon: "🔀", t: "Verb before doer", d: "Arabic usually says “prays ʿUthmān” (يُصَلِّي عُثْمانُ), not “ʿUthmān prays”." }
+    ],
+
+    practice: [
+      { type: "mcq", q: "Which four letters can a present verb (المُضارِع) start with?", options: ["أ ن ي ت", "ب ت ث ج", "ا و ي ة"], answer: 0 },
+      { type: "mcq", q: "“I read” is…", options: ["يَقْرَأُ", "أَقْرَأُ", "نَقْرَأُ"], answer: 1 },
+      { type: "mcq", q: "“We write” is…", options: ["نَكْتُبُ", "تَكْتُبُ", "أَكْتُبُ"], answer: 0 },
+      { type: "mcq", q: "“He prays” is…", options: ["تُصَلِّي", "يُصَلِّي", "أُصَلِّي"], answer: 1 },
+      { type: "mcq", q: "You are asking a WOMAN: “What are you doing?”", options: ["ماذا تَفْعَلُ؟", "ماذا تَفْعَلِينَ؟", "ماذا يَفْعَلُ؟"], answer: 1, explain: "Speaking to a woman: ت … ينَ." },
+      { type: "mcq", q: "تَكْتُبُ can mean…", options: ["only “she writes”", "“you (m) write” or “she writes”", "“we write”"], answer: 1 },
+      { type: "mcq", q: "How do you say “I will read”?", options: ["سَأَقْرَأُ", "أَقْرَأُ سَ", "سَيَقْرَأُ"], answer: 0, explain: "سَيَقْرَأُ = he will read." },
+      { type: "mcq", q: "Fāṭima (a woman) talks about herself: “I am writing”.", options: ["تَكْتُبِينَ", "أَكْتُبُ", "تَكْتُبُ"], answer: 1, explain: "The أ form is used for yourself, whatever your gender." },
+      { type: "mcq", q: "Which is the usual word order in Arabic?", options: ["عُثْمانُ يُصَلِّي is the only correct order", "يُصَلِّي عُثْمانُ (verb first)", "The verb always comes last"], answer: 1 },
+      { type: "mcq", q: "What does سَوْفَ do?", options: ["Makes the verb past", "Makes the verb future", "Makes the verb a question"], answer: 1 },
+      { type: "fill", sentence: "أَنا ___ القُرْآنَ.", en: "I am reading the Qurʾān.", options: ["يَقْرَأُ", "أَقْرَأُ", "تَقْرَأُ"], answer: 1 },
+      { type: "fill", sentence: "هِيَ ___ فِي المُصَلَّى.", en: "She is praying in the prayer room.", options: ["يُصَلِّي", "تُصَلِّي", "نُصَلِّي"], answer: 1 },
+      { type: "fill", sentence: "نَحْنُ ___ كِتابًا.", en: "We are writing a book.", options: ["نَكْتُبُ", "يَكْتُبُ", "تَكْتُبِينَ"], answer: 0 },
+      { type: "fill", sentence: "ماذا ___ يا فاطِمَةُ؟", en: "What are you writing, Fāṭima?", options: ["تَكْتُبُ", "تَكْتُبِينَ", "أَكْتُبُ"], answer: 1 },
+      { type: "fill", sentence: "ماذا ___ حامِدٌ؟", en: "What is Ḥāmid doing?", options: ["يَفْعَلُ", "تَفْعَلُ", "أَفْعَلُ"], answer: 0 },
+      { type: "order", words: ["ماذا", "تَقْرَأُ؟"], en: "What are you reading? (m)" },
+      { type: "order", words: ["أَقْرَأُ", "القُرْآنَ."], en: "I'm reading the Qurʾān." },
+      { type: "order", words: ["ماذا", "سَوْفَ", "تَفْعَلِينَ؟"], en: "What are you going to do? (f)" },
+      { type: "order", words: ["تَتَوَضَّأُ", "فِي", "الحَمّامِ."], en: "She's doing wuḍūʾ in the bathroom." },
+      { type: "reply", prompt: "ماذا تَفْعَلُ؟", en: "Choose a logical reply", options: ["أَقْرَأُ.", "تَقْرَأُ.", "يَقْرَأُ."], answer: 0 },
+      { type: "reply", prompt: "ماذا تَكْتُبِينَ؟", en: "Choose a logical reply", options: ["أَكْتُبُ كِتابًا.", "تَكْتُبِينَ كِتابًا.", "يَكْتُبُ كِتابًا."], answer: 0 },
+      { type: "listen", q: "Who is doing it?", say: "نَكْتُبُ", options: ["I", "we", "he", "you (f)"], answer: 1 },
+      { type: "listen", q: "Who is doing it?", say: "يَقْرَأُ", options: ["he", "she", "I", "we"], answer: 0 },
+      { type: "listen", q: "Who is doing it?", say: "تَفْعَلِينَ", options: ["you (m)", "he", "you (f)", "we"], answer: 2 },
+      { type: "listen", q: "Who is doing it?", say: "أُصَلِّي", options: ["she", "I", "we", "he"], answer: 1 },
+      { type: "listen", q: "Present or future?", say: "سَأَكْتُبُ", options: ["present: I write", "future: I will write"], answer: 1 }
+    ],
+
+    roleplay: [
+      { them: "ماذا تَفْعَلُ؟", you: "أَقْرَأُ. / أَكْتُبُ. / أُصَلِّي.", hint: "Say what you're doing (أ form)" },
+      { them: "ماذا تَقْرَأُ؟", you: "أَقْرَأُ القُرْآنَ. / أَقْرَأُ كِتابًا.", hint: "Say what you're reading" },
+      { them: "وَماذا يَفْعَلُ أَخُوكَ؟", you: "يَكْتُبُ. / يُصَلِّي. / يَقْرَأُ.", hint: "“What is your brother doing?” (أَخُوكَ = your brother) Use the ي form" },
+      { them: "وَماذا تَفْعَلُ أُخْتُكَ؟", you: "تَتَوَضَّأُ. / تُصَلِّي.", hint: "“What is your sister doing?” (أُخْتُكَ = your sister) Use the ت form" },
+      { them: "ماذا سَتَفْعَلُ؟", you: "سَأَقْرَأُ. / سَأَكْتُبُ.", hint: "“What will you do?” Use سَـ + the أ form" },
+      { them: "ماذا نَفْعَلُ؟", you: "نُصَلِّي. / نَقْرَأُ القُرْآنَ.", hint: "“What are we doing?” Use the ن form" }
+    ]
+  });
+})();
+</script><script>// Book 1 · Test 1 — اِخْتَبِرْ نَفْسَكَ (الوَحْدَتانِ ١–٢), book pp. 53–54
+// Answers and explanations follow the Al-Lisan video (test 1 transcript).
+window.TEST = {
+  id: "b1-t1",
+  book: 1,
+  after: 5, // shown after Lesson 5 on the course home
+  title: "Test 1 · Units 1–2",
+  titleAr: "اِخْتَبِرْ نَفْسَكَ (الوَحْدَتانِ ١ – ٢)",
+  covers: ["b1-01", "b1-02", "b1-03", "b1-04", "b1-05"],
+  pages: "Book pages 53–54",
+  intro: "The teacher's advice: do the test first without looking anything up, then check your answers. If you lose marks, revise the words and lessons listed in your results, and only move on to Unit 3 when you feel ready.",
+  parts: [
+    {
+      title: "Part 1 · Vocabulary", titleAr: "أَوَّلًا: المُفْرَداتُ",
+      sections: [
+        {
+          id: "s1", type: "sort", marks: 9,
+          instr: "ضَعِ الكَلِماتِ الآتِيَةَ فِي مَكانِها المُناسِبِ مِنَ الجَدْوَلِ.",
+          instrEn: "Put each word in its correct column: country, pronoun, number, family, place, job. One example is given in each column. Tap a word, then tap a column.",
+          cols: [
+            { k: "balad", ar: "بَلَد", en: "country", ex: "مِصْر", words: ["سُورِيا", "باكِسْتان", "تُرْكِيا"] },
+            { k: "damir", ar: "ضَمِير", en: "pronoun", ex: "أَنْتَ", words: ["أَنْتِ", "هُوَ", "هِيَ"] },
+            { k: "raqm", ar: "رَقْم", en: "number", ex: "خَمْسَة", words: ["ثَلاثَة", "واحِد", "تِسْعَة"] },
+            { k: "usra", ar: "أُسْرَة", en: "family", ex: "أُخْت", words: ["جَدَّة", "والِد", "اِبْن"] },
+            { k: "makan", ar: "مَكان", en: "place", ex: "حَمّام", words: ["غُرْفَة", "مَسْجِد", "مُصَلًّى"] },
+            { k: "mihna", ar: "مِهْنَة", en: "job", ex: "مُدَرِّس", words: ["طالِب", "طَبِيبَة", "مُهَنْدِسَة"] }
+          ],
+          explain: "The teacher notes that طالِب (student) isn't exactly a job, but it's the closest fit and goes in the job column.",
+          lesson: { "balad": "b1-01", "damir": "b1-02", "raqm": "b1-02", "usra": "b1-03", "makan": "b1-04", "mihna": "b1-02" }
+        },
+        {
+          id: "s2", type: "fill", marks: 8,
+          instr: "أَكْمِلِ الجُمَلَ بِالكَلِماتِ التّالِيَةِ.",
+          instrEn: "Complete each sentence with one word from the bank. Each word is used once.",
+          bank: ["أَذانُ", "يُصَلِّي", "أُسْرَةُ", "يَقْرَأُ", "جَدِّي", "الغُرْفَةِ", "طَبِيبَةٌ", "باكِسْتانَ"],
+          items: [
+            { s: "أَحْمَدُ فِي ___.", a: "الغُرْفَةِ", en: "Aḥmad is in the room.", lesson: "b1-04" },
+            { s: "هَذِهِ والِدَتِي هِيَ ___.", a: "طَبِيبَةٌ", en: "This is my mother; she is a doctor.", lesson: "b1-03" },
+            { s: "هَذا ___ عُمَرُ.", a: "جَدِّي", en: "This is my grandfather ʿUmar.", lesson: "b1-03" },
+            { s: "عادِلٌ ___ القُرْآنَ الكَرِيمَ.", a: "يَقْرَأُ", en: "ʿĀdil is reading the Noble Qurʾān. يَقْرَأُ is a present verb (المُضارِع).", lesson: "b1-05" },
+            { s: "أَحْمَدُ ___ فِي المَسْجِدِ.", a: "يُصَلِّي", en: "Aḥmad is praying in the mosque.", lesson: "b1-05" },
+            { s: "هَذا ___ الفَجْرِ.", a: "أَذانُ", en: "This is the adhān for Fajr.", lesson: "b1-04" },
+            { s: "أَنا مِنْ ___.", a: "باكِسْتانَ", en: "I am from Pakistan.", lesson: "b1-01" },
+            { s: "هَذِهِ ___ الرَّسُولِ ﷺ.", a: "أُسْرَةُ", en: "This is the family of the Messenger ﷺ.", lesson: "b1-03" }
+          ]
+        },
+        {
+          id: "s3", type: "odd", marks: 5,
+          instr: "ضَعْ عَلامَةَ (✗) عَلَى الكَلِمَةِ الغَرِيبَةِ.",
+          instrEn: "Cross out the odd one out: the word that doesn't belong with the others.",
+          items: [
+            { w: ["أَخٌ", "صَدِيقٌ", "اِبْنٌ", "نَظّارَةٌ"], a: 3, why: "نَظّارَة (glasses) is a thing. The others are people.", lesson: "b1-04" },
+            { w: ["حَمّامٌ", "غُرْفَةٌ", "شَجَرَةٌ", "مَسْجِدٌ"], a: 2, why: "شَجَرَة (tree) isn't a place you go into. The others are places/rooms.", lesson: "b1-04" },
+            { w: ["يَتَوَضَّأُ", "مِعْطَفٌ", "يَقْرَأُ", "يُصَلِّي"], a: 1, why: "مِعْطَف (coat) is a noun. The others are verbs.", lesson: "b1-05" },
+            { w: ["صُورَةٌ", "سِتَّةٌ", "اِثْنانِ", "أَرْبَعَةٌ"], a: 0, why: "صُورَة (picture) isn't a number.", lesson: "b1-02" },
+            { w: ["أَنا", "مُصَلًّى", "أَنْتَ", "أَنْتِ"], a: 1, why: "مُصَلًّى (prayer room) is a place. The others are pronouns.", lesson: "b1-02" }
+          ]
+        }
+      ]
+    },
+    {
+      title: "Part 2 · Structures & grammar", titleAr: "ثانِيًا: التَّراكِيبُ وَالنَّحْوُ",
+      sections: [
+        {
+          id: "s4", type: "correct", marks: 5,
+          instr: "صَحِّحِ الأَخْطاءَ فِي الكَلِماتِ الَّتِي تَحْتَها خُطُوطٌ.",
+          instrEn: "Each sentence has one wrong (underlined) word. Choose the correct replacement.",
+          items: [
+            { b: "هَذِهِ", w: "هُوَ", f: "النَّظّارَةُ يا أَبِي.", opts: ["هِيَ", "هَذا", "أَنْتَ"], a: 0, why: "نَظّارَة is a linguistically feminine word, so: هَذِهِ هِيَ النَّظّارَةُ.", lesson: "b1-04" },
+            { b: "هَيّا بِنا", w: "فِي", f: "المَسْجِدِ.", opts: ["مِنْ", "إِلَى", "يا"], a: 1, why: "فِي means “in”, إِلَى means “to”: هَيّا بِنا إِلَى المَسْجِدِ (Let's go to the mosque).", lesson: "b1-04" },
+            { b: "والِدَتِي سَعِيدَةُ", w: "طَبِيبٌ", f: ".", opts: ["طَبِيبَةٌ", "طَبِيبِي", "طالِبٌ"], a: 0, why: "She is female, so the job takes ة: طَبِيبَةٌ.", lesson: "b1-02" },
+            { b: "اِسْمِي أَحْمَدُ، أَنا", w: "تُرْكِيَّةٌ", f: ".", opts: ["تُرْكِيا", "تُرْكِيٌّ", "تُرْكِيَّتِي"], a: 1, why: "Aḥmad is male, so remove the feminine ة: تُرْكِيٌّ.", lesson: "b1-01" },
+            { b: "مِنْ أَيْنَ", w: "أَنْتَ", f: "يا فاطِمَةُ؟", opts: ["أَنا", "هِيَ", "أَنْتِ"], a: 2, why: "Fāṭima is female, so use أَنْتِ.", lesson: "b1-01" }
+          ]
+        },
+        {
+          id: "s5", type: "match", marks: 6,
+          instr: "صِلْ أَداةَ الاسْتِفْهامِ فِي القائِمَةِ (أ) بِما يُناسِبُ مِنَ القائِمَةِ (ب).",
+          instrEn: "Match each question word in list (A) with the right ending from list (B).",
+          items: [
+            { a: "مَنْ", b: "هَذا؟", why: "مَنْ هَذا؟ Who is this?", lesson: "b1-02" },
+            { a: "هَلْ", b: "هَذِهِ شَجَرَةٌ؟", why: "هَلْ هَذِهِ شَجَرَةٌ؟ Is this a tree?", lesson: "b1-01" },
+            { a: "أَيْنَ", b: "المِعْطَفُ؟", why: "أَيْنَ المِعْطَفُ؟ Where is the coat?", lesson: "b1-04" },
+            { a: "ما", b: "اسْمُكَ؟", why: "ما اسْمُكَ؟ What is your name?", lesson: "b1-01" },
+            { a: "كَيْفَ", b: "حالُكَ؟", why: "كَيْفَ حالُكَ؟ How are you?", lesson: "b1-01" },
+            { a: "مِنْ أَيْنَ", b: "أَنْتَ يا عَدْنانُ؟", why: "مِنْ أَيْنَ أَنْتَ يا عَدْنانُ؟ Where are you from, ʿAdnān?", lesson: "b1-01" }
+          ]
+        },
+        {
+          id: "s6", type: "choose", marks: 7,
+          instr: "اِخْتَرِ الكَلِمَةَ الصَّحِيحَةَ.",
+          instrEn: "Choose the correct word for each blank.",
+          items: [
+            { s: "___ صُورَةُ أُسْرَتِي.", o: ["هَذا", "هَذِهِ"], a: 1, why: "صُورَة is feminine, so: هَذِهِ.", lesson: "b1-03" },
+            { s: "هَلْ هَذِهِ ___؟", o: ["شَجَرَةٌ", "مِعْطَفٌ"], a: 0, why: "هَذِهِ goes with a feminine word: شَجَرَة. مِعْطَف is masculine.", lesson: "b1-04" },
+            { s: "هُوَ ___.", o: ["يَقْرَأُ", "تَقْرَأُ"], a: 0, why: "هُوَ takes the ي form: يَقْرَأُ. (تَقْرَأُ goes with هِيَ or أَنْتَ.)", lesson: "b1-05" },
+            { s: "هَلْ أَنْتَ ___؟", o: ["مِصْرُ", "مِصْرِيٌّ"], a: 1, why: "You need the adjective “Egyptian”: مِصْرِيٌّ. مِصْر is the country.", lesson: "b1-01" },
+            { s: "هَذا أَخِي ___ مُدَرِّسٌ.", o: ["هُوَ", "هِيَ"], a: 0, why: "أَخ is male, so: هُوَ.", lesson: "b1-02" },
+            { s: "___ أَيْنَ أَنْتَ؟", o: ["مِنْ", "هَلْ"], a: 0, why: "مِنْ أَيْنَ أَنْتَ؟ Where are you from?", lesson: "b1-01" },
+            { s: "سَعْدٌ ___ الحَمّامِ.", o: ["فِي", "مِنْ"], a: 0, why: "He is IN the bathroom, not FROM it: فِي.", lesson: "b1-04" }
+          ]
+        }
+      ]
+    }
+  ]
+};
+</script><script>/* Arabic lesson engine — renders any lesson object in window.LESSONS.
+   Shared by every lesson page in the course (Books 1–4). */
+(function () {
+  "use strict";
+  const T = window.TEST || null;
+  const L = T ? testLesson(T) : window.LESSONS[window.LESSONS.length - 1];
+  // A test page loads the lessons it covers; merge them into one pseudo-lesson (items keep their source lesson id)
+  function testLesson(t) {
+    const ls = window.LESSONS, seen = new Set(), tag = (arr, id) => (arr || []).map(x => Object.assign({ src: id }, x));
+    return {
+      id: t.id, title: t.title, book: t.book, num: 0,
+      vocab: ls.flatMap(l => tag(l.vocab, l.id)).filter(v => !seen.has(v.ar) && seen.add(v.ar)),
+      practice: ls.flatMap(l => tag(l.practice, l.id)),
+      dialogues: ls.flatMap(l => (l.dialogues || []).map(d => Object.assign({ src: l.id }, d))),
+      lessons: ls.map(l => ({ id: l.id, num: l.num, title: l.title }))
+    };
+  }
+  const $ = (s, el = document) => el.querySelector(s);
+  const h = (html) => { const t = document.createElement("template"); t.innerHTML = html.trim(); return t.content.firstElementChild; };
+  const shuffle = (a) => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
+  const esc = (s) => String(s).replace(/[&<>"]/g, c => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
+  const HARAKAT = /[ً-ْٰ]/g;
+
+  /* ---------- storage (best-effort) ---------- */
+  const KEY = "arabic-course-v1";
+  let S = { lessons: {}, words: {}, prefs: { harakat: true, tr: true, en: true, rate: 0.8 } };
+  try { const raw = localStorage.getItem(KEY); if (raw) S = Object.assign(S, JSON.parse(raw)); } catch (e) {}
+  S.prefs = Object.assign({ harakat: true, tr: true, en: true, rate: 0.8 }, S.prefs);
+  const LS = S.lessons[L.id] = S.lessons[L.id] || { done: {}, best: {} };
+  const save = () => { try { localStorage.setItem(KEY, JSON.stringify(S)); } catch (e) {} };
+
+  /* ---------- Arabic text helper (respects harakat toggle) ---------- */
+  const ar = (txt, cls = "") => `<span class="ar ${cls}" data-ar="${esc(txt)}">${esc(S.prefs.harakat ? txt : txt.replace(HARAKAT, ""))}</span>`;
+  // Arabic sentence with a blank (___) replaced by live HTML (a select, a span…). No data-ar, so the blank survives.
+  const arBlank = (txt, blankHtml, cls = "") => { const show = t => esc(S.prefs.harakat ? t : t.replace(HARAKAT, "")); const [a, b = ""] = txt.split("___"); return `<span class="ar ${cls}">${show(a)}${blankHtml}${show(b)}</span>`; };
+  function refreshHarakat() {
+    document.querySelectorAll("[data-ar]").forEach(el => { const t = el.dataset.ar; el.textContent = S.prefs.harakat ? t : t.replace(HARAKAT, ""); });
+  }
+
+  /* ---------- speech ---------- */
+  let voice = null; const synth = window.speechSynthesis;
+  function pickVoice() {
+    if (!synth) return;
+    const vs = synth.getVoices().filter(v => /^ar/i.test(v.lang));
+    voice = vs.find(v => /Google|Microsoft|Maged|Laila|Majed|Hamed|Zariyah|Naayf/i.test(v.name)) || vs[0] || null;
+    const b = $("#voice-banner"); if (b) b.style.display = voice ? "none" : "block";
+  }
+  if (synth) { pickVoice(); synth.onvoiceschanged = pickVoice; }
+  function cleanForTTS(t) { return t.replace(/\(.*?\)/g, "").replace(/…/g, " ").replace(/[\/←→]/g, "، ").replace(/ﷺ/g, "صَلَّى اللهُ عَلَيْهِ وَسَلَّمَ").trim(); }
+  function speak(text, btn, rate) {
+    return new Promise(res => {
+      if (!synth) { res(); return; }
+      synth.cancel();
+      const u = new SpeechSynthesisUtterance(cleanForTTS(text));
+      u.lang = voice ? voice.lang : "ar-SA"; if (voice) u.voice = voice;
+      u.rate = rate || S.prefs.rate;
+      document.querySelectorAll(".speaking").forEach(e => e.classList.remove("speaking"));
+      if (btn) btn.classList.add("speaking");
+      const end = () => { if (btn) btn.classList.remove("speaking"); res(); };
+      u.onend = end; u.onerror = end;
+      synth.speak(u);
+      setTimeout(end, 15000);
+    });
+  }
+  const playBtn = (txt, extra = "") => `<button class="play ${extra}" data-say="${esc(txt)}" title="Listen" aria-label="Listen">🔊</button>`;
+  document.addEventListener("click", e => {
+    const b = e.target.closest("[data-say]"); if (b) { e.stopPropagation(); speak(b.dataset.say, b.classList.contains("play") ? b : b.querySelector(".play")); }
+  });
+
+  /* ---------- avatars (simple SVG illustrations) ---------- */
+  const PAL = { m1: ["#2f6db5", "#e8e8e8"], m2: ["#1f8a8a", "#d33"], m3: ["#5b4fb5", "#fff"], m4: ["#2c3e50", "#2c3e50"], f1: ["#a3407e", "#7a2a5c"], f2: ["#6b4e9b", "#3e2a63"], f3: ["#b5563a", "#7e3520"], f4: ["#3f7a5a", "#245039"] };
+  function avatar(kind, size = 46) {
+    const [c1, c2] = PAL[kind] || ["#888", "#555"];
+    const male = kind[0] === "m";
+    const head = male
+      ? `<path d="M14 22 Q24 6 34 22 L34 26 L14 26Z" fill="${c2}" stroke="#0002"/><circle cx="24" cy="24" r="8" fill="#e9b98f"/><path d="M17 27 Q24 35 31 27 Q30 31 24 32 Q18 31 17 27Z" fill="#4a3426"/>`
+      : `<path d="M12 30 Q10 10 24 9 Q38 10 36 30 Q30 36 24 36 Q18 36 12 30Z" fill="${c2}"/><circle cx="24" cy="23" r="7.5" fill="#e9b98f"/>`;
+    return `<svg class="av" width="${size}" height="${size}" viewBox="0 0 48 48" aria-hidden="true"><circle cx="24" cy="24" r="23" fill="${c1}22"/><path d="M8 48 Q8 34 24 34 Q40 34 40 48Z" fill="${c1}"/>${head}</svg>`;
+  }
+
+  /* ---------- sections ---------- */
+  const SECTIONS = [
+    ["overview", "Overview", "🏠"], ["dialogues", "Dialogues", "💬"], ["vocabulary", "Vocabulary", "🗂️"],
+    ["grammar", "Grammar", "🧩"], ["sounds", "Pronunciation", "🗣️"], ["listening", "Listening", "🎧"],
+    ["practice", "Quiz", "✍️"], ["speaking", "Speaking", "🎙️"], ["tips", "Teacher's tips", "💡"], ["review", "Review", "🔁"]
+  ];
+  const learnable = SECTIONS.filter(s => !["overview", "review"].includes(s[0]));
+
+  function renderShell() {
+    document.title = `${L.title} · Arabic Book ${L.book}`;
+    document.body.innerHTML = `
+    <header class="top">
+      <div class="top-inner">
+        <div class="brand"><small>${window.COURSE_HOME ? `<a href="${window.COURSE_HOME}">← Course</a> · ` : ""}Al-ʿArabiyyah Bayna Yadayk · Book ${L.book} · Lesson ${L.num}</small><b>${esc(L.title)}</b></div>
+        <div class="toggles">
+          <button class="chip" id="t-har">ـَـ Harakat</button>
+          <button class="chip" id="t-tr">abc Transliteration</button>
+          <button class="chip" id="t-en">EN Meaning</button>
+          <button class="chip" id="t-rate">🐢 Speed</button>
+        </div>
+      </div>
+      <div class="progress"><div id="pbar"></div></div>
+      <nav class="tabs" id="tabs">${SECTIONS.map(([id, n, ic]) => `<a href="#${id}" data-tab="${id}">${ic} ${n}<span class="tick"></span></a>`).join("")}</nav>
+    </header>
+    <main id="main"></main>
+    <footer>Based on <i>Al-ʿArabiyyah Bayna Yadayk</i> and the Al-Lisan video commentary · Audio is your device's Arabic text-to-speech voice, so check pronunciation against the video.</footer>`;
+    const setChips = () => {
+      $("#t-har").classList.toggle("on", S.prefs.harakat);
+      $("#t-tr").classList.toggle("on", S.prefs.tr);
+      $("#t-en").classList.toggle("on", S.prefs.en);
+      $("#t-rate").textContent = S.prefs.rate < 0.75 ? "🐢 Slow" : S.prefs.rate < 0.95 ? "🚶 Normal" : "🐇 Fast";
+      document.body.classList.toggle("no-tr", !S.prefs.tr);
+      document.body.classList.toggle("no-en", !S.prefs.en);
+    };
+    $("#t-har").onclick = () => { S.prefs.harakat = !S.prefs.harakat; save(); setChips(); refreshHarakat(); };
+    $("#t-tr").onclick = () => { S.prefs.tr = !S.prefs.tr; save(); setChips(); };
+    $("#t-en").onclick = () => { S.prefs.en = !S.prefs.en; save(); setChips(); };
+    $("#t-rate").onclick = () => { S.prefs.rate = S.prefs.rate < 0.75 ? 0.85 : S.prefs.rate < 0.95 ? 1.0 : 0.6; save(); setChips(); };
+    setChips();
+  }
+  function updateProgress() {
+    const n = learnable.filter(s => LS.done[s[0]]).length;
+    $("#pbar").style.width = (100 * n / learnable.length) + "%";
+    document.querySelectorAll("#tabs a").forEach(a => { $(".tick", a).textContent = LS.done[a.dataset.tab] ? "✓" : ""; });
+  }
+  function doneButton(id, next) {
+    const el = h(`<div class="row done-btn"><button class="btn primary">${LS.done[id] ? "✓ Completed" : "Mark as complete"} → ${next ? "next: " + SECTIONS.find(s => s[0] === next)[1] : ""}</button></div>`);
+    $("button", el).onclick = () => { LS.done[id] = true; save(); updateProgress(); if (next) location.hash = next; };
+    return el;
+  }
+  const nextOf = id => { const i = SECTIONS.findIndex(s => s[0] === id); return SECTIONS[i + 1] && SECTIONS[i + 1][0]; };
+
+  const views = {};
+  function route() {
+    const id = (location.hash || "#overview").slice(1);
+    const view = views[id] ? id : "overview";
+    document.querySelectorAll("#tabs a").forEach(a => a.classList.toggle("active", a.dataset.tab === view));
+    const a = $(`#tabs a[data-tab="${view}"]`); if (a) a.scrollIntoView({ block: "nearest", inline: "center" });
+    if (synth) synth.cancel();
+    const main = $("#main"); main.innerHTML = "";
+    main.appendChild(h(`<details class="banner" id="voice-banner" style="display:none"><summary>🔈 <b>No Arabic voice found on this device</b>, so audio won't play. Tap for how to add one.</summary><p style="margin:8px 0 0">You can still read and do the quizzes. <b>Windows:</b> Settings → Time &amp; language → Speech → Add voices → Arabic. <b>Android:</b> install Google Speech Services and add Arabic. <b>iPhone/Mac:</b> Settings → Accessibility → Spoken Content → Voices → Arabic. Chrome and Edge on a desktop usually include one already.</p></details>`));
+    pickVoice();
+    views[view](main);
+    if (!["overview", "review"].includes(view)) main.appendChild(doneButton(view, nextOf(view)));
+    window.scrollTo(0, 0);
+  }
+
+  /* ---------- Overview ---------- */
+  views.overview = (m) => {
+    m.appendChild(h(`<div class="stack">
+      <div class="card hero"><div>
+        <div class="muted">${esc(L.unitEn)}</div>
+        <div>${ar(L.titleAr, "big")}</div>
+        <h2>${esc(L.title)}</h2>
+        <p class="lead">${esc(L.covers)} · <a href="${L.video}" target="_blank" rel="noopener">Watch the video series ↗</a></p>
+      </div><div style="display:flex;gap:4px">${avatar("m1", 70)}${avatar("f1", 70)}</div></div>
+      <div class="card"><h3 style="margin-top:0">By the end of this lesson you can…</h3><ul class="goals">${L.goals.map(g => `<li>${esc(g)}</li>`).join("")}</ul></div>
+      <div><h3>Your path</h3><div class="path">${learnable.map(([id, n, ic], i) => `<a href="#${id}"><div class="step ${LS.done[id] ? "done" : ""}"><span class="num">${LS.done[id] ? "✓" : i + 1}</span><span>${ic} ${n}</span></div></a>`).join("")}</div></div>
+      <div class="card muted" style="font-size:14px">💡 <b>How to use this page:</b> watch the video first, then work through the tabs in order. Tap any 🔊 or Arabic line to hear it. Use the chips at the top to hide harakat (vowel marks), transliteration or English as you get stronger. Your progress is saved in this browser.</div>
+    </div>`));
+  };
+
+  /* ---------- Dialogues ---------- */
+  views.dialogues = (m) => {
+    m.appendChild(h(`<div><h2>Dialogues</h2><p class="lead">Listen, then read along. <b>▶ Play</b> reads the whole conversation. <b>🔁 Shadow</b> pauses after each line so you can repeat it, as the teacher asks. <b>🙈 Hide text</b> turns it into a listening test.</p></div>`));
+    L.dialogues.forEach(d => {
+      const names = Object.keys(d.people);
+      const card = h(`<div class="card" style="margin-bottom:16px">
+        <div class="dlg-head"><div><b>${esc(d.title)}</b> · ${ar(d.titleAr)}<div class="muted" style="font-size:14px">${esc(d.note)}</div></div>
+          <div class="row"><button class="btn small" data-act="play">▶ Play</button><button class="btn small" data-act="shadow">🔁 Shadow</button><button class="btn small" data-act="hide">🙈 Hide text</button></div></div>
+        <div class="scene">${names.map(n => `<figure>${avatar(d.people[n], 64)}<figcaption>${ar(n)}</figcaption></figure>`).join(`<div style="font-size:30px;align-self:center">🤝</div>`)}</div>
+        ${d.tree ? treeHTML(d.tree) : ""}
+        <div class="shadow-cue"></div>
+        <div class="bubbles">${d.lines.map((ln, i) => {
+          const side = names.indexOf(ln[0]) === 0 ? "right" : "left"; const g = d.people[ln[0]][0];
+          return `<div class="bub ${side} ${g}" data-i="${i}">${avatar(d.people[ln[0]], 38)}<div class="body"><div class="who">${ar(ln[0])}</div>${ar(ln[1], "line")}<div class="tr">${esc(ln[2])}</div><div class="en">${esc(ln[3])}</div></div></div>`;
+        }).join("")}</div></div>`);
+      const bubs = [...card.querySelectorAll(".bub")]; const cue = $(".shadow-cue", card);
+      let runId = 0;
+      bubs.forEach((b, i) => b.querySelector(".body").onclick = () => { runId++; b.classList.add("revealed"); highlight(i); speak(d.lines[i][1]); });
+      const highlight = i => bubs.forEach((b, j) => b.classList.toggle("active", j === i));
+      async function run(shadow) {
+        const my = ++runId;
+        for (let i = 0; i < d.lines.length; i++) {
+          if (my !== runId) return;
+          highlight(i); cue.textContent = shadow ? "Listen…" : "";
+          await speak(d.lines[i][1]);
+          if (my !== runId) return;
+          if (shadow) {
+            const secs = Math.max(2, Math.round(d.lines[i][1].length / 9));
+            for (let s = secs; s > 0; s--) { if (my !== runId) return; cue.textContent = `🎤 Your turn: repeat it (${s})`; await new Promise(r => setTimeout(r, 1000)); }
+          } else await new Promise(r => setTimeout(r, 350));
+        }
+        highlight(-1); cue.textContent = shadow ? "✓ Well done! Try again with the text hidden." : "";
+      }
+      card.querySelector('[data-act="play"]').onclick = () => run(false);
+      card.querySelector('[data-act="shadow"]').onclick = () => run(true);
+      card.querySelector('[data-act="hide"]').onclick = (e) => { card.classList.toggle("hidetext"); bubs.forEach(b => b.classList.remove("revealed")); e.target.textContent = card.classList.contains("hidetext") ? "👁 Show text" : "🙈 Hide text"; };
+      m.appendChild(card);
+    });
+  };
+
+  /* family tree illustration: levels of clickable name cards */
+  function treeHTML(t) {
+    return `<div class="ftree"><div class="label">${esc(t.label || "Family tree · tap a name to hear it")}</div>${t.levels.map((lv, i) => `${i ? '<div class="fline"></div>' : ""}<div class="flevel">${lv.map(n => `<button class="fnode ${n.g || ""} ${n.me ? "me" : ""}" data-say="${esc(n.say || n.ar)}">${ar(n.ar)}<small>${esc(n.en)}</small></button>`).join("")}</div>`).join("")}</div>`;
+  }
+
+  /* ---------- Vocabulary ---------- */
+  const boxOf = w => S.words[w.ar] || 0;
+  const setBox = (w, b) => { S.words[w.ar] = Math.max(0, Math.min(5, b)); save(); };
+  views.vocabulary = (m) => {
+    const cats = ["All", ...new Set(L.vocab.map(v => v.cat))];
+    let cat = "All", mode = "list";
+    m.appendChild(h(`<div><h2>Vocabulary</h2><p class="lead">${L.vocab.length} words and phrases. Learn them in <b>List</b> mode, then test yourself with <b>Flashcards</b>. Flashcard results go into your spaced-review deck: words you miss come back more often.</p></div>`));
+    const bar = h(`<div class="row" style="justify-content:space-between;margin-bottom:6px"><div class="filters"></div><div class="row"><button class="chip on" data-m="list">📋 List</button><button class="chip" data-m="flash">🃏 Flashcards</button></div></div>`);
+    const box = h(`<div></div>`); m.append(bar, box);
+    const drawFilters = () => { $(".filters", bar).innerHTML = cats.map(c => `<button class="chip ${c === cat ? "on" : ""}" data-c="${c}">${c}</button>`).join(""); };
+    bar.onclick = e => { const c = e.target.closest("[data-c]"), mm = e.target.closest("[data-m]");
+      if (c) { cat = c.dataset.c; } if (mm) { mode = mm.dataset.m; bar.querySelectorAll("[data-m]").forEach(x => x.classList.toggle("on", x === mm)); }
+      if (c || mm) draw(); };
+    const list = () => L.vocab.filter(v => cat === "All" || v.cat === cat);
+    function draw() {
+      drawFilters(); box.innerHTML = "";
+      if (mode === "list") {
+        box.appendChild(h(`<div class="grid">${list().map(v => `<div class="card vcard" data-say="${esc(v.ar)}" style="cursor:pointer">${playBtn(v.ar)}<span class="box">${"●".repeat(boxOf(v))}${"○".repeat(5 - boxOf(v))}</span><div class="pic">${v.pic}</div>${ar(v.ar)}<div class="tr">${esc(v.tr)}</div><div>${esc(v.en)}</div>${v.extra ? `<span class="tag">from the video</span>` : ""}</div>`).join("")}</div>`));
+      } else flash(box, shuffle(list()));
+    }
+    draw();
+  };
+  function flash(box, deck) {
+    let i = 0, dir = "ar", known = 0;
+    const wrap = h(`<div class="flash-wrap"><div class="row" style="justify-content:center"><button class="chip on" data-d="ar">Arabic → English</button><button class="chip" data-d="en">English → Arabic</button></div><div class="muted" id="fc-count" style="margin-top:8px"></div><div class="flash"><div class="flash-inner"><div class="face front"></div><div class="face back"></div></div></div><div class="row" style="justify-content:center" id="fc-btns"><button class="btn" data-r="0">😕 Again</button><button class="btn primary" data-r="1">😀 Got it</button></div><p class="muted" style="font-size:13px">Tap the card to flip it.</p></div>`);
+    box.appendChild(wrap);
+    const card = $(".flash", wrap);
+    function show() {
+      if (i >= deck.length) { wrap.innerHTML = `<div class="card" style="text-align:center"><div class="score">${known}/${deck.length}</div><p>Words you marked “Again” will come up more often in the <a href="#review">Review</a> tab.</p><button class="btn primary" id="fc-again">Shuffle &amp; go again</button></div>`; $("#fc-again", wrap).onclick = () => { box.innerHTML = ""; flash(box, shuffle(deck)); }; return; }
+      const v = deck[i]; card.classList.remove("flipped");
+      $("#fc-count", wrap).textContent = `Card ${i + 1} of ${deck.length}`;
+      const arFace = `<div class="pic">${v.pic}</div>${ar(v.ar)}<div class="tr">${esc(v.tr)}</div>${playBtn(v.ar)}`;
+      const enFace = `<div class="pic">${v.pic}</div><div style="font-size:22px;font-weight:600">${esc(v.en)}</div>`;
+      $(".front", wrap).innerHTML = dir === "ar" ? `${ar(v.ar)}${playBtn(v.ar)}` : enFace;
+      $(".back", wrap).innerHTML = dir === "ar" ? `<div class="pic">${v.pic}</div><div style="font-size:22px;font-weight:600">${esc(v.en)}</div><div class="tr">${esc(v.tr)}</div>` : arFace;
+      if (dir === "ar") speak(v.ar);
+    }
+    card.onclick = (e) => { if (e.target.closest(".play")) return; card.classList.toggle("flipped"); if (dir === "en" && card.classList.contains("flipped")) speak(deck[i].ar); };
+    $("#fc-btns", wrap).onclick = e => { const r = e.target.closest("[data-r]"); if (!r) return; const v = deck[i]; if (r.dataset.r === "1") { known++; setBox(v, boxOf(v) + 1); } else setBox(v, 0); i++; show(); };
+    wrap.querySelectorAll("[data-d]").forEach(b => b.onclick = () => { dir = b.dataset.d; wrap.querySelectorAll("[data-d]").forEach(x => x.classList.toggle("on", x === b)); show(); });
+    show();
+  }
+
+  /* ---------- Grammar ---------- */
+  views.grammar = (m) => {
+    m.appendChild(h(`<div><h2>Grammar</h2><p class="lead">The rules behind the dialogues. Try each interactive box. Every Arabic word you build is read aloud.</p></div>`));
+    L.grammar.forEach(g => {
+      const c = h(`<div class="card gblock" style="margin-bottom:16px"><h3>${esc(g.title)}</h3>${g.body.map(p => `<p>${arabize(p)}</p>`).join("")}</div>`);
+      if (g.table) c.appendChild(h(`<table class="g"><tr>${g.table.head.map(x => `<th>${x}</th>`).join("")}</tr>${g.table.rows.map(r => `<tr><td>${arabize(r[0])}</td><td>${ar(r[1])} ${playBtn(r[1])}</td><td class="tr">${r[2]}</td><td>${arabize(r[3])}</td></tr>`).join("")}</table>`));
+      if (g.tree) c.appendChild(h(treeHTML(g.tree)));
+      if (g.widget && g.widget.type === "suffix") c.appendChild(suffixWidget(g.widget));
+      if (g.widget && g.widget.type === "nisba") c.appendChild(nisbaWidget(g.widget));
+      if (g.widget && g.widget.type === "combo") c.appendChild(comboWidget(g.widget));
+      m.appendChild(c);
+    });
+  };
+  // wrap Arabic runs inside prose so they get the Arabic font and harakat toggle
+  function arabize(html) { return html.replace(/([؀-ۿ][؀-ۿً-ْٰ\s،؟]*[؀-ۿً-ْٰ؟]|[؀-ۿ])/g, (t) => ar(t)); }
+  function splitSfx(word, key) { const sfx = key === "my" ? "ِي" : key === "m" ? "ُكَ" : "ُكِ"; return word.endsWith(sfx) ? [word.slice(0, -sfx.length), sfx] : [word, ""]; }
+  function suffixWidget(w) {
+    let n = 0, k = "my";
+    const el = h(`<div class="widget"><div class="label">Build it yourself · pick a noun, then an ending</div><div class="row nouns"></div><div class="row" style="margin-top:8px"><button class="chip" data-k="my">ـي my</button><button class="chip" data-k="m">ـكَ your (m)</button><button class="chip" data-k="f">ـكِ your (f)</button></div><div class="result"></div><div class="center muted" id="sx-cap" style="text-align:center"></div></div>`);
+    function draw(sayIt) {
+      $(".nouns", el).innerHTML = w.nouns.map((x, i) => `<button class="chip ${i === n ? "on" : ""}" data-n="${i}">${ar(x.base)} · ${x.en}</button>`).join("");
+      el.querySelectorAll("[data-k]").forEach(b => b.classList.toggle("on", b.dataset.k === k));
+      const x = w.nouns[n], [word, tr] = x.forms[k], [stem, sfx] = splitSfx(word, k);
+      const show = s => S.prefs.harakat ? s : s.replace(HARAKAT, "");
+      // separate pieces (colour spans inside one word would break Arabic letter joining)
+      $(".result", el).innerHTML = `<span class="ar">${esc(show(word))}</span> ${playBtn(word)}<div style="font-size:22px" dir="rtl"><span class="ar">${esc(show(x.base))}</span> <span class="muted">+</span> <span class="ar sfx ${k === "my" ? "" : k}">ـ${esc(show(sfx))}</span></div>`;
+      $("#sx-cap", el).innerHTML = `<span class="tr">${tr}</span> = <b>${k === "my" ? "my" : "your"} ${x.en}</b>${k === "m" ? " (talking to a male)" : k === "f" ? " (talking to a female)" : ""}`;
+      if (sayIt) speak(word);
+    }
+    el.onclick = e => { const a = e.target.closest("[data-n]"), b = e.target.closest("[data-k]"); if (a) n = +a.dataset.n; if (b) k = b.dataset.k; if (a || b) draw(true); };
+    draw(false); return el;
+  }
+  // generic two-axis builder: pick a row, pick a column, see/hear the result
+  function comboWidget(w) {
+    let r = w.rows[0].k, c = w.cols[0].k;
+    const el = h(`<div class="widget"><div class="label">${esc(w.label)}</div><div class="row rows"></div><div class="row cols" style="margin-top:8px"></div><div class="result" style="font-size:38px"></div><div class="cap" style="text-align:center"></div></div>`);
+    function draw(sayIt) {
+      $(".rows", el).innerHTML = w.rows.map(x => `<button class="chip ${x.k === r ? "on" : ""}" data-r="${x.k}">${arabize(esc(x.label))}</button>`).join("");
+      $(".cols", el).innerHTML = w.cols.map(x => `<button class="chip ${x.k === c ? "on" : ""}" data-c="${x.k}">${arabize(esc(x.label))}</button>`).join("");
+      const o = w.out[r + "|" + c]; if (!o) return;
+      $(".result", el).innerHTML = `${ar(o[0])} ${playBtn(o[0])}`;
+      $(".cap", el).innerHTML = `<span class="tr">${esc(o[1])}</span> = <b>${esc(o[2])}</b>${o[3] ? `<div class="muted" style="font-size:13px;margin-top:4px">${arabize(esc(o[3]))}</div>` : ""}`;
+      if (sayIt) speak(o[0]);
+    }
+    el.onclick = e => { const a = e.target.closest("[data-r]"), b = e.target.closest("[data-c]"); if (a) r = a.dataset.r; if (b) c = b.dataset.c; if (a || b) draw(true); };
+    draw(false); return el;
+  }
+  function nisbaWidget(w) {
+    const el = h(`<div class="widget"><div class="label">Tap a country to make the nationality: country → male → female</div><div class="grid" style="grid-template-columns:repeat(auto-fill,minmax(140px,1fr))"></div></div>`);
+    const g = $(".grid", el);
+    w.items.forEach(it => {
+      let st = 0; const c = h(`<div class="ncard"></div>`);
+      const draw = () => {
+        const [a, t, e] = st === 0 ? it.c : st === 1 ? it.m : [it.f[0], it.f[1], it.m[2] + " (f)"];
+        c.innerHTML = `<div class="flag">${it.flag}${st === 1 ? "👨" : st === 2 ? "👩" : ""}</div>${ar(a)}<div class="tr">${t}</div><div style="font-size:14px">${e}</div><div class="stage">${["country", "male ـيّ", "female ـيَّة"][st]}${it.bonus ? " · bonus" : ""}</div>`;
+      };
+      c.onclick = () => { st = (st + 1) % 3; draw(); speak(st === 0 ? it.c[0] : st === 1 ? it.m[0] : it.f[0]); };
+      draw(); g.appendChild(c);
+    });
+    return el;
+  }
+
+  /* ---------- Pronunciation ---------- */
+  views.sounds = (m) => {
+    const sd = L.sounds;
+    m.appendChild(h(`<div><h2>Pronunciation</h2><p class="lead">${esc(sd.intro)}</p></div>`));
+    const g = h(`<div class="stack"></div>`);
+    sd.letters.forEach(x => g.appendChild(h(`<div class="card letter"><div class="glyph" data-say="${esc(x.ex[0])}">${x.l}</div><div><b>${esc(x.name)}</b><p style="margin:4px 0 8px">${esc(x.tip)}</p>${x.ex.map(w => `<span class="ex" data-say="${esc(w)}">${ar(w)}<button class="play" style="width:28px;height:28px;font-size:12px">🔊</button></span>`).join("")}</div></div>`)));
+    m.appendChild(g);
+    m.appendChild(h(`<h3>Minimal pairs: hear the difference</h3>`));
+    const pg = h(`<div class="stack"></div>`);
+    sd.pairs.forEach(p => pg.appendChild(h(`<div class="card pair"><div class="side" data-say="${esc(p.a[0])}">${ar(p.a[0])}<span class="tr">${p.a[1]}</span><div class="en">${p.a[2]}</div></div><div class="vs">${esc(p.note)}<br>vs</div><div class="side" data-say="${esc(p.b[0])}">${ar(p.b[0])}<span class="tr">${p.b[1]}</span><div class="en">${p.b[2]}</div></div></div>`)));
+    m.appendChild(pg);
+    // which-did-you-hear game
+    m.appendChild(h(`<h3>🎯 Which one did you hear?</h3>`));
+    const game = h(`<div class="card" style="text-align:center"><button class="play big-play" id="pg-play">▶</button><div class="row" style="justify-content:center" id="pg-opts"></div><div id="pg-fb" class="muted" style="margin-top:10px">Press play, then choose the word you heard.</div><div class="muted" id="pg-score" style="font-size:13px"></div></div>`);
+    let cur, right = 0, total = 0;
+    const next = () => { const p = sd.pairs[Math.floor(Math.random() * sd.pairs.length)]; cur = { p, pick: Math.random() < .5 ? "a" : "b" }; $("#pg-opts", game).innerHTML = shuffle(["a", "b"]).map(k => `<button class="opt" data-k="${k}">${ar(p[k][0])} <span class="tr">${p[k][1]}</span></button>`).join(""); };
+    $("#pg-play", game).onclick = (e) => speak(cur.p[cur.pick][0], e.currentTarget, 0.7);
+    $("#pg-opts", game).onclick = e => { const b = e.target.closest("[data-k]"); if (!b) return; total++; const ok = b.dataset.k === cur.pick; if (ok) right++;
+      $("#pg-fb", game).innerHTML = ok ? `<span style="color:var(--good)">✓ Correct!</span>` : `<span style="color:var(--bad)">✗ It was ${ar(cur.p[cur.pick][0])}</span>`;
+      $("#pg-score", game).textContent = `Score: ${right}/${total}`; next(); };
+    next(); m.appendChild(game);
+    m.appendChild(recorderCard("Record yourself", "Say a word or a dialogue line, then play it back and compare it with the 🔊 model."));
+  };
+
+  /* ---------- recorder (works where the microphone is allowed) ---------- */
+  function recorderCard(title, sub) {
+    const el = h(`<div class="card" style="margin-top:16px"><b>🎙️ ${title}</b><p class="muted" style="margin:4px 0 10px;font-size:14px">${sub}</p><div class="rec"><button class="btn" id="rec-btn">● Record</button><span id="rec-state" class="muted"></span><audio id="rec-audio" controls style="display:none;height:36px"></audio></div></div>`);
+    let mr = null, chunks = [];
+    $("#rec-btn", el).onclick = async () => {
+      const st = $("#rec-state", el), btn = $("#rec-btn", el);
+      if (mr && mr.state === "recording") { mr.stop(); return; }
+      try {
+        const stream = await navigator.mediaDevices.getUserMedia({ audio: true });
+        mr = new MediaRecorder(stream); chunks = [];
+        mr.ondataavailable = e => chunks.push(e.data);
+        mr.onstop = () => { stream.getTracks().forEach(t => t.stop()); const a = $("#rec-audio", el); a.src = URL.createObjectURL(new Blob(chunks)); a.style.display = "inline-block"; btn.textContent = "● Record again"; st.innerHTML = ""; a.play().catch(() => {}); };
+        mr.start(); btn.textContent = "■ Stop"; st.innerHTML = `<span class="dot"></span> recording…`;
+      } catch (e) { st.innerHTML = "The microphone isn't available on this page. Open the course from your GitHub Pages site to record, or simply say it out loud."; }
+    };
+    return el;
+  }
+
+  /* ---------- quiz runner ---------- */
+  function runQuiz(m, items, quizId, onDone) {
+    let i = 0, score = 0; const wrong = [], wrongItems = [];
+    const q = h(`<div class="quiz card"></div>`); m.appendChild(q);
+    function show() {
+      if (i >= items.length) {
+        const pct = Math.round(100 * score / items.length);
+        LS.best[quizId] = Math.max(LS.best[quizId] || 0, pct); save();
+        q.innerHTML = `<div style="text-align:center"><div class="score">${score} / ${items.length}</div><p>${pct >= 90 ? "Excellent! 🌟" : pct >= 70 ? "Good work! 👍" : "Keep practising. Review the tabs and try again 💪"} · Best: ${LS.best[quizId]}%</p>${wrong.length ? `<div style="text-align:left"><b>Review these:</b><ul>${wrong.map(w => `<li>${w}</li>`).join("")}</ul></div>` : ""}<button class="btn primary" id="qa">Try again</button></div>`;
+        $("#qa", q).onclick = () => { q.remove(); runQuiz(m, shuffle(items), quizId, onDone); };
+        if (onDone) onDone(pct, wrongItems, score, items.length); return;
+      }
+      const it = items[i];
+      q.innerHTML = `<div class="qhead"><span>Question ${i + 1} of ${items.length}</span><span>Score ${score}</span></div><div class="qbar"><div style="width:${100 * i / items.length}%"></div></div><div class="qbody"></div>`;
+      const body = $(".qbody", q);
+      const finish = (ok, correctText, explain) => {
+        if (ok) score++; else { wrong.push(correctText); wrongItems.push(it); }
+        if (it.word) setBox(it.word, ok ? boxOf(it.word) + 1 : 0);
+        body.appendChild(h(`<div class="feedback ${ok ? "good" : "bad"}">${ok ? "✓ Correct!" : "✗ Not quite. Answer: " + correctText}${explain ? `<span class="ex-text">${arabize(explain)}</span>` : ""}</div>`));
+        const nb = h(`<div class="row" style="justify-content:flex-end;margin-top:10px"><button class="btn primary">Next →</button></div>`);
+        $("button", nb).onclick = () => { i++; show(); }; body.appendChild(nb); $("button", nb).focus();
+      };
+      if (it.type === "order") return orderQ(body, it, finish);
+      if (it.type === "match") return matchQ(body, it, finish);
+      // mcq-like
+      let head = "";
+      if (it.type === "mcq") head = `<div class="qtext">${arabize(esc(it.q))}</div>`;
+      if (it.type === "fill") head = `<div class="qtext">Fill in the blank</div><div class="qsentence">${arBlank(it.sentence, `<span class="blank">؟</span>`)}</div><div class="en" style="text-align:center">${esc(it.en)}</div>`;
+      if (it.type === "reply") head = `<div class="qtext">${esc(it.en)}</div><div class="qsentence">${ar(it.prompt)} ${playBtn(it.prompt)}</div>`;
+      if (it.type === "listen") head = `<div class="qtext">${esc(it.q || "Listen. What did you hear?")}</div><button class="play big-play" data-say="${esc(it.say)}">▶</button>`;
+      const opts = it.options.map((o, k) => ({ o, k }));
+      body.innerHTML = head + `<div class="opts">${opts.map(({ o, k }) => `<button class="opt" data-k="${k}">${/^[؀-ۿ]/.test(o) ? ar(o) : arabize(esc(o))}</button>`).join("")}</div>`;
+      if (it.type === "listen") setTimeout(() => speak(it.say, $(".big-play", body)), 250);
+      body.querySelector(".opts").onclick = e => {
+        const b = e.target.closest(".opt"); if (!b) return;
+        const k = +b.dataset.k, ok = k === it.answer;
+        body.querySelectorAll(".opt").forEach(x => { x.disabled = true; if (+x.dataset.k === it.answer) x.classList.add("correct"); });
+        if (!ok) b.classList.add("wrong");
+        if (it.type === "fill" || it.type === "reply") speak(it.type === "fill" ? it.sentence.replace("___", it.options[it.answer]) : it.options[it.answer]);
+        finish(ok, it.options[it.answer], it.explain);
+      };
+    }
+    show();
+  }
+  function orderQ(body, it, finish) {
+    const pool = shuffle(it.words.map((w, k) => ({ w, k }))); let ans = [];
+    body.innerHTML = `<div class="qtext">Build the sentence: <span class="en" style="color:var(--ink)">“${esc(it.en)}”</span></div><div class="muted" style="font-size:13px">Tap the words in order. Arabic reads right → left.</div><div class="tiles answer"></div><div class="tiles pool"></div><div class="row" style="justify-content:flex-end"><button class="btn small" id="o-clear">Clear</button><button class="btn primary" id="o-check">Check</button></div>`;
+    const draw = () => {
+      $(".answer", body).innerHTML = ans.map((x, j) => `<button class="tile" data-a="${j}">${esc(S.prefs.harakat ? x.w : x.w.replace(HARAKAT, ""))}</button>`).join("");
+      $(".pool", body).innerHTML = pool.filter(x => !ans.includes(x)).map(x => `<button class="tile" data-p="${x.k}">${esc(S.prefs.harakat ? x.w : x.w.replace(HARAKAT, ""))}</button>`).join("");
+    };
+    body.onclick = e => {
+      const p = e.target.closest("[data-p]"), a = e.target.closest("[data-a]");
+      if (p) { ans.push(pool.find(x => x.k === +p.dataset.p)); draw(); }
+      if (a) { ans.splice(+a.dataset.a, 1); draw(); }
+    };
+    $("#o-clear", body).onclick = () => { ans = []; draw(); };
+    $("#o-check", body).onclick = (e) => {
+      if (ans.length < it.words.length) return;
+      const ok = ans.every((x, j) => x.k === j); body.onclick = null; e.target.disabled = true; $("#o-clear", body).disabled = true;
+      speak(it.words.join(" ")); finish(ok, it.words.join(" "));
+    };
+    draw();
+  }
+  function matchQ(body, it, finish) {
+    const left = shuffle(it.pairs.map((p, k) => ({ t: p[0], k }))), right = shuffle(it.pairs.map((p, k) => ({ t: p[1], k })));
+    let sel = null, matched = 0, mistakes = 0;
+    body.innerHTML = `<div class="qtext">${esc(it.q || "Match each Arabic word with its meaning")}</div><div class="match">${left.map((l, j) => `<button class="mi" data-side="l" data-k="${l.k}">${ar(l.t)}</button><button class="mi" data-side="r" data-k="${right[j].k}">${/^[\u0600-\u06FF]/.test(right[j].t) ? ar(right[j].t) : esc(right[j].t)}</button>`).join("")}</div>`;
+    body.querySelector(".match").onclick = e => {
+      const b = e.target.closest(".mi"); if (!b || b.classList.contains("ok")) return;
+      if (b.dataset.side === "l") speak(it.pairs[+b.dataset.k][0]);
+      if (!sel || sel.dataset.side === b.dataset.side) { if (sel) sel.classList.remove("sel"); sel = b; b.classList.add("sel"); return; }
+      if (sel.dataset.k === b.dataset.k) { sel.classList.replace("sel", "ok"); b.classList.add("ok"); matched++; sel = null;
+        if (matched === it.pairs.length) finish(mistakes <= 1, mistakes <= 1 ? "" : `${mistakes} mismatches. Try the match again later`); }
+      else { mistakes++; const s = sel; s.classList.remove("sel"); [s, b].forEach(x => x.classList.add("no")); setTimeout(() => [s, b].forEach(x => x.classList.remove("no")), 500); sel = null; }
+    };
+  }
+  function vocabMCQ(n, dir) {
+    const pool = L.vocab;
+    return shuffle(pool).slice(0, n).map(w => {
+      const distract = shuffle(pool.filter(x => x !== w && x.en !== w.en)).slice(0, 3);
+      const opts = shuffle([w, ...distract]);
+      return dir === "listen"
+        ? { type: "listen", say: w.ar, options: opts.map(o => o.en), answer: opts.indexOf(w), word: w, src: w.src, area: "vocabulary" }
+        : dir === "en2ar"
+          ? { type: "mcq", q: `How do you say “${w.en}”?`, options: opts.map(o => o.ar), answer: opts.indexOf(w), word: w, src: w.src, area: "vocabulary" }
+          : { type: "mcq", q: `What does ${w.ar} mean?`, options: opts.map(o => o.en), answer: opts.indexOf(w), word: w, src: w.src, area: "vocabulary" };
+    });
+  }
+
+  /* ---------- Listening ---------- */
+  views.listening = (m) => {
+    m.appendChild(h(`<div><h2>Listening</h2><p class="lead">Train your ear without reading. Each question plays automatically. Press ▶ to hear it again. Set 🐢 Slow at the top if it's too fast.</p></div>`));
+    const pick = h(`<div class="row" style="margin-bottom:14px"><button class="chip on" data-l="words">🔤 Words (10)</button><button class="chip" data-l="lines">💬 Dialogue lines (8)</button><button class="chip" data-l="who">🧑‍🤝‍🧑 Male or female? (8)</button></div>`);
+    const box = h(`<div></div>`); m.append(pick, box);
+    const allLines = L.dialogues.flatMap(d => d.lines.map(l => ({ l, d })));
+    const whoLines = () => shuffle(allLines.filter(x => L.gender ? new RegExp(L.gender.any).test(x.l[1].replace(HARAKAT, "") + " ") : /ُكَ|ُكِ|أَنْتَ|أَنْتِ|يَّةٌ|يٌّ/.test(x.l[1])));
+    if (whoLines().length < 3) pick.querySelector('[data-l="who"]').remove();
+    const sets = {
+      words: () => vocabMCQ(10, "listen"),
+      lines: () => shuffle([...new Map(allLines.filter(x => !/السَّلام/.test(x.l[1])).map(x => [x.l[1], x])).values()]).slice(0, 8).map(({ l }) => {
+        const others = shuffle([...new Set(allLines.filter(x => x.l[1] !== l[1]).map(x => x.l[3]).filter(t => t !== l[3]))]).slice(0, 3);
+        const opts = shuffle([l[3], ...others]); return { type: "listen", say: l[1], options: opts, answer: opts.indexOf(l[3]) };
+      }),
+      who: () => whoLines().slice(0, 8).map(({ l }) => {
+        const fem = L.gender ? new RegExp(L.gender.fem).test(l[1].replace(HARAKAT, "") + " ") : /ُكِ|أَنْتِ|يَّةٌ/.test(l[1]);
+        return { type: "listen", q: (L.gender && L.gender.q) || "Is this sentence spoken TO or ABOUT a male or a female?", say: l[1], options: ["Male ♂", "Female ♀"], answer: fem ? 1 : 0, explain: `${l[1]} — ${l[3]}` };
+      })
+    };
+    const go = k => { box.innerHTML = ""; runQuiz(box, sets[k](), "listen-" + k); };
+    pick.onclick = e => { const b = e.target.closest("[data-l]"); if (!b) return; pick.querySelectorAll("[data-l]").forEach(x => x.classList.toggle("on", x === b)); go(b.dataset.l); };
+    go("words");
+  };
+
+  /* ---------- Practice quiz ---------- */
+  views.practice = (m) => {
+    m.appendChild(h(`<div><h2>Quiz</h2><p class="lead">Mixed practice: grammar choices, fill in the blank, sentence building, logical replies, word matching and vocabulary. Your best score is saved.</p></div>`));
+    const matchItem = { type: "match", pairs: shuffle(L.vocab.filter(v => !v.extra)).slice(0, 6).map(v => [v.ar, v.en]) };
+    const items = [...shuffle(L.practice), matchItem, ...vocabMCQ(4, "ar2en"), ...vocabMCQ(3, "en2ar")];
+    runQuiz(m, items, "practice");
+  };
+
+  /* ---------- Speaking ---------- */
+  views.speaking = (m) => {
+    m.appendChild(h(`<div><h2>Speaking: role-play</h2><p class="lead">Your partner speaks and you answer out loud with <b>your own</b> name and country. Then reveal the model answer and compare. In the role-play your partner is a man. Afterwards, practise the same answers using the feminine forms (ـكِ / أَنْتِ / ـيَّة).</p></div>`));
+    const card = h(`<div class="card rp"></div>`); m.appendChild(card);
+    let i = 0;
+    function show() {
+      if (i >= L.roleplay.length) { card.innerHTML = `<div style="text-align:center"><div class="score">🎉</div><p>Conversation complete! Do it again faster, or swap roles and ask the questions yourself.</p><button class="btn primary" id="rp-again">Start over</button></div>`; $("#rp-again", card).onclick = () => { i = 0; show(); }; return; }
+      const r = L.roleplay[i];
+      card.innerHTML = `<div class="muted">Turn ${i + 1} of ${L.roleplay.length}</div>
+        <div class="bub left m"><div>${avatar("m1", 40)}</div><div class="body" data-say="${esc(r.them)}">${ar(r.them, "line")} ${playBtn(r.them)}</div></div>
+        <div><b>Your turn:</b> ${esc(r.hint)}</div>
+        <div class="row"><button class="btn" id="rp-show">👁 Show model answer</button><button class="btn primary" id="rp-next">Next →</button></div>
+        <div id="rp-model" style="display:none" class="bub right"><div class="body">${ar(r.you, "line")} ${playBtn(r.you)}</div></div>`;
+      $("#rp-show", card).onclick = () => { $("#rp-model", card).style.display = "flex"; speak(r.you); };
+      $("#rp-next", card).onclick = () => { i++; show(); };
+      setTimeout(() => speak(r.them), 200);
+    }
+    show();
+    m.appendChild(recorderCard("Record your answers", "Record the whole role-play in one take, then listen back."));
+  };
+
+  /* ---------- Tips ---------- */
+  views.tips = (m) => {
+    m.appendChild(h(`<div><h2>Teacher's tips</h2><p class="lead">The key points and memory aids from the video.</p></div>`));
+    const g = h(`<div class="stack"></div>`);
+    L.tips.forEach(t => g.appendChild(h(`<div class="card tipcard"><div class="ic">${t.icon}</div><div><b>${esc(t.t)}</b><p style="margin:4px 0 0">${arabize(esc(t.d))}</p></div></div>`)));
+    m.appendChild(g);
+  };
+
+  /* ---------- Review ---------- */
+  views.review = (m) => {
+    const weak = L.vocab.filter(w => boxOf(w) <= 1);
+    const strong = L.vocab.filter(w => boxOf(w) >= 3).length;
+    m.appendChild(h(`<div><h2>Review</h2><p class="lead">Spaced repetition: each correct answer moves a word up a box (○ → ●●●●●). A miss sends it back to the start. Review the weak words daily until they reach 3+ boxes.</p></div>`));
+    m.appendChild(h(`<div class="grid" style="margin-bottom:16px">
+      <div class="card"><div class="muted">Sections completed</div><div class="score" style="font-size:36px;text-align:left">${learnable.filter(s => LS.done[s[0]]).length}/${learnable.length}</div></div>
+      <div class="card"><div class="muted">Words known well (3+)</div><div class="score" style="font-size:36px;text-align:left">${strong}/${L.vocab.length}</div></div>
+      <div class="card"><div class="muted">Best quiz score</div><div class="score" style="font-size:36px;text-align:left">${LS.best.practice != null ? LS.best.practice + "%" : "—"}</div></div></div>`));
+    const box = h(`<div></div>`); m.appendChild(box);
+    if (weak.length) { box.appendChild(h(`<h3>Due for review: ${weak.length} words</h3>`)); flash(box, shuffle(weak)); }
+    else box.appendChild(h(`<div class="card">🎉 Nothing due. Every word is in box 2 or higher. Come back tomorrow, or test yourself in the Quiz tab.</div>`));
+    const reset = h(`<div style="margin-top:30px"><button class="btn small" id="rs">Reset this lesson's progress</button> <span id="rs-c"></span></div>`);
+    $("#rs", reset).onclick = () => { $("#rs-c", reset).innerHTML = `Are you sure? <button class="btn small" id="rs-y">Yes, reset</button>`; $("#rs-y", reset).onclick = () => { S.lessons[L.id] = { done: {}, best: {} }; L.vocab.forEach(w => delete S.words[w.ar]); save(); location.reload(); }; };
+    m.appendChild(reset);
+  };
+
+  /* =====================================================================
+     TEST PAGES: book test (replica of the book's اختبر نفسك), mastery test, results
+     ===================================================================== */
+  function initTest() {
+    S.tests = S.tests || {};
+    const TS = S.tests[T.id] = S.tests[T.id] || { attempts: [] };
+    const lessonName = id => { const l = L.lessons.find(x => x.id === id); return l ? `Lesson ${l.num}: ${l.title}` : id; };
+    const lessonLink = (id, area) => window.COURSE_HOME ? `<a href="${id}.html#${area || "grammar"}">${esc(lessonName(id))} ↗</a>` : esc(lessonName(id));
+    const fmt = n => (Math.round(n * 2) / 2).toString();
+    document.title = `${T.title} · Arabic Book ${T.book}`;
+    document.body.innerHTML = `
+    <header class="top"><div class="top-inner">
+      <div class="brand"><small>${window.COURSE_HOME ? `<a href="${window.COURSE_HOME}">← Course</a> · ` : ""}Al-ʿArabiyyah Bayna Yadayk · Book ${T.book} · ${esc(T.pages)}</small><b>${esc(T.title)}</b></div>
+      <div class="toggles"><button class="chip" id="t-har">ـَـ Harakat</button><button class="chip" id="t-rate">🐢 Speed</button></div></div>
+      <nav class="tabs" id="tabs"><a href="#book" data-tab="book">📘 Book test</a><a href="#mastery" data-tab="mastery">🎯 Mastery test</a><a href="#results" data-tab="results">📈 Results</a></nav>
+    </header><main id="main"></main>
+    <footer>Book test from <i>Al-ʿArabiyyah Bayna Yadayk</i> · answers and explanations follow the Al-Lisan video.</footer>`;
+    const setChips = () => { $("#t-har").classList.toggle("on", S.prefs.harakat); $("#t-rate").textContent = S.prefs.rate < 0.75 ? "🐢 Slow" : S.prefs.rate < 0.95 ? "🚶 Normal" : "🐇 Fast"; };
+    $("#t-har").onclick = () => { S.prefs.harakat = !S.prefs.harakat; save(); setChips(); refreshHarakat(); };
+    $("#t-rate").onclick = () => { S.prefs.rate = S.prefs.rate < 0.75 ? 0.85 : S.prefs.rate < 0.95 ? 1.0 : 0.6; save(); setChips(); };
+    setChips();
+
+    function saveAttempt(a) { TS.attempts.push(Object.assign({ date: new Date().toISOString() }, a)); save(); }
+    function weakReport(wrongs) {
+      // wrongs: [{lesson, area}] → grouped list of lessons to revise
+      const g = {}; wrongs.forEach(w => { if (!w.lesson) return; g[w.lesson] = g[w.lesson] || { n: 0, areas: new Set() }; g[w.lesson].n++; g[w.lesson].areas.add(w.area || "grammar"); });
+      const ids = Object.keys(g).sort((a, b) => g[b].n - g[a].n);
+      if (!ids.length) return `<p>🌟 No mistakes. You've mastered these units, so move on to the next chapter!</p>`;
+      return `<b>Revise these first:</b><ul>${ids.map(id => `<li>${lessonLink(id, [...g[id].areas][0])} · ${g[id].n} mistake${g[id].n > 1 ? "s" : ""}</li>`).join("")}</ul>`;
+    }
+
+    /* ---------- section widgets: each returns { el, check() → {score, wrong:[{lesson, area}]} } ---------- */
+    const W = {};
+    W.sort = (sec) => {
+      const all = sec.cols.flatMap(c => c.words.map(w => ({ w, c: c.k })));
+      const placed = {}, order = shuffle(all); let sel = null, locked = false;
+      const el = h(`<div><div class="tiles pool" style="justify-content:center"></div><div class="sortgrid"></div></div>`);
+      function draw(res) {
+        $(".pool", el).innerHTML = order.filter(x => !placed[x.w]).map(x => `<button class="tile ${sel === x.w ? "sel" : ""}" data-w="${esc(x.w)}">${esc(S.prefs.harakat ? x.w : x.w.replace(HARAKAT, ""))}</button>`).join("") || `<span class="muted" style="direction:ltr">All words placed. Press “Check”.</span>`;
+        $(".sortgrid", el).innerHTML = sec.cols.map(c => `<div class="scol" data-col="${c.k}"><div class="shead">${ar(c.ar)}<small>${c.en}</small></div><div class="sitem ex">${ar(c.ex)}</div>${all.filter(x => placed[x.w] === c.k).map(x => {
+          const st = res ? (x.c === c.k ? "ok" : "no") : "";
+          const fix = res && x.c !== c.k ? `<small>→ ${esc(sec.cols.find(cc => cc.k === x.c).en)}</small>` : "";
+          return `<button class="sitem ${st}" data-p="${esc(x.w)}">${ar(x.w)}${fix}</button>`; }).join("")}</div>`).join("");
+      }
+      el.onclick = e => {
+        if (locked) return;
+        const t = e.target.closest("[data-w]"), col = e.target.closest("[data-col]"), p = e.target.closest("[data-p]");
+        if (t) { sel = t.dataset.w; speak(sel); draw(); return; }
+        if (p) { delete placed[p.dataset.p]; draw(); return; }
+        if (col && sel) { placed[sel] = col.dataset.col; sel = null; draw(); }
+      };
+      draw();
+      return { el, check() {
+        locked = true; draw(true);
+        const missed = all.filter(x => placed[x.w] !== x.c);
+        if (missed.some(x => !placed[x.w])) $(".pool", el).innerHTML = missed.filter(x => !placed[x.w]).map(x => `<span class="tile no">${esc(x.w)} → ${esc(sec.cols.find(c => c.k === x.c).en)}</span>`).join("");
+        return { score: (all.length - missed.length) * sec.marks / all.length, wrong: missed.map(x => ({ lesson: sec.lesson[x.c], area: "vocabulary" })) };
+      } };
+    };
+    W.fill = (sec) => {
+      const opts = shuffle(sec.bank);
+      const el = h(`<div><div class="bank">${opts.map(b => ar(b)).join(" · ")}</div><ol class="titems">${sec.items.map((it, i) => `<li><span class="qsent">${arBlank(it.s, `<select data-i="${i}"><option value="">……</option>${opts.map(o => `<option>${esc(o)}</option>`).join("")}</select>`)}</span><div class="fb"></div></li>`).join("")}</ol></div>`);
+      return { el, check() {
+        let sc = 0; const wrong = [];
+        el.querySelectorAll("select").forEach(s => { const it = sec.items[+s.dataset.i], ok = s.value === it.a; s.disabled = true; s.classList.add(ok ? "ok" : "no");
+          if (ok) sc++; else wrong.push({ lesson: it.lesson });
+          s.closest("li").querySelector(".fb").innerHTML = `${ok ? "✓" : "✗ Answer: " + ar(it.a)} <span class="muted">${arabize(esc(it.en))}</span>`; });
+        return { score: sc * sec.marks / sec.items.length, wrong };
+      } };
+    };
+    W.odd = (sec) => {
+      const pick = {};
+      const el = h(`<ol class="titems">${sec.items.map((it, i) => `<li><div class="row" style="direction:rtl;justify-content:flex-start">${it.w.map((w, j) => `<button class="tile" data-i="${i}" data-j="${j}">${esc(S.prefs.harakat ? w : w.replace(HARAKAT, ""))}</button>`).join("")}</div><div class="fb"></div></li>`).join("")}</ol>`);
+      let locked = false;
+      el.onclick = e => { const b = e.target.closest("[data-j]"); if (!b || locked) return; pick[b.dataset.i] = +b.dataset.j;
+        el.querySelectorAll(`[data-i="${b.dataset.i}"]`).forEach(x => x.classList.toggle("x", x === b)); speak(sec.items[+b.dataset.i].w[+b.dataset.j]); };
+      return { el, check() {
+        locked = true; let sc = 0; const wrong = [];
+        sec.items.forEach((it, i) => { const ok = pick[i] === it.a; if (ok) sc++; else wrong.push({ lesson: it.lesson });
+          el.querySelectorAll(`[data-i="${i}"]`).forEach((x, j) => { if (j === it.a) x.classList.add("ok"); else if (j === pick[i]) x.classList.add("no"); });
+          el.querySelectorAll("li .fb")[i].innerHTML = `${ok ? "✓" : "✗"} ${arabize(esc(it.why))}`; });
+        return { score: sc * sec.marks / sec.items.length, wrong };
+      } };
+    };
+    W.correct = (sec) => {
+      const pick = {}; let locked = false;
+      const el = h(`<ol class="titems">${sec.items.map((it, i) => `<li><div class="qsent">${ar(it.b)} <u class="wrongw">${ar(it.w)}</u> ${ar(it.f)}</div><div class="row"><span class="muted" style="font-size:13px">Replace with:</span>${it.opts.map((o, j) => `<button class="tile" data-i="${i}" data-j="${j}">${esc(S.prefs.harakat ? o : o.replace(HARAKAT, ""))}</button>`).join("")}</div><div class="fb"></div></li>`).join("")}</ol>`);
+      el.onclick = e => { const b = e.target.closest("[data-j]"); if (!b || locked) return; pick[b.dataset.i] = +b.dataset.j;
+        el.querySelectorAll(`[data-i="${b.dataset.i}"]`).forEach(x => x.classList.toggle("sel", x === b)); };
+      return { el, check() {
+        locked = true; let sc = 0; const wrong = [];
+        sec.items.forEach((it, i) => { const ok = pick[i] === it.a; if (ok) sc++; else wrong.push({ lesson: it.lesson });
+          el.querySelectorAll(`[data-i="${i}"]`).forEach((x, j) => { if (j === it.a) x.classList.add("ok"); else if (j === pick[i]) x.classList.add("no"); });
+          el.querySelectorAll("li .fb")[i].innerHTML = `${ok ? "✓" : "✗"} ${arabize(esc(it.why))}`; });
+        return { score: sc * sec.marks / sec.items.length, wrong };
+      } };
+    };
+    W.match = (sec) => {
+      const bs = shuffle(sec.items.map(x => x.b));
+      const el = h(`<ol class="titems">${sec.items.map((it, i) => `<li><span class="qsent">${ar(it.a)} <select data-i="${i}" class="ar"><option value="">……</option>${bs.map(b => `<option>${esc(b)}</option>`).join("")}</select></span><div class="fb"></div></li>`).join("")}</ol>`);
+      return { el, check() {
+        let sc = 0; const wrong = [];
+        el.querySelectorAll("select").forEach(s => { const it = sec.items[+s.dataset.i], ok = s.value === it.b; s.disabled = true; s.classList.add(ok ? "ok" : "no");
+          if (ok) sc++; else wrong.push({ lesson: it.lesson });
+          s.closest("li").querySelector(".fb").innerHTML = `${ok ? "✓" : "✗"} ${arabize(esc(it.why))}`; });
+        return { score: sc * sec.marks / sec.items.length, wrong };
+      } };
+    };
+    W.choose = (sec) => {
+      const pick = {}; let locked = false;
+      const el = h(`<ol class="titems">${sec.items.map((it, i) => `<li><div class="row" style="justify-content:space-between"><span class="qsent">${arBlank(it.s, `<span class="blank" data-b="${i}">……</span>`)}</span><span class="row">${it.o.map((o, j) => `<button class="tile" data-i="${i}" data-j="${j}">${esc(S.prefs.harakat ? o : o.replace(HARAKAT, ""))}</button>`).join("")}</span></div><div class="fb"></div></li>`).join("")}</ol>`);
+      el.onclick = e => { const b = e.target.closest("[data-j]"); if (!b || locked) return; const i = b.dataset.i; pick[i] = +b.dataset.j;
+        el.querySelectorAll(`[data-i="${i}"]`).forEach(x => x.classList.toggle("sel", x === b)); el.querySelector(`[data-b="${i}"]`).textContent = sec.items[i].o[pick[i]];
+        speak(sec.items[i].s.replace("___", sec.items[i].o[pick[i]])); };
+      return { el, check() {
+        locked = true; let sc = 0; const wrong = [];
+        sec.items.forEach((it, i) => { const ok = pick[i] === it.a; if (ok) sc++; else wrong.push({ lesson: it.lesson });
+          el.querySelectorAll(`[data-i="${i}"]`).forEach((x, j) => { if (j === it.a) x.classList.add("ok"); else if (j === pick[i]) x.classList.add("no"); });
+          el.querySelectorAll("li .fb")[i].innerHTML = `${ok ? "✓" : "✗"} ${arabize(esc(it.why))}`; });
+        return { score: sc * sec.marks / sec.items.length, wrong };
+      } };
+    };
+
+    const views = {};
+    views.book = (m) => {
+      const start = Date.now(), results = {};
+      const max = T.parts.flatMap(p => p.sections).reduce((a, s) => a + s.marks, 0);
+      m.appendChild(h(`<div><h2>${ar(T.titleAr)}</h2><p class="lead">${esc(T.intro)} The test is out of <b>${max} marks</b>, the same as the book.</p></div>`));
+      const widgets = [];
+      T.parts.forEach(part => {
+        m.appendChild(h(`<h3>${esc(part.title)} · ${ar(part.titleAr)}</h3>`));
+        part.sections.forEach((sec, n) => {
+          const w = W[sec.type](sec); widgets.push([sec, w]);
+          const card = h(`<div class="card tsec" style="margin-bottom:14px"><div class="row" style="justify-content:space-between;align-items:flex-start"><div style="flex:1"><div class="ar" style="font-size:20px;font-weight:600">${esc(n + 1)}) ${ar(sec.instr)}</div><div class="muted" style="font-size:14px">${esc(sec.instrEn)}</div></div><div class="markbox"><span class="got">—</span><span class="of">${sec.marks}</span></div></div><div class="tbody"></div><div class="row" style="justify-content:space-between;margin-top:10px"><span class="secfb muted">${sec.explain ? "" : ""}</span><button class="btn small chk">Check this section</button></div></div>`);
+          $(".tbody", card).appendChild(w.el);
+          const doCheck = () => { if (results[sec.id]) return results[sec.id]; const r = w.check(); results[sec.id] = r;
+            $(".got", card).textContent = fmt(r.score); card.classList.add(r.score === sec.marks ? "full" : "part"); $(".chk", card).disabled = true;
+            if (sec.explain) $(".secfb", card).innerHTML = "💡 " + arabize(esc(sec.explain)); return r; };
+          $(".chk", card).onclick = doCheck; w.doCheck = doCheck;
+          m.appendChild(card);
+        });
+      });
+      const fin = h(`<div class="card" style="text-align:center"><button class="btn primary" id="finish">Finish &amp; save my score</button><div id="summary"></div></div>`);
+      m.appendChild(fin);
+      $("#finish", fin).onclick = () => {
+        const rs = widgets.map(([sec, w]) => [sec, w.doCheck()]);
+        const total = rs.reduce((a, [, r]) => a + r.score, 0), wrong = rs.flatMap(([, r]) => r.wrong);
+        const pct = Math.round(100 * total / max);
+        saveAttempt({ mode: "book", score: total, max, pct, secs: Math.round((Date.now() - start) / 1000), weak: wrong.map(w => w.lesson) });
+        $("#finish", fin).remove();
+        $("#summary", fin).innerHTML = `<div class="score">${fmt(total)} / ${max}</div><p>${pct >= 90 ? "Excellent! 🌟 You're ready for the next unit." : pct >= 70 ? "Good work 👍 Revise the lessons below, then retake the test." : "The teacher's advice: revise the words and practise a bit more before moving on 💪"}</p>
+          <table class="g" style="max-width:420px;margin:0 auto 12px">${rs.map(([sec, r], i) => `<tr><td>${i + 1}. ${({ sort: "Sort the words", fill: "Complete the sentences", odd: "Odd one out", correct: "Correct the mistakes", match: "Match the questions", choose: "Choose the right word" })[sec.type] || sec.type}</td><td style="text-align:right"><b>${fmt(r.score)}</b> / ${sec.marks}</td></tr>`).join("")}</table>
+          <div style="text-align:left">${weakReport(wrong)}</div><button class="btn" id="retake">↻ Retake the book test</button> <a class="btn" href="#mastery" style="text-decoration:none">🎯 Try the mastery test</a>`;
+        $("#retake", fin).onclick = () => route();
+      };
+    };
+    views.mastery = (m) => {
+      m.appendChild(h(`<div><h2>🎯 Mastery test</h2><p class="lead">A fresh mix of about 30 questions every time, drawn from <b>all ${L.lessons.length} lessons</b> this test covers: vocabulary both ways, listening, grammar, sentence building and dialogues. Your mistakes also go into each word's spaced-review deck.</p>
+        <div class="card"><b>Covers:</b><ul>${L.lessons.map(l => `<li>${lessonLink(l.id, "overview")}</li>`).join("")}</ul><button class="btn primary" id="go">Start a new mastery test</button></div></div>`));
+      $("#go", m).onclick = () => {
+        m.innerHTML = ""; const start = Date.now();
+        const lines = shuffle(L.dialogues.flatMap(d => d.lines.filter(l => !/السَّلام/.test(l[1])).map(l => ({ l, src: d.src })))).slice(0, 4).map(({ l, src }) => {
+          const others = shuffle([...new Set(L.dialogues.flatMap(d => d.lines).filter(x => x[1] !== l[1] && x[3] !== l[3]).map(x => x[3]))]).slice(0, 3);
+          const o = shuffle([l[3], ...others]); return { type: "listen", say: l[1], options: o, answer: o.indexOf(l[3]), src, area: "dialogues" };
+        });
+        const prac = shuffle(L.practice).slice(0, 12).map(x => Object.assign({ area: "practice" }, x));
+        const items = shuffle([...vocabMCQ(7, "ar2en"), ...vocabMCQ(4, "en2ar"), ...vocabMCQ(4, "listen"), ...lines, ...prac]);
+        runQuiz(m, items, T.id + "-mastery", (pct, wrongItems, sc, n) => {
+          saveAttempt({ mode: "mastery", score: sc, max: n, pct, secs: Math.round((Date.now() - start) / 1000), weak: wrongItems.map(w => w.src) });
+          m.appendChild(h(`<div class="card" style="margin-top:14px">${weakReport(wrongItems.map(w => ({ lesson: w.src, area: w.area })))}<button class="btn primary" id="again">New mastery test</button></div>`));
+          $("#again", m).onclick = () => route();
+        });
+      };
+    };
+    views.results = (m) => {
+      const at = TS.attempts.slice().reverse();
+      const best = mode => { const xs = TS.attempts.filter(a => a.mode === mode); return xs.length ? Math.max(...xs.map(a => a.pct)) + "%" : "—"; };
+      m.appendChild(h(`<div><h2>📈 Results</h2><p class="lead">Your attempts are saved in this browser. Aim for 90%+ on both tests before moving on.</p>
+        <div class="grid" style="margin-bottom:16px"><div class="card"><div class="muted">Best book test</div><div class="score" style="font-size:36px;text-align:left">${best("book")}</div></div>
+        <div class="card"><div class="muted">Best mastery test</div><div class="score" style="font-size:36px;text-align:left">${best("mastery")}</div></div>
+        <div class="card"><div class="muted">Attempts</div><div class="score" style="font-size:36px;text-align:left">${TS.attempts.length}</div></div></div>
+        ${at.length ? `<div class="card"><table class="g"><tr><th>Date</th><th>Test</th><th>Score</th><th></th><th>Time</th></tr>${at.map(a => `<tr><td>${new Date(a.date).toLocaleString()}</td><td>${a.mode === "book" ? "📘 Book" : "🎯 Mastery"}</td><td><b>${a.mode === "book" ? fmt(a.score) : a.score} / ${a.max}</b></td><td style="width:35%"><div class="qbar" style="margin:0"><div style="width:${a.pct}%;background:${a.pct >= 90 ? "var(--good)" : a.pct >= 70 ? "var(--accent)" : "var(--bad)"}"></div></div></td><td>${Math.floor(a.secs / 60)}m ${a.secs % 60}s</td></tr>`).join("")}</table></div>
+        <div class="card" style="margin-top:14px"><b>From your latest attempt:</b> ${weakReport((at[0].weak || []).map(l => ({ lesson: l })))}</div>` : `<div class="card">No attempts yet. Start with the <a href="#book">📘 Book test</a>.</div>`}</div>`));
+    };
+    function route() {
+      const id = (location.hash || "#book").slice(1), v = views[id] ? id : "book";
+      document.querySelectorAll("#tabs a").forEach(a => a.classList.toggle("active", a.dataset.tab === v));
+      if (synth) synth.cancel();
+      const m = $("#main"); m.innerHTML = ""; views[v](m); window.scrollTo(0, 0);
+    }
+    route(); window.addEventListener("hashchange", route);
+  }
+
+  if (T) initTest();
+  else { renderShell(); updateProgress(); route(); window.addEventListener("hashchange", route); }
+})();
+</script></body></html>

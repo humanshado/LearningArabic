@@ -185,6 +185,34 @@ table.g td.ar{font-size:24px;text-align:right}
 .muted{color:var(--muted)}
 footer{text-align:center;color:var(--muted);font-size:12px;padding:30px 16px}
 
+/* tests */
+.sortgrid{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;direction:rtl;margin-top:10px}
+.scol{border:2px dashed var(--line);border-radius:12px;padding:6px;min-height:170px;display:flex;flex-direction:column;gap:4px;cursor:pointer}
+.scol:hover{border-color:var(--accent)}
+.shead{text-align:center;border-bottom:1px solid var(--line);padding-bottom:4px;display:flex;flex-direction:column}
+.shead .ar{font-size:20px;font-weight:700} .shead small{color:var(--muted);font-size:11px}
+.sitem{border:1px solid var(--line);background:var(--panel);border-radius:8px;padding:0 6px;text-align:center;display:flex;flex-direction:column}
+.sitem .ar{font-size:19px} .sitem small{font-size:10px;color:var(--bad);direction:ltr}
+.sitem.ex{opacity:.55;border-style:dashed}
+.tile.sel{border-color:var(--accent);background:var(--accent-soft)}
+.tile.x{border-color:var(--bad);background:var(--bad-soft);text-decoration:line-through}
+.tile.ok,.sitem.ok{border-color:var(--good);background:var(--good-soft)}
+.tile.no,.sitem.no{border-color:var(--bad);background:var(--bad-soft)}
+.titems{padding-inline-start:22px;margin:6px 0} .titems li{margin:10px 0}
+.qsent .ar{font-size:22px}
+.qsent select{font-family:var(--ar);font-size:18px;padding:2px 6px;border-radius:8px;border:2px solid var(--accent);background:var(--panel);color:var(--ink);margin:0 4px}
+.qsent select.ok{border-color:var(--good);background:var(--good-soft)} .qsent select.no{border-color:var(--bad);background:var(--bad-soft)}
+.blank{display:inline-block;min-width:60px;border-bottom:2px solid var(--accent);color:var(--accent-2);text-align:center}
+.wrongw{text-decoration-color:var(--bad);text-decoration-thickness:2px}
+.bank{background:var(--accent-soft);border-radius:10px;padding:8px 12px;text-align:center;direction:rtl}
+.bank .ar{font-size:20px}
+.fb{font-size:14px;margin-top:2px}
+.markbox{border:2px solid var(--accent);border-radius:10px;min-width:56px;text-align:center;display:flex;flex-direction:column;line-height:1.2;padding:4px}
+.markbox .got{font-weight:800;font-size:18px;color:var(--accent-2);border-bottom:1px solid var(--line)} .markbox .of{font-size:13px;color:var(--muted)}
+.tsec.full{border-color:var(--good)} .tsec.part{border-color:var(--accent)}
+.test-link .n{font-size:22px}
+@media (max-width:700px){.sortgrid{grid-template-columns:repeat(3,1fr)}}
+
 /* index */
 .book{margin-top:22px}
 .lesson-link{display:flex;gap:14px;align-items:center;text-decoration:none;color:var(--ink)}
@@ -463,7 +491,19 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:30px 16px}
    Shared by every lesson page in the course (Books 1–4). */
 (function () {
   "use strict";
-  const L = window.LESSONS[window.LESSONS.length - 1];
+  const T = window.TEST || null;
+  const L = T ? testLesson(T) : window.LESSONS[window.LESSONS.length - 1];
+  // A test page loads the lessons it covers; merge them into one pseudo-lesson (items keep their source lesson id)
+  function testLesson(t) {
+    const ls = window.LESSONS, seen = new Set(), tag = (arr, id) => (arr || []).map(x => Object.assign({ src: id }, x));
+    return {
+      id: t.id, title: t.title, book: t.book, num: 0,
+      vocab: ls.flatMap(l => tag(l.vocab, l.id)).filter(v => !seen.has(v.ar) && seen.add(v.ar)),
+      practice: ls.flatMap(l => tag(l.practice, l.id)),
+      dialogues: ls.flatMap(l => (l.dialogues || []).map(d => Object.assign({ src: l.id }, d))),
+      lessons: ls.map(l => ({ id: l.id, num: l.num, title: l.title }))
+    };
+  }
   const $ = (s, el = document) => el.querySelector(s);
   const h = (html) => { const t = document.createElement("template"); t.innerHTML = html.trim(); return t.content.firstElementChild; };
   const shuffle = (a) => { a = a.slice(); for (let i = a.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [a[i], a[j]] = [a[j], a[i]]; } return a; };
@@ -480,6 +520,8 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:30px 16px}
 
   /* ---------- Arabic text helper (respects harakat toggle) ---------- */
   const ar = (txt, cls = "") => `<span class="ar ${cls}" data-ar="${esc(txt)}">${esc(S.prefs.harakat ? txt : txt.replace(HARAKAT, ""))}</span>`;
+  // Arabic sentence with a blank (___) replaced by live HTML (a select, a span…). No data-ar, so the blank survives.
+  const arBlank = (txt, blankHtml, cls = "") => { const show = t => esc(S.prefs.harakat ? t : t.replace(HARAKAT, "")); const [a, b = ""] = txt.split("___"); return `<span class="ar ${cls}">${show(a)}${blankHtml}${show(b)}</span>`; };
   function refreshHarakat() {
     document.querySelectorAll("[data-ar]").forEach(el => { const t = el.dataset.ar; el.textContent = S.prefs.harakat ? t : t.replace(HARAKAT, ""); });
   }
@@ -801,7 +843,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:30px 16px}
 
   /* ---------- quiz runner ---------- */
   function runQuiz(m, items, quizId, onDone) {
-    let i = 0, score = 0; const wrong = [];
+    let i = 0, score = 0; const wrong = [], wrongItems = [];
     const q = h(`<div class="quiz card"></div>`); m.appendChild(q);
     function show() {
       if (i >= items.length) {
@@ -809,13 +851,13 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:30px 16px}
         LS.best[quizId] = Math.max(LS.best[quizId] || 0, pct); save();
         q.innerHTML = `<div style="text-align:center"><div class="score">${score} / ${items.length}</div><p>${pct >= 90 ? "Excellent! 🌟" : pct >= 70 ? "Good work! 👍" : "Keep practising. Review the tabs and try again 💪"} · Best: ${LS.best[quizId]}%</p>${wrong.length ? `<div style="text-align:left"><b>Review these:</b><ul>${wrong.map(w => `<li>${w}</li>`).join("")}</ul></div>` : ""}<button class="btn primary" id="qa">Try again</button></div>`;
         $("#qa", q).onclick = () => { q.remove(); runQuiz(m, shuffle(items), quizId, onDone); };
-        if (onDone) onDone(pct); return;
+        if (onDone) onDone(pct, wrongItems, score, items.length); return;
       }
       const it = items[i];
       q.innerHTML = `<div class="qhead"><span>Question ${i + 1} of ${items.length}</span><span>Score ${score}</span></div><div class="qbar"><div style="width:${100 * i / items.length}%"></div></div><div class="qbody"></div>`;
       const body = $(".qbody", q);
       const finish = (ok, correctText, explain) => {
-        if (ok) score++; else wrong.push(correctText);
+        if (ok) score++; else { wrong.push(correctText); wrongItems.push(it); }
         if (it.word) setBox(it.word, ok ? boxOf(it.word) + 1 : 0);
         body.appendChild(h(`<div class="feedback ${ok ? "good" : "bad"}">${ok ? "✓ Correct!" : "✗ Not quite. Answer: " + correctText}${explain ? `<span class="ex-text">${arabize(explain)}</span>` : ""}</div>`));
         const nb = h(`<div class="row" style="justify-content:flex-end;margin-top:10px"><button class="btn primary">Next →</button></div>`);
@@ -826,7 +868,7 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:30px 16px}
       // mcq-like
       let head = "";
       if (it.type === "mcq") head = `<div class="qtext">${arabize(esc(it.q))}</div>`;
-      if (it.type === "fill") head = `<div class="qtext">Fill in the blank</div><div class="qsentence">${ar(it.sentence).replace("___", `<span class="blank">؟</span>`)}</div><div class="en" style="text-align:center">${esc(it.en)}</div>`;
+      if (it.type === "fill") head = `<div class="qtext">Fill in the blank</div><div class="qsentence">${arBlank(it.sentence, `<span class="blank">؟</span>`)}</div><div class="en" style="text-align:center">${esc(it.en)}</div>`;
       if (it.type === "reply") head = `<div class="qtext">${esc(it.en)}</div><div class="qsentence">${ar(it.prompt)} ${playBtn(it.prompt)}</div>`;
       if (it.type === "listen") head = `<div class="qtext">${esc(it.q || "Listen. What did you hear?")}</div><button class="play big-play" data-say="${esc(it.say)}">▶</button>`;
       const opts = it.options.map((o, k) => ({ o, k }));
@@ -882,10 +924,10 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:30px 16px}
       const distract = shuffle(pool.filter(x => x !== w && x.en !== w.en)).slice(0, 3);
       const opts = shuffle([w, ...distract]);
       return dir === "listen"
-        ? { type: "listen", say: w.ar, options: opts.map(o => o.en), answer: opts.indexOf(w), word: w }
+        ? { type: "listen", say: w.ar, options: opts.map(o => o.en), answer: opts.indexOf(w), word: w, src: w.src, area: "vocabulary" }
         : dir === "en2ar"
-          ? { type: "mcq", q: `How do you say “${w.en}”?`, options: opts.map(o => o.ar), answer: opts.indexOf(w), word: w }
-          : { type: "mcq", q: `What does ${w.ar} mean?`, options: opts.map(o => o.en), answer: opts.indexOf(w), word: w };
+          ? { type: "mcq", q: `How do you say “${w.en}”?`, options: opts.map(o => o.ar), answer: opts.indexOf(w), word: w, src: w.src, area: "vocabulary" }
+          : { type: "mcq", q: `What does ${w.ar} mean?`, options: opts.map(o => o.en), answer: opts.indexOf(w), word: w, src: w.src, area: "vocabulary" };
     });
   }
 
@@ -967,7 +1009,200 @@ footer{text-align:center;color:var(--muted);font-size:12px;padding:30px 16px}
     m.appendChild(reset);
   };
 
-  renderShell(); updateProgress(); route();
-  window.addEventListener("hashchange", route);
+  /* =====================================================================
+     TEST PAGES: book test (replica of the book's اختبر نفسك), mastery test, results
+     ===================================================================== */
+  function initTest() {
+    S.tests = S.tests || {};
+    const TS = S.tests[T.id] = S.tests[T.id] || { attempts: [] };
+    const lessonName = id => { const l = L.lessons.find(x => x.id === id); return l ? `Lesson ${l.num}: ${l.title}` : id; };
+    const lessonLink = (id, area) => window.COURSE_HOME ? `<a href="${id}.html#${area || "grammar"}">${esc(lessonName(id))} ↗</a>` : esc(lessonName(id));
+    const fmt = n => (Math.round(n * 2) / 2).toString();
+    document.title = `${T.title} · Arabic Book ${T.book}`;
+    document.body.innerHTML = `
+    <header class="top"><div class="top-inner">
+      <div class="brand"><small>${window.COURSE_HOME ? `<a href="${window.COURSE_HOME}">← Course</a> · ` : ""}Al-ʿArabiyyah Bayna Yadayk · Book ${T.book} · ${esc(T.pages)}</small><b>${esc(T.title)}</b></div>
+      <div class="toggles"><button class="chip" id="t-har">ـَـ Harakat</button><button class="chip" id="t-rate">🐢 Speed</button></div></div>
+      <nav class="tabs" id="tabs"><a href="#book" data-tab="book">📘 Book test</a><a href="#mastery" data-tab="mastery">🎯 Mastery test</a><a href="#results" data-tab="results">📈 Results</a></nav>
+    </header><main id="main"></main>
+    <footer>Book test from <i>Al-ʿArabiyyah Bayna Yadayk</i> · answers and explanations follow the Al-Lisan video.</footer>`;
+    const setChips = () => { $("#t-har").classList.toggle("on", S.prefs.harakat); $("#t-rate").textContent = S.prefs.rate < 0.75 ? "🐢 Slow" : S.prefs.rate < 0.95 ? "🚶 Normal" : "🐇 Fast"; };
+    $("#t-har").onclick = () => { S.prefs.harakat = !S.prefs.harakat; save(); setChips(); refreshHarakat(); };
+    $("#t-rate").onclick = () => { S.prefs.rate = S.prefs.rate < 0.75 ? 0.85 : S.prefs.rate < 0.95 ? 1.0 : 0.6; save(); setChips(); };
+    setChips();
+
+    function saveAttempt(a) { TS.attempts.push(Object.assign({ date: new Date().toISOString() }, a)); save(); }
+    function weakReport(wrongs) {
+      // wrongs: [{lesson, area}] → grouped list of lessons to revise
+      const g = {}; wrongs.forEach(w => { if (!w.lesson) return; g[w.lesson] = g[w.lesson] || { n: 0, areas: new Set() }; g[w.lesson].n++; g[w.lesson].areas.add(w.area || "grammar"); });
+      const ids = Object.keys(g).sort((a, b) => g[b].n - g[a].n);
+      if (!ids.length) return `<p>🌟 No mistakes. You've mastered these units, so move on to the next chapter!</p>`;
+      return `<b>Revise these first:</b><ul>${ids.map(id => `<li>${lessonLink(id, [...g[id].areas][0])} · ${g[id].n} mistake${g[id].n > 1 ? "s" : ""}</li>`).join("")}</ul>`;
+    }
+
+    /* ---------- section widgets: each returns { el, check() → {score, wrong:[{lesson, area}]} } ---------- */
+    const W = {};
+    W.sort = (sec) => {
+      const all = sec.cols.flatMap(c => c.words.map(w => ({ w, c: c.k })));
+      const placed = {}, order = shuffle(all); let sel = null, locked = false;
+      const el = h(`<div><div class="tiles pool" style="justify-content:center"></div><div class="sortgrid"></div></div>`);
+      function draw(res) {
+        $(".pool", el).innerHTML = order.filter(x => !placed[x.w]).map(x => `<button class="tile ${sel === x.w ? "sel" : ""}" data-w="${esc(x.w)}">${esc(S.prefs.harakat ? x.w : x.w.replace(HARAKAT, ""))}</button>`).join("") || `<span class="muted" style="direction:ltr">All words placed. Press “Check”.</span>`;
+        $(".sortgrid", el).innerHTML = sec.cols.map(c => `<div class="scol" data-col="${c.k}"><div class="shead">${ar(c.ar)}<small>${c.en}</small></div><div class="sitem ex">${ar(c.ex)}</div>${all.filter(x => placed[x.w] === c.k).map(x => {
+          const st = res ? (x.c === c.k ? "ok" : "no") : "";
+          const fix = res && x.c !== c.k ? `<small>→ ${esc(sec.cols.find(cc => cc.k === x.c).en)}</small>` : "";
+          return `<button class="sitem ${st}" data-p="${esc(x.w)}">${ar(x.w)}${fix}</button>`; }).join("")}</div>`).join("");
+      }
+      el.onclick = e => {
+        if (locked) return;
+        const t = e.target.closest("[data-w]"), col = e.target.closest("[data-col]"), p = e.target.closest("[data-p]");
+        if (t) { sel = t.dataset.w; speak(sel); draw(); return; }
+        if (p) { delete placed[p.dataset.p]; draw(); return; }
+        if (col && sel) { placed[sel] = col.dataset.col; sel = null; draw(); }
+      };
+      draw();
+      return { el, check() {
+        locked = true; draw(true);
+        const missed = all.filter(x => placed[x.w] !== x.c);
+        if (missed.some(x => !placed[x.w])) $(".pool", el).innerHTML = missed.filter(x => !placed[x.w]).map(x => `<span class="tile no">${esc(x.w)} → ${esc(sec.cols.find(c => c.k === x.c).en)}</span>`).join("");
+        return { score: (all.length - missed.length) * sec.marks / all.length, wrong: missed.map(x => ({ lesson: sec.lesson[x.c], area: "vocabulary" })) };
+      } };
+    };
+    W.fill = (sec) => {
+      const opts = shuffle(sec.bank);
+      const el = h(`<div><div class="bank">${opts.map(b => ar(b)).join(" · ")}</div><ol class="titems">${sec.items.map((it, i) => `<li><span class="qsent">${arBlank(it.s, `<select data-i="${i}"><option value="">……</option>${opts.map(o => `<option>${esc(o)}</option>`).join("")}</select>`)}</span><div class="fb"></div></li>`).join("")}</ol></div>`);
+      return { el, check() {
+        let sc = 0; const wrong = [];
+        el.querySelectorAll("select").forEach(s => { const it = sec.items[+s.dataset.i], ok = s.value === it.a; s.disabled = true; s.classList.add(ok ? "ok" : "no");
+          if (ok) sc++; else wrong.push({ lesson: it.lesson });
+          s.closest("li").querySelector(".fb").innerHTML = `${ok ? "✓" : "✗ Answer: " + ar(it.a)} <span class="muted">${arabize(esc(it.en))}</span>`; });
+        return { score: sc * sec.marks / sec.items.length, wrong };
+      } };
+    };
+    W.odd = (sec) => {
+      const pick = {};
+      const el = h(`<ol class="titems">${sec.items.map((it, i) => `<li><div class="row" style="direction:rtl;justify-content:flex-start">${it.w.map((w, j) => `<button class="tile" data-i="${i}" data-j="${j}">${esc(S.prefs.harakat ? w : w.replace(HARAKAT, ""))}</button>`).join("")}</div><div class="fb"></div></li>`).join("")}</ol>`);
+      let locked = false;
+      el.onclick = e => { const b = e.target.closest("[data-j]"); if (!b || locked) return; pick[b.dataset.i] = +b.dataset.j;
+        el.querySelectorAll(`[data-i="${b.dataset.i}"]`).forEach(x => x.classList.toggle("x", x === b)); speak(sec.items[+b.dataset.i].w[+b.dataset.j]); };
+      return { el, check() {
+        locked = true; let sc = 0; const wrong = [];
+        sec.items.forEach((it, i) => { const ok = pick[i] === it.a; if (ok) sc++; else wrong.push({ lesson: it.lesson });
+          el.querySelectorAll(`[data-i="${i}"]`).forEach((x, j) => { if (j === it.a) x.classList.add("ok"); else if (j === pick[i]) x.classList.add("no"); });
+          el.querySelectorAll("li .fb")[i].innerHTML = `${ok ? "✓" : "✗"} ${arabize(esc(it.why))}`; });
+        return { score: sc * sec.marks / sec.items.length, wrong };
+      } };
+    };
+    W.correct = (sec) => {
+      const pick = {}; let locked = false;
+      const el = h(`<ol class="titems">${sec.items.map((it, i) => `<li><div class="qsent">${ar(it.b)} <u class="wrongw">${ar(it.w)}</u> ${ar(it.f)}</div><div class="row"><span class="muted" style="font-size:13px">Replace with:</span>${it.opts.map((o, j) => `<button class="tile" data-i="${i}" data-j="${j}">${esc(S.prefs.harakat ? o : o.replace(HARAKAT, ""))}</button>`).join("")}</div><div class="fb"></div></li>`).join("")}</ol>`);
+      el.onclick = e => { const b = e.target.closest("[data-j]"); if (!b || locked) return; pick[b.dataset.i] = +b.dataset.j;
+        el.querySelectorAll(`[data-i="${b.dataset.i}"]`).forEach(x => x.classList.toggle("sel", x === b)); };
+      return { el, check() {
+        locked = true; let sc = 0; const wrong = [];
+        sec.items.forEach((it, i) => { const ok = pick[i] === it.a; if (ok) sc++; else wrong.push({ lesson: it.lesson });
+          el.querySelectorAll(`[data-i="${i}"]`).forEach((x, j) => { if (j === it.a) x.classList.add("ok"); else if (j === pick[i]) x.classList.add("no"); });
+          el.querySelectorAll("li .fb")[i].innerHTML = `${ok ? "✓" : "✗"} ${arabize(esc(it.why))}`; });
+        return { score: sc * sec.marks / sec.items.length, wrong };
+      } };
+    };
+    W.match = (sec) => {
+      const bs = shuffle(sec.items.map(x => x.b));
+      const el = h(`<ol class="titems">${sec.items.map((it, i) => `<li><span class="qsent">${ar(it.a)} <select data-i="${i}" class="ar"><option value="">……</option>${bs.map(b => `<option>${esc(b)}</option>`).join("")}</select></span><div class="fb"></div></li>`).join("")}</ol>`);
+      return { el, check() {
+        let sc = 0; const wrong = [];
+        el.querySelectorAll("select").forEach(s => { const it = sec.items[+s.dataset.i], ok = s.value === it.b; s.disabled = true; s.classList.add(ok ? "ok" : "no");
+          if (ok) sc++; else wrong.push({ lesson: it.lesson });
+          s.closest("li").querySelector(".fb").innerHTML = `${ok ? "✓" : "✗"} ${arabize(esc(it.why))}`; });
+        return { score: sc * sec.marks / sec.items.length, wrong };
+      } };
+    };
+    W.choose = (sec) => {
+      const pick = {}; let locked = false;
+      const el = h(`<ol class="titems">${sec.items.map((it, i) => `<li><div class="row" style="justify-content:space-between"><span class="qsent">${arBlank(it.s, `<span class="blank" data-b="${i}">……</span>`)}</span><span class="row">${it.o.map((o, j) => `<button class="tile" data-i="${i}" data-j="${j}">${esc(S.prefs.harakat ? o : o.replace(HARAKAT, ""))}</button>`).join("")}</span></div><div class="fb"></div></li>`).join("")}</ol>`);
+      el.onclick = e => { const b = e.target.closest("[data-j]"); if (!b || locked) return; const i = b.dataset.i; pick[i] = +b.dataset.j;
+        el.querySelectorAll(`[data-i="${i}"]`).forEach(x => x.classList.toggle("sel", x === b)); el.querySelector(`[data-b="${i}"]`).textContent = sec.items[i].o[pick[i]];
+        speak(sec.items[i].s.replace("___", sec.items[i].o[pick[i]])); };
+      return { el, check() {
+        locked = true; let sc = 0; const wrong = [];
+        sec.items.forEach((it, i) => { const ok = pick[i] === it.a; if (ok) sc++; else wrong.push({ lesson: it.lesson });
+          el.querySelectorAll(`[data-i="${i}"]`).forEach((x, j) => { if (j === it.a) x.classList.add("ok"); else if (j === pick[i]) x.classList.add("no"); });
+          el.querySelectorAll("li .fb")[i].innerHTML = `${ok ? "✓" : "✗"} ${arabize(esc(it.why))}`; });
+        return { score: sc * sec.marks / sec.items.length, wrong };
+      } };
+    };
+
+    const views = {};
+    views.book = (m) => {
+      const start = Date.now(), results = {};
+      const max = T.parts.flatMap(p => p.sections).reduce((a, s) => a + s.marks, 0);
+      m.appendChild(h(`<div><h2>${ar(T.titleAr)}</h2><p class="lead">${esc(T.intro)} The test is out of <b>${max} marks</b>, the same as the book.</p></div>`));
+      const widgets = [];
+      T.parts.forEach(part => {
+        m.appendChild(h(`<h3>${esc(part.title)} · ${ar(part.titleAr)}</h3>`));
+        part.sections.forEach((sec, n) => {
+          const w = W[sec.type](sec); widgets.push([sec, w]);
+          const card = h(`<div class="card tsec" style="margin-bottom:14px"><div class="row" style="justify-content:space-between;align-items:flex-start"><div style="flex:1"><div class="ar" style="font-size:20px;font-weight:600">${esc(n + 1)}) ${ar(sec.instr)}</div><div class="muted" style="font-size:14px">${esc(sec.instrEn)}</div></div><div class="markbox"><span class="got">—</span><span class="of">${sec.marks}</span></div></div><div class="tbody"></div><div class="row" style="justify-content:space-between;margin-top:10px"><span class="secfb muted">${sec.explain ? "" : ""}</span><button class="btn small chk">Check this section</button></div></div>`);
+          $(".tbody", card).appendChild(w.el);
+          const doCheck = () => { if (results[sec.id]) return results[sec.id]; const r = w.check(); results[sec.id] = r;
+            $(".got", card).textContent = fmt(r.score); card.classList.add(r.score === sec.marks ? "full" : "part"); $(".chk", card).disabled = true;
+            if (sec.explain) $(".secfb", card).innerHTML = "💡 " + arabize(esc(sec.explain)); return r; };
+          $(".chk", card).onclick = doCheck; w.doCheck = doCheck;
+          m.appendChild(card);
+        });
+      });
+      const fin = h(`<div class="card" style="text-align:center"><button class="btn primary" id="finish">Finish &amp; save my score</button><div id="summary"></div></div>`);
+      m.appendChild(fin);
+      $("#finish", fin).onclick = () => {
+        const rs = widgets.map(([sec, w]) => [sec, w.doCheck()]);
+        const total = rs.reduce((a, [, r]) => a + r.score, 0), wrong = rs.flatMap(([, r]) => r.wrong);
+        const pct = Math.round(100 * total / max);
+        saveAttempt({ mode: "book", score: total, max, pct, secs: Math.round((Date.now() - start) / 1000), weak: wrong.map(w => w.lesson) });
+        $("#finish", fin).remove();
+        $("#summary", fin).innerHTML = `<div class="score">${fmt(total)} / ${max}</div><p>${pct >= 90 ? "Excellent! 🌟 You're ready for the next unit." : pct >= 70 ? "Good work 👍 Revise the lessons below, then retake the test." : "The teacher's advice: revise the words and practise a bit more before moving on 💪"}</p>
+          <table class="g" style="max-width:420px;margin:0 auto 12px">${rs.map(([sec, r], i) => `<tr><td>${i + 1}. ${({ sort: "Sort the words", fill: "Complete the sentences", odd: "Odd one out", correct: "Correct the mistakes", match: "Match the questions", choose: "Choose the right word" })[sec.type] || sec.type}</td><td style="text-align:right"><b>${fmt(r.score)}</b> / ${sec.marks}</td></tr>`).join("")}</table>
+          <div style="text-align:left">${weakReport(wrong)}</div><button class="btn" id="retake">↻ Retake the book test</button> <a class="btn" href="#mastery" style="text-decoration:none">🎯 Try the mastery test</a>`;
+        $("#retake", fin).onclick = () => route();
+      };
+    };
+    views.mastery = (m) => {
+      m.appendChild(h(`<div><h2>🎯 Mastery test</h2><p class="lead">A fresh mix of about 30 questions every time, drawn from <b>all ${L.lessons.length} lessons</b> this test covers: vocabulary both ways, listening, grammar, sentence building and dialogues. Your mistakes also go into each word's spaced-review deck.</p>
+        <div class="card"><b>Covers:</b><ul>${L.lessons.map(l => `<li>${lessonLink(l.id, "overview")}</li>`).join("")}</ul><button class="btn primary" id="go">Start a new mastery test</button></div></div>`));
+      $("#go", m).onclick = () => {
+        m.innerHTML = ""; const start = Date.now();
+        const lines = shuffle(L.dialogues.flatMap(d => d.lines.filter(l => !/السَّلام/.test(l[1])).map(l => ({ l, src: d.src })))).slice(0, 4).map(({ l, src }) => {
+          const others = shuffle([...new Set(L.dialogues.flatMap(d => d.lines).filter(x => x[1] !== l[1] && x[3] !== l[3]).map(x => x[3]))]).slice(0, 3);
+          const o = shuffle([l[3], ...others]); return { type: "listen", say: l[1], options: o, answer: o.indexOf(l[3]), src, area: "dialogues" };
+        });
+        const prac = shuffle(L.practice).slice(0, 12).map(x => Object.assign({ area: "practice" }, x));
+        const items = shuffle([...vocabMCQ(7, "ar2en"), ...vocabMCQ(4, "en2ar"), ...vocabMCQ(4, "listen"), ...lines, ...prac]);
+        runQuiz(m, items, T.id + "-mastery", (pct, wrongItems, sc, n) => {
+          saveAttempt({ mode: "mastery", score: sc, max: n, pct, secs: Math.round((Date.now() - start) / 1000), weak: wrongItems.map(w => w.src) });
+          m.appendChild(h(`<div class="card" style="margin-top:14px">${weakReport(wrongItems.map(w => ({ lesson: w.src, area: w.area })))}<button class="btn primary" id="again">New mastery test</button></div>`));
+          $("#again", m).onclick = () => route();
+        });
+      };
+    };
+    views.results = (m) => {
+      const at = TS.attempts.slice().reverse();
+      const best = mode => { const xs = TS.attempts.filter(a => a.mode === mode); return xs.length ? Math.max(...xs.map(a => a.pct)) + "%" : "—"; };
+      m.appendChild(h(`<div><h2>📈 Results</h2><p class="lead">Your attempts are saved in this browser. Aim for 90%+ on both tests before moving on.</p>
+        <div class="grid" style="margin-bottom:16px"><div class="card"><div class="muted">Best book test</div><div class="score" style="font-size:36px;text-align:left">${best("book")}</div></div>
+        <div class="card"><div class="muted">Best mastery test</div><div class="score" style="font-size:36px;text-align:left">${best("mastery")}</div></div>
+        <div class="card"><div class="muted">Attempts</div><div class="score" style="font-size:36px;text-align:left">${TS.attempts.length}</div></div></div>
+        ${at.length ? `<div class="card"><table class="g"><tr><th>Date</th><th>Test</th><th>Score</th><th></th><th>Time</th></tr>${at.map(a => `<tr><td>${new Date(a.date).toLocaleString()}</td><td>${a.mode === "book" ? "📘 Book" : "🎯 Mastery"}</td><td><b>${a.mode === "book" ? fmt(a.score) : a.score} / ${a.max}</b></td><td style="width:35%"><div class="qbar" style="margin:0"><div style="width:${a.pct}%;background:${a.pct >= 90 ? "var(--good)" : a.pct >= 70 ? "var(--accent)" : "var(--bad)"}"></div></div></td><td>${Math.floor(a.secs / 60)}m ${a.secs % 60}s</td></tr>`).join("")}</table></div>
+        <div class="card" style="margin-top:14px"><b>From your latest attempt:</b> ${weakReport((at[0].weak || []).map(l => ({ lesson: l })))}</div>` : `<div class="card">No attempts yet. Start with the <a href="#book">📘 Book test</a>.</div>`}</div>`));
+    };
+    function route() {
+      const id = (location.hash || "#book").slice(1), v = views[id] ? id : "book";
+      document.querySelectorAll("#tabs a").forEach(a => a.classList.toggle("active", a.dataset.tab === v));
+      if (synth) synth.cancel();
+      const m = $("#main"); m.innerHTML = ""; views[v](m); window.scrollTo(0, 0);
+    }
+    route(); window.addEventListener("hashchange", route);
+  }
+
+  if (T) initTest();
+  else { renderShell(); updateProgress(); route(); window.addEventListener("hashchange", route); }
 })();
 </script></body></html>

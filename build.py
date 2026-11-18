@@ -45,16 +45,37 @@ for f in sorted((SRC / "lessons").glob("*.js")):
     (OUT / f"{m['id']}.html").write_text(page(f"{m['title']} · Arabic Book {m['book']}", scripts), encoding="utf-8")
     print("built", OUT / f"{m['id']}.html")
 
+def test_meta(path):
+    js = f"global.window={{}};{path.read_text(encoding='utf-8')};console.log(JSON.stringify(window.TEST))"
+    return json.loads(subprocess.run(["node", "-e", js], capture_output=True, text=True, check=True).stdout)
+
+tests = []
+lesson_files = {f.stem: f for f in (SRC / "lessons").glob("*.js")}
+for f in sorted((SRC / "tests").glob("*.js")) if (SRC / "tests").exists() else []:
+    t = test_meta(f); tests.append(t)
+    home = "" if standalone else 'window.COURSE_HOME="index.html";'
+    covered = "".join(f"<script>{lesson_files[c].read_text(encoding='utf-8')}</script>" for c in t["covers"])
+    scripts = f"<script>window.LESSONS=[];{home}</script>{covered}<script>{f.read_text(encoding='utf-8')}</script><script>{engine}</script>"
+    (OUT / f"{t['id']}.html").write_text(page(f"{t['title']} · Arabic Book {t['book']}", scripts), encoding="utf-8")
+    print("built", OUT / f"{t['id']}.html")
+
 if not standalone:
     books = {1: "Book 1", 2: "Book 2", 3: "Book 3", 4: "Book 4"}
     parts = []
     for b, name in books.items():
         ls = sorted([l for l in lessons if l["book"] == b], key=lambda l: l["num"])
-        items = "".join(
-            f'<a class="card lesson-link" href="{l["id"]}.html" style="margin-bottom:10px" data-id="{l["id"]}">'
+        def lcard(l):
+            return (f'<a class="card lesson-link" href="{l["id"]}.html" style="margin-bottom:10px" data-id="{l["id"]}">'
             f'<span class="n">{l["num"]}</span><span style="flex:1"><b>{html.escape(l["title"])}</b><br>'
             f'<span class="ar">{html.escape(l["titleAr"])}</span><br><span class="muted" style="font-size:13px">{html.escape(l.get("covers",""))}</span></span>'
-            f'<span class="prog muted"></span></a>' for l in ls) or '<div class="card soon">Coming soon</div>'
+            f'<span class="prog muted"></span></a>')
+        def tcard(t):
+            return (f'<a class="card lesson-link test-link" href="{t["id"]}.html" style="margin-bottom:10px;border-color:var(--accent);background:var(--accent-soft)" data-test="{t["id"]}">'
+            f'<span class="n">📝</span><span style="flex:1"><b>{html.escape(t["title"])}</b><br>'
+            f'<span class="ar">{html.escape(t["titleAr"])}</span><br><span class="muted" style="font-size:13px">{html.escape(t["pages"])} · book test + mastery test</span></span>'
+            f'<span class="prog muted"></span></a>')
+        bt = [t for t in tests if t["book"] == b]
+        items = "".join(lcard(l) + "".join(tcard(t) for t in bt if t["after"] == l["num"]) for l in ls) or '<div class="card soon">Coming soon</div>'
         parts.append(f'<section class="book"><h2>{name} <span class="ar" style="font-size:22px">· الكِتابُ {["","الأَوَّلُ","الثّانِي","الثّالِثُ","الرّابِعُ"][b]}</span></h2>{items}</section>')
     body = f"""<main style="max-width:820px">
 <div class="card hero" style="margin-top:10px"><div><div class="ar" style="font-size:40px">العَرَبِيَّةُ بَيْنَ يَدَيْكَ</div>
@@ -64,7 +85,9 @@ if not standalone:
 <script>
 try{{const S=JSON.parse(localStorage.getItem("arabic-course-v1")||"{{}}");
 document.querySelectorAll("[data-id]").forEach(a=>{{const l=(S.lessons||{{}})[a.dataset.id];if(!l)return;const n=Object.keys(l.done||{{}}).length;
-a.querySelector(".prog").textContent=(n>=8?"✓ ":"")+n+"/8"+(l.best&&l.best.practice!=null?" · quiz "+l.best.practice+"%":"");}});}}catch(e){{}}
+a.querySelector(".prog").textContent=(n>=8?"✓ ":"")+n+"/8"+(l.best&&l.best.practice!=null?" · quiz "+l.best.practice+"%":"");}});
+document.querySelectorAll("[data-test]").forEach(a=>{{const t=(S.tests||{{}})[a.dataset.test];if(!t||!t.attempts.length)return;const b=m=>{{const x=t.attempts.filter(y=>y.mode===m);return x.length?Math.max(...x.map(y=>y.pct))+"%":"—"}};
+a.querySelector(".prog").textContent="book "+b("book")+" · mastery "+b("mastery");}});}}catch(e){{}}
 </script>"""
     (OUT / "index.html").write_text(page("Arabic in Your Hands · Interactive course", body), encoding="utf-8")
     print("built", OUT / "index.html")

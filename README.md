@@ -19,6 +19,16 @@ Each lesson page has the following sections:
 
 Audio comes from the browser's Arabic text-to-speech voice. Progress is saved in your browser's localStorage.
 
+## Tests
+
+The teacher sets a test after every two units. Each test page (`src/tests/<id>.js`) has three tabs:
+
+- **📘 Book test:** an interactive version of the book's *اختبر نفسك* page, with the same six question types and the same marks. You can check each section on its own, and the answers come with the teacher's explanations.
+- **🎯 Mastery test:** about 30 new randomised questions on each attempt, drawn from all the lessons the test covers (vocabulary, listening, grammar and dialogues).
+- **📈 Results:** your attempt history, your best scores, and the lessons to revise first.
+
+To add a test, copy `src/tests/b1-t1.js`. Set `covers` to the lesson ids, `after` to the lesson it follows, and fill in the sections. The section types are `sort`, `fill`, `odd`, `correct`, `match` and `choose`.
+
 ## Use it
 
 Enable **GitHub Pages**: Settings → Pages → Deploy from a branch → `main`, folder `/docs`.
@@ -46,5 +56,6 @@ docs/                  built site served by GitHub Pages
 - [x] Book 1 · Video 3: My family (Unit 2, pp. 28–31)
 - [x] Book 1 · Video 4: Where are the children? Big/small, plurals (pp. 32–33)
 - [x] Book 1 · Video 5: Present-tense verbs (teacher's special lesson)
-- [ ] Book 1 · Videos 6–40 (Chapters 1–8 are in Book 1 Part 1; Chapters 9–16 are in Book 1 Part 2)
+- [x] Book 1 · Test 1: Units 1–2 (pp. 53–54)
+- [ ] Book 1 · Videos 7–40 (Chapters 1–8 are in Book 1 Part 1; Chapters 9–16 are in Book 1 Part 2)
 - [ ] Books 2–4

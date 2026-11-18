@@ -183,6 +183,34 @@ table.g td.ar{font-size:24px;text-align:right}
 .muted{color:var(--muted)}
 footer{text-align:center;color:var(--muted);font-size:12px;padding:30px 16px}
 
+/* tests */
+.sortgrid{display:grid;grid-template-columns:repeat(6,1fr);gap:6px;direction:rtl;margin-top:10px}
+.scol{border:2px dashed var(--line);border-radius:12px;padding:6px;min-height:170px;display:flex;flex-direction:column;gap:4px;cursor:pointer}
+.scol:hover{border-color:var(--accent)}
+.shead{text-align:center;border-bottom:1px solid var(--line);padding-bottom:4px;display:flex;flex-direction:column}
+.shead .ar{font-size:20px;font-weight:700} .shead small{color:var(--muted);font-size:11px}
+.sitem{border:1px solid var(--line);background:var(--panel);border-radius:8px;padding:0 6px;text-align:center;display:flex;flex-direction:column}
+.sitem .ar{font-size:19px} .sitem small{font-size:10px;color:var(--bad);direction:ltr}
+.sitem.ex{opacity:.55;border-style:dashed}
+.tile.sel{border-color:var(--accent);background:var(--accent-soft)}
+.tile.x{border-color:var(--bad);background:var(--bad-soft);text-decoration:line-through}
+.tile.ok,.sitem.ok{border-color:var(--good);background:var(--good-soft)}
+.tile.no,.sitem.no{border-color:var(--bad);background:var(--bad-soft)}
+.titems{padding-inline-start:22px;margin:6px 0} .titems li{margin:10px 0}
+.qsent .ar{font-size:22px}
+.qsent select{font-family:var(--ar);font-size:18px;padding:2px 6px;border-radius:8px;border:2px solid var(--accent);background:var(--panel);color:var(--ink);margin:0 4px}
+.qsent select.ok{border-color:var(--good);background:var(--good-soft)} .qsent select.no{border-color:var(--bad);background:var(--bad-soft)}
+.blank{display:inline-block;min-width:60px;border-bottom:2px solid var(--accent);color:var(--accent-2);text-align:center}
+.wrongw{text-decoration-color:var(--bad);text-decoration-thickness:2px}
+.bank{background:var(--accent-soft);border-radius:10px;padding:8px 12px;text-align:center;direction:rtl}
+.bank .ar{font-size:20px}
+.fb{font-size:14px;margin-top:2px}
+.markbox{border:2px solid var(--accent);border-radius:10px;min-width:56px;text-align:center;display:flex;flex-direction:column;line-height:1.2;padding:4px}
+.markbox .got{font-weight:800;font-size:18px;color:var(--accent-2);border-bottom:1px solid var(--line)} .markbox .of{font-size:13px;color:var(--muted)}
+.tsec.full{border-color:var(--good)} .tsec.part{border-color:var(--accent)}
+.test-link .n{font-size:22px}
+@media (max-width:700px){.sortgrid{grid-template-columns:repeat(3,1fr)}}
+
 /* index */
 .book{margin-top:22px}
 .lesson-link{display:flex;gap:14px;align-items:center;text-decoration:none;color:var(--ink)}
